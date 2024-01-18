@@ -34,6 +34,7 @@ public class OutLowSmall extends Humanoid {
     }
 
     @Autowired
+    @Override
     public void setParam_humanoid(@Value("${outlowsmall}") int[] param_humanoid) {
         this.param_humanoid = param_humanoid;
         this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);

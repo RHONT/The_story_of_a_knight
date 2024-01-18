@@ -1,40 +1,40 @@
 package com.rhontproject.abstractUnitParent;
 
-
 import com.rhontproject.interfaceSupporFunctionHumanoid.HumanoidSupportFunctional;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+/**
+ * vortex - супер способность волна ветра, бьет по всем врагам.<br>
+ * name - имя персонажа <br>
+ * info_str_fight - накопительная переменная для отчета о состоянии битвы для каждого юнита<br>
+ * i_am_fire - Горит ли юнит?<br>
+ * chance_to_attack - базовая характеристика шанса на успешное попадение<br>
+ * chance_to_attack_in_fire - Шанс попасть по противнику если ты горишь<br>
+ * param_humanoid - {голова:торс:руки:ноги; сила оружия}<br>
+ * defense - броня для каждой части тела<br>
+ * param_inventory - {Щит на готове, щит в инвентаре, коктейль Молотова,зелье здоровья}<br>
+ * money - каждый юнит несет в себе золото, отдает при смерти<br>
+ */
 @Component
 public abstract class Humanoid implements HumanoidSupportFunctional {
-    // супер способность волна ветра, бьет по всем врагам.
     public boolean vortex = false;
-
     public String name;
-    // накопительная переменная для отчета о состоянии битвы для каждого юнита
     public String info_str_fight;
-    // Горит ли юнит?
     public boolean i_am_fire = false;
-    // базовая характеристика шанса на успешное попадение
     public int chance_to_attack = 80;
-    // Шанс попасть по противнику если ты горишь
     public int chance_to_attack_in_fire = chance_to_attack - 15;
-    // {голова:торс:руки:ноги; сила оружия}
     public int[] param_humanoid = {1, 1, 1, 1, 1};
-    // соответственно броня для каждой части тела
     public int[] defense = {0, 0, 0, 0};
-    //{Щит на готове, щит в инвенторе,коктейль Молотова,зелье здоровья}
     public int[] param_inventory = {0, 2, 1, 1};
+    public int money = new Random().nextInt(150) + 75;
+
     // копии параметров здоровья и брони для расчетов, для понимания относительности изменений
     public int[] copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     public int[] copy_param_defense = Arrays.copyOfRange(defense, 0, defense.length);
 
-    // каждый юнит несет в себе золото, отдает при смерти
-    public int money = new Random().nextInt(150) + 75;
-
     private HumanoidSupportFunctional humanoidSupportFunctional;
-
 
     /**
      * Мапа с нумерацией частей тела,
@@ -49,11 +49,11 @@ public abstract class Humanoid implements HumanoidSupportFunctional {
         return parts_of_body.get(a);
     }
 
-    void setParam_humanoid(int a, int b, int c, int d, int e) {
-        this.param_humanoid = new int[]{a, b, c, d, e};
+    @Override
+    public void setParam_humanoid(int[] param_humanoid) {
+        this.param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
         this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     }
-
 
     public void setDefense(int a, int b, int c, int d) {
         defense = new int[]{a, b, c, d};
@@ -121,6 +121,7 @@ public abstract class Humanoid implements HumanoidSupportFunctional {
     public void halt() {
         humanoidSupportFunctional.halt();
     }
+
 
     public void setHumanoidSupportFunctional(HumanoidSupportFunctional humanoidSupportFunctional) {
         this.humanoidSupportFunctional = humanoidSupportFunctional;

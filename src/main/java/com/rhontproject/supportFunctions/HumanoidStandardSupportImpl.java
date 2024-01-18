@@ -44,6 +44,11 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
         System.out.println();
     }
 
+    @Override
+    public void setParam_humanoid(int[] param_humanoid) {
+
+    }
+
     /**
      * вспомогательный метод реализующий функционал метода halt()
      */

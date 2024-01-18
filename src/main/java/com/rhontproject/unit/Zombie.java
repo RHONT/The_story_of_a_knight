@@ -28,13 +28,13 @@ public class Zombie extends Humanoid {
     public void Attack(Humanoid attacking, Humanoid victim) {
         enemyAttack.attackStandardEnemy(attacking, victim);
     }
-
     @Override
     public void setHumanoid(Humanoid humanoid) {
-
     }
 
+
     @Autowired
+    @Override
     public void setParam_humanoid(@Value("${zombie}") int[] param_humanoid) {
         this.param_humanoid = param_humanoid;
         this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);

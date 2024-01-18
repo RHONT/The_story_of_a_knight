@@ -27,4 +27,6 @@ public interface HumanoidSupportFunctional {
 
     void halt();
 
+    void setParam_humanoid(int[] param_humanoid);
+
 }

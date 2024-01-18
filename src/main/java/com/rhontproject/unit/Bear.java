@@ -1,6 +1,5 @@
 package com.rhontproject.unit;
 
-
 import com.rhontproject.interfaceAttack.EnemyAttack;
 import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
 import com.rhontproject.abstractUnitParent.Humanoid;
@@ -41,7 +40,10 @@ class Bear extends Humanoid {
     public void setHumanoid(Humanoid humanoid) {
 
     }
+
+
     @Autowired
+    @Override
     public void setParam_humanoid(@Value("${bear}") int[] param_humanoid) {
         this.param_humanoid = param_humanoid;
         this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
