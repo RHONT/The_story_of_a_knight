@@ -1,6 +1,6 @@
 package com.rhontproject.typesOfAttack;
 
-import com.rhontproject.actors.Knight;
+import com.rhontproject.unit.Knight;
 import com.rhontproject.interfaceAttack.*;
 import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.stereotype.Service;

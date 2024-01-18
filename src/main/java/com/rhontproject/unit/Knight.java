@@ -1,11 +1,11 @@
-package com.rhontproject.actors;
+package com.rhontproject.unit;
 
 
 import com.rhontproject.interfaceAttack.KnightAttack;
 import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.param_unit.ParamKnight;
 import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -18,10 +18,8 @@ public class Knight extends Humanoid {
     final KnightAttack knightAttack;
 
     @Autowired
-    Knight(ParamKnight paramKnight, KnightAttack knightAttack, HumanoidStandardSupportImpl supportFunction) {
+    Knight(KnightAttack knightAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Сэр Томас";
-        this.param_humanoid = paramKnight.array;
-        this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
         this.knightAttack = knightAttack;
         this.setHumanoidSupportFunctional(supportFunction);
     }
@@ -71,5 +69,11 @@ public class Knight extends Humanoid {
     @Override
     public void setHumanoid(Humanoid humanoid) {
 
+    }
+
+    @Autowired
+    public void setParam_humanoid(@Value("${knight}") int[] param_humanoid) {
+        this.param_humanoid = param_humanoid;
+        this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     }
 }

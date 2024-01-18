@@ -1,7 +1,7 @@
 
 package com.rhontproject;
 
-import com.rhontproject.actors.*;
+import com.rhontproject.unit.*;
 import com.rhontproject.stateMethods.StateGame;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.*;

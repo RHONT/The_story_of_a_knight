@@ -1,27 +1,25 @@
-package com.rhontproject.actors;
+package com.rhontproject.unit;
+
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
 import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.param_unit.ParamOutLawBig;
 import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component("OutLowBig")
+@Component("Zombi")
 @Scope("prototype")
-public
-class OutLowBig extends Humanoid {
+public class Zombie extends Humanoid {
 
     final EnemyAttack enemyAttack;
 
     @Autowired
-    OutLowBig(ParamOutLawBig paramOutLawBig, EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
-        this.name = "Здоровяк";
-        this.param_humanoid = paramOutLawBig.array;
-        this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
+    Zombie(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
+        this.name = "Внезапный мертвец";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);
     }
@@ -35,4 +33,11 @@ class OutLowBig extends Humanoid {
     public void setHumanoid(Humanoid humanoid) {
 
     }
+
+    @Autowired
+    public void setParam_humanoid(@Value("${zombie}") int[] param_humanoid) {
+        this.param_humanoid = param_humanoid;
+        this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
+    }
 }
+

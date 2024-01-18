@@ -1,27 +1,24 @@
-package com.rhontproject.actors;
+package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
 import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.param_unit.ParamOutLawBridge;
 import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component("OutLowBridge")
+@Component("Knight_In_The_Dark")
 @Scope("prototype")
 public
-class OutLawBridge extends Humanoid {
-
+class Knight_In_The_Dark extends Humanoid {
     final EnemyAttack enemyAttack;
 
     @Autowired
-    OutLawBridge(ParamOutLawBridge paramOutLawBridge, EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
-        this.name = "Разбойник";
-        this.param_humanoid = paramOutLawBridge.array;
-        this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
+    Knight_In_The_Dark(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
+        this.name = "Скелет во тьме";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);
     }
@@ -34,5 +31,11 @@ class OutLawBridge extends Humanoid {
     @Override
     public void setHumanoid(Humanoid humanoid) {
 
+    }
+
+    @Autowired
+    public void setParam_humanoid(@Value("${knight_in_the_dark}") int[] param_humanoid) {
+        this.param_humanoid = param_humanoid;
+        this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     }
 }
