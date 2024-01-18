@@ -1,4 +1,4 @@
-package com.rhontproject.Param_unit;
+package com.rhontproject.param_unit;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;

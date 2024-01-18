@@ -1,4 +1,4 @@
-package com.rhontproject.StateMethods;
+package com.rhontproject.stateMethods;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

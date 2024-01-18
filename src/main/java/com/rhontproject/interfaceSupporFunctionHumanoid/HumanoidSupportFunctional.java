@@ -1,6 +1,6 @@
-package com.rhontproject.InterfaceSupporFunctionHumanoid;
+package com.rhontproject.interfaceSupporFunctionHumanoid;
 
-import com.rhontproject.AbstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Humanoid;
 
 public interface HumanoidSupportFunctional {
     void setHumanoid(Humanoid humanoid);

@@ -1,12 +1,12 @@
 
 package com.rhontproject;
 
-import com.rhontproject.Actors.*;
-import com.rhontproject.StateMethods.StateGame;
+import com.rhontproject.actors.*;
+import com.rhontproject.stateMethods.StateGame;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.*;
 
-import static com.rhontproject.StateMethods.Utility.*;
+import static com.rhontproject.stateMethods.Utility.*;
 
 public class Battle_area {
 

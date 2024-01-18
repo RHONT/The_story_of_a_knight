@@ -1,4 +1,4 @@
-package com.rhontproject.Param_unit;
+package com.rhontproject.param_unit;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
  * Затем его передаю юнитами (каталог: Actors)
  */
 
-@Component("ParamOutLowBig")
+@Component("ParamZombie")
 @Scope("prototype")
-public class ParamOutLawBig {
-    @Value("${outlowbig}")
+public class ParamZombie {
+    @Value("${zombie}")
     public int[] array;
 }

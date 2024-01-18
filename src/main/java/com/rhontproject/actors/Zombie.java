@@ -1,25 +1,26 @@
-package com.rhontproject.Actors;
+package com.rhontproject.actors;
 
-import com.rhontproject.InterfaceForAttack.EnemyAttack;
-import com.rhontproject.SupportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.Param_unit.ParamKnight_In_The_Dark;
-import com.rhontproject.AbstractUnitParent.Humanoid;
+
+import com.rhontproject.interfaceAttack.EnemyAttack;
+import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
+import com.rhontproject.param_unit.ParamZombie;
+import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component("Knight_In_The_Dark")
+@Component("Zombi")
 @Scope("prototype")
-public
-class Knight_In_The_Dark extends Humanoid {
+public class Zombie extends Humanoid {
+
     final EnemyAttack enemyAttack;
 
     @Autowired
-    Knight_In_The_Dark(ParamKnight_In_The_Dark paramKnight_in_the_dark, EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
-        this.name = "Скелет во тьме";
-        this.param_humanoid = paramKnight_in_the_dark.array;
+    Zombie(ParamZombie paramZombie, EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
+        this.name = "Внезапный мертвец";
+        this.param_humanoid = paramZombie.array;
         this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);
@@ -35,3 +36,4 @@ class Knight_In_The_Dark extends Humanoid {
 
     }
 }
+

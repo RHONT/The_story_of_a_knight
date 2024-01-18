@@ -1,8 +1,8 @@
-package com.rhontproject.SupportFunctions;
+package com.rhontproject.supportFunctions;
 
 import com.rhontproject.Battle_area;
-import com.rhontproject.AbstractUnitParent.Humanoid;
-import com.rhontproject.InterfaceSupporFunctionHumanoid.HumanoidSupportFunctional;
+import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.interfaceSupporFunctionHumanoid.HumanoidSupportFunctional;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

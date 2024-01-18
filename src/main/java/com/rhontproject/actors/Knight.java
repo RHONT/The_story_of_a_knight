@@ -1,10 +1,10 @@
-package com.rhontproject.Actors;
+package com.rhontproject.actors;
 
 
-import com.rhontproject.InterfaceForAttack.KnightAttack;
-import com.rhontproject.SupportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.Param_unit.ParamKnight;
-import com.rhontproject.AbstractUnitParent.Humanoid;
+import com.rhontproject.interfaceAttack.KnightAttack;
+import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
+import com.rhontproject.param_unit.ParamKnight;
+import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
-package com.rhontproject.InterfaceForAttack;
+package com.rhontproject.interfaceAttack;
 
-import com.rhontproject.AbstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Humanoid;
 
 public interface KnightAttack {
 

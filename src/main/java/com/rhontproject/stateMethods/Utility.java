@@ -1,6 +1,6 @@
-package com.rhontproject.StateMethods;
+package com.rhontproject.stateMethods;
 
-import com.rhontproject.AbstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Humanoid;
 
 import java.io.File;
 import java.io.FileNotFoundException;

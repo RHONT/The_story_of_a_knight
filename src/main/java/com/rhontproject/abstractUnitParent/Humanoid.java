@@ -1,7 +1,7 @@
-package com.rhontproject.AbstractUnitParent;
+package com.rhontproject.abstractUnitParent;
 
 
-import com.rhontproject.InterfaceSupporFunctionHumanoid.HumanoidSupportFunctional;
+import com.rhontproject.interfaceSupporFunctionHumanoid.HumanoidSupportFunctional;
 import org.springframework.stereotype.Component;
 
 import java.util.*;

@@ -1,8 +1,8 @@
-package com.rhontproject.TypesOfAttack;
+package com.rhontproject.typesOfAttack;
 
-import com.rhontproject.Actors.*;
-import com.rhontproject.InterfaceForAttack.KnightAttack;
-import com.rhontproject.AbstractUnitParent.Humanoid;
+import com.rhontproject.actors.*;
+import com.rhontproject.interfaceAttack.KnightAttack;
+import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;

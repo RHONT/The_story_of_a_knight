@@ -1,9 +1,9 @@
-package com.rhontproject.Actors;
+package com.rhontproject.actors;
 
-import com.rhontproject.InterfaceForAttack.EnemyAttack;
-import com.rhontproject.SupportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.Param_unit.ParamOutLawBig;
-import com.rhontproject.AbstractUnitParent.Humanoid;
+import com.rhontproject.interfaceAttack.EnemyAttack;
+import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
+import com.rhontproject.param_unit.ParamOutLawBig;
+import com.rhontproject.abstractUnitParent.Humanoid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
