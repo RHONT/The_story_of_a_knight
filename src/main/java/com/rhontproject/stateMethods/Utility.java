@@ -4,6 +4,8 @@ import com.rhontproject.abstractUnitParent.Humanoid;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -62,17 +64,19 @@ public class Utility {
 
 
     public static void read_file(String str) {
-        File buf_read = new File("src/main/resources/stories/" + str);
-        //System.out.println(path);
-        try {
-            Scanner scan_for_read = new Scanner(buf_read);
-            while (scan_for_read.hasNext()) {
-                System.out.println(scan_for_read.nextLine());
+        try (InputStream inputStream = Utility.class.getResourceAsStream("/stories/" + str);
+        ) {
+            if (inputStream != null) {
+                try (Scanner scan_for_read = new Scanner(inputStream);
+                ) {
+                    while (scan_for_read.hasNext()) {
+                        System.out.println(scan_for_read.nextLine());
+                    }
+                }
+            } else {
+                System.out.println("Часть истории не найдена");
             }
-            scan_for_read.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("Часть истории не найдена");
-
+        } catch (IOException ignored) {
         }
     }
 
