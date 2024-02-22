@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component("Zombi")
+@Component("Zombie")
 @Scope("prototype")
 public class Zombie extends Humanoid {
 

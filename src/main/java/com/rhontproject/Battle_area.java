@@ -1,11 +1,12 @@
 
 package com.rhontproject;
 
-import com.rhontproject.unit.*;
+import com.rhontproject.abstractUnitParent.Humanoid;
 import com.rhontproject.stateMethods.StateGame;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.*;
 
+import static com.rhontproject.fabrica.UnitFabric.*;
 import static com.rhontproject.stateMethods.Utility.*;
 
 public class Battle_area {
@@ -14,41 +15,10 @@ public class Battle_area {
     static public StateGame stateGame = context.getBean("StateGame", StateGame.class);
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
+        Humanoid knight=createKnight();
 
         Scanner history_stop = new Scanner(System.in);
-
-        Knight first = context.getBean("Knight", Knight.class);
-        first.setDefense(30, 30, 30, 30);
-
-        Zombie second = context.getBean("Zombi", Zombie.class);
-        second.setDefense(0, 20, 0, 30);
-
-        Zombie third = context.getBean("Zombi", Zombie.class);
-        third.setDefense(20, 50, 50, 50);
-
-
-        OutLowBig outlaw_big = context.getBean("OutLowBig", OutLowBig.class);
-        OutLowSmall outlaw_small = context.getBean("OutLowSmall", OutLowSmall.class);
-
-        Bear bear = context.getBean("Bear", Bear.class);
-
-        OutLawBridge outlaw_bridge_1 = context.getBean("OutLowBridge", OutLawBridge.class);
-        outlaw_bridge_1.setDefense(0, 40, 10, 10);
-        OutLawBridge outlaw_bridge_2 = context.getBean("OutLowBridge", OutLawBridge.class);
-        outlaw_bridge_2.setDefense(15, 25, 10, 0);
-        OutLawBridge outlaw_bridge_3 = context.getBean("OutLowBridge", OutLawBridge.class);
-        outlaw_bridge_3.setDefense(0, 0, 30, 5);
-        OutLawBridge outlaw_bridge_4 = context.getBean("OutLowBridge", OutLawBridge.class);
-        outlaw_bridge_4.setDefense(50, 10, 20, 20);
-
-        Knight_In_The_Dark knight_in_the_dark_1 = context.getBean("Knight_In_The_Dark", Knight_In_The_Dark.class);
-        knight_in_the_dark_1.setDefense(70, 70, 10, 10);
-        Knight_In_The_Dark knight_in_the_dark_2 = context.getBean("Knight_In_The_Dark", Knight_In_The_Dark.class);
-        knight_in_the_dark_2.setDefense(50, 100, 30, 10);
-        Knight_In_The_Dark knight_in_the_dark_3 = context.getBean("Knight_In_The_Dark", Knight_In_The_Dark.class);
-        knight_in_the_dark_3.setDefense(0, 100, 50, 50);
-
         read_file("[1].txt");
         System.out.println();
         System.out.println("Нажмиет Enter для продолжения");
@@ -58,20 +28,20 @@ public class Battle_area {
         System.out.println();
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
-        fight_test(first, second, third);
+        fight_test(knight, createZombie(), createZombie());
 
 
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
-        first.halt();    // привал
+        knight.halt();    // привал
 
-        first.level_up();  // повышение уровня
+        knight.level_up();  // повышение уровня
 
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
 
-        first.print_inv_and_money();
-        market_place(first, stateGame);
+        knight.print_inv_and_money();
+        market_place(knight, stateGame);
 
         read_file("Thief_1.txt");
         String bufer_string = history_stop.nextLine();
@@ -80,22 +50,21 @@ public class Battle_area {
         read_file("out_law_story.txt");
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
-        fight_test(first, outlaw_small, outlaw_big);
+        fight_test(knight, createOutLowSmall(), createOutLowBig());
 
         read_file("[2].txt");
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
-        fight_test(first, bear);
+        fight_test(knight, createBear());
 
-        first.halt();    // привал
-        first.level_up();  // повышение уровня
+        knight.halt();    // привал
+        knight.level_up();  // повышение уровня
 
         read_file("[2-1].txt");
-        bridge(first, stateGame, outlaw_bridge_1, outlaw_bridge_2, outlaw_bridge_3, outlaw_bridge_4);
-        bridge(first, stateGame, outlaw_bridge_1, outlaw_bridge_2, outlaw_bridge_3, outlaw_bridge_4);
-        System.out.println(Arrays.toString(first.param_inventory));
-        first.halt();    // привал
-        first.level_up();
+        bridge(knight, stateGame, createOutLowBridge(), createOutLowBridge(), createOutLowBridge(), createOutLowBridge());
+        System.out.println(Arrays.toString(knight.param_inventory));
+        knight.halt();    // привал
+        knight.level_up();
 
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
@@ -104,18 +73,18 @@ public class Battle_area {
         read_file("[4].txt");
         history_stop.nextLine();
 
-        fight_test_vs_shadow(first, knight_in_the_dark_1, knight_in_the_dark_2);
+        fight_test_vs_shadow(knight, createKnightDark(), createKnight());
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
-        first.halt();    // привал
-        first.level_up();
+        knight.halt();    // привал
+        knight.level_up();
 
         read_file("[5].txt");
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
-        fight_test_vs_shadow(first, knight_in_the_dark_1, knight_in_the_dark_2, knight_in_the_dark_3);
-        first.halt();
-        first.level_up();
+        fight_test_vs_shadow(knight, createKnight(), createKnight(), createKnight());
+        knight.halt();
+        knight.level_up();
         System.out.println("Нажмиет Enter для продолжения");
         history_stop.nextLine();
         read_file("[6].txt");
