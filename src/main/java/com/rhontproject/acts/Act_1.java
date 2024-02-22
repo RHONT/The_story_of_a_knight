@@ -2,7 +2,7 @@ package com.rhontproject.acts;
 
 import static com.rhontproject.stateMethods.Utility.read_file;
 
-public final class Act_1_Prologue extends ActParent {
+public final class Act_1 extends Act {
     @Override
     public void run() {
         read_file("[1].txt");

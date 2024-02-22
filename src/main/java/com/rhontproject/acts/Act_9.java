@@ -1,19 +1,15 @@
 package com.rhontproject.acts;
 
-import static com.rhontproject.fabrica.UnitFabric.createZombie;
-import static com.rhontproject.stateMethods.Utility.fight;
 import static com.rhontproject.stateMethods.Utility.read_file;
 
-public class Act_2 extends Act {
-
+public class Act_9 extends Act {
     @Override
     public void run() {
-        read_file("[1-1].txt");
+        read_file("[6].txt");
         System.out.println();
         System.out.println("Нажмиет Enter для продолжения");
         scanner.nextLine();
-        fight(knight, createZombie(), createZombie());
+        read_file("[7].txt");
         System.out.println("Нажмиет Enter для продолжения");
-        scanner.nextLine();
     }
 }
