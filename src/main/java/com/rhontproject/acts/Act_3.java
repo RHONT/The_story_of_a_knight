@@ -1,11 +1,11 @@
 package com.rhontproject.acts;
 
-import static com.rhontproject.stateMethods.Utility.read_file;
+import static com.rhontproject.stateMethods.Utility.printFromFile;
 
 public final class Act_3 extends Act {
     @Override
     public void run() {
-        read_file("Thief_1.txt");
+        printFromFile("Thief_1.txt");
         String isRob = scanner.nextLine();
         stateGame.isRob = (isRob.equals("1"));
     }

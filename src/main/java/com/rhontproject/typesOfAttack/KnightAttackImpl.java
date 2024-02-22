@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.lang.System.*;
+
 @Service
 public class KnightAttackImpl implements KnightAttack {
     @Override
@@ -26,7 +28,7 @@ public class KnightAttackImpl implements KnightAttack {
 
         temp_attack = attacking.param_humanoid[4];
 
-        System.out.println("Атакуй! 1 - голова "
+        out.println("Атакуй! 1 - голова "
                 + (attacking.chance_to_attack - 10)
                 + "% | 2 -тело " + (attacking.chance_to_attack)
                 + "% | 3 - руки " + (attacking.chance_to_attack - 20)
@@ -34,7 +36,7 @@ public class KnightAttackImpl implements KnightAttack {
                 + "% | Символ  s = (щит)  m = (коктейль Молотова)  p=(Зелье исцеления)");
 
         while (!stringAccepted) {
-            Scanner str_war = new Scanner(System.in);
+            Scanner str_war = new Scanner(in);
             checkInputConsoleString = str_war.nextLine().toLowerCase();
             switch (checkInputConsoleString) {
                 case ("w"):
@@ -50,7 +52,7 @@ public class KnightAttackImpl implements KnightAttack {
                         attacking.info_str_fight = "Вы достали щит!";
                         stringAccepted = true;
                     } else {
-                        System.out.println("У вас нет щитов");
+                        out.println("У вас нет щитов");
                     }
                     break;
                 case ("m"):
@@ -63,7 +65,7 @@ public class KnightAttackImpl implements KnightAttack {
                         attacking.param_inventory[2] -= 1;
                         stringAccepted = true;
                     } else {
-                        System.out.println("У вас нет Молотова");
+                        out.println("У вас нет Молотова");
                     }
                     break;
                 case ("p"):
@@ -75,7 +77,7 @@ public class KnightAttackImpl implements KnightAttack {
                         attacking.info_str_fight = "Вы исцелились на 70 очков";
                         stringAccepted = true;
                     } else {
-                        System.out.println("У вас нет зелья!");
+                        out.println("У вас нет зелья!");
                     }
                     break;
                 // если 1-4 значит идет удар по выбранной части тела, начинаем обработку
@@ -120,7 +122,7 @@ public class KnightAttackImpl implements KnightAttack {
                     break;
 
                 default:
-                    System.out.println("Введено неправильное значение.\nАтакуйте часть тела (1-4) \nИли совершите действие (Щит, Молотов, Зелье)");
+                    out.println("Введено неправильное значение.\nАтакуйте часть тела (1-4) \nИли совершите действие (Щит, Молотов, Зелье)");
 
             }
 
