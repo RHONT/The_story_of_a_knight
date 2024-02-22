@@ -21,10 +21,8 @@ import java.util.Arrays;
 @Scope("prototype")
 public
 class Bear extends Humanoid {
+    private final EnemyAttack enemyAttack;
 
-    final EnemyAttack enemyAttack;
-
-    @Autowired
     Bear(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Зомбо-Медведь";
         this.enemyAttack = enemyAttack;
@@ -38,9 +36,7 @@ class Bear extends Humanoid {
 
     @Override
     public void setHumanoid(Humanoid humanoid) {
-
     }
-
 
     @Autowired
     @Override
@@ -48,6 +44,4 @@ class Bear extends Humanoid {
         this.param_humanoid = param_humanoid;
         this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     }
-
-
 }

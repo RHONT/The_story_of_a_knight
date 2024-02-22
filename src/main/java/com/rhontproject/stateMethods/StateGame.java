@@ -1,14 +1,8 @@
 package com.rhontproject.stateMethods;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 /**
- * Бин для ведения состояния игры
+ * Состояние игры
  */
-@Component("StateGame")
-@Scope("singleton")
-public class StateGame {
+public final class StateGame {
     public boolean market_exit = false;                 // 0 - do in market, 1 - not do in market
     public boolean event_on_bridge = false;           // переключаитаель события на мосту.
     public boolean halt_param = false;                // Переключатель для привала(замыкает while)

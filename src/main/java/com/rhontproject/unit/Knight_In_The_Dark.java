@@ -14,9 +14,8 @@ import java.util.Arrays;
 @Scope("prototype")
 public
 class Knight_In_The_Dark extends Humanoid {
-    final EnemyAttack enemyAttack;
+    private final EnemyAttack enemyAttack;
 
-    @Autowired
     Knight_In_The_Dark(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Скелет во тьме";
         this.enemyAttack = enemyAttack;

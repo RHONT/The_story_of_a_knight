@@ -14,10 +14,8 @@ import java.util.Arrays;
 @Scope("prototype")
 public
 class OutLowBig extends Humanoid {
+    private final EnemyAttack enemyAttack;
 
-    final EnemyAttack enemyAttack;
-
-    @Autowired
     OutLowBig(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Здоровяк";
         this.enemyAttack = enemyAttack;

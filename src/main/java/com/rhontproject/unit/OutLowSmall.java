@@ -13,10 +13,8 @@ import java.util.Arrays;
 @Component("OutLowSmall")
 @Scope("prototype")
 public class OutLowSmall extends Humanoid {
+    private final EnemyAttack enemyAttack;
 
-    final EnemyAttack enemyAttack;
-
-    @Autowired
     OutLowSmall( EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Хиляк";
         this.enemyAttack = enemyAttack;

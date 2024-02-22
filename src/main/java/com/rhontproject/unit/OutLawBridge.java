@@ -14,10 +14,8 @@ import java.util.Arrays;
 @Scope("prototype")
 public
 class OutLawBridge extends Humanoid {
+    private final EnemyAttack enemyAttack;
 
-    final EnemyAttack enemyAttack;
-
-    @Autowired
     OutLawBridge(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Разбойник";
         this.enemyAttack = enemyAttack;

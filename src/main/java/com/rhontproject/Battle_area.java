@@ -3,17 +3,13 @@ package com.rhontproject;
 
 import com.rhontproject.abstractUnitParent.Humanoid;
 import com.rhontproject.stateMethods.StateGame;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.*;
 
 import static com.rhontproject.fabrica.UnitFabric.*;
 import static com.rhontproject.stateMethods.Utility.*;
 
 public class Battle_area {
-
-    static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-    static public StateGame stateGame = context.getBean("StateGame", StateGame.class);
-
+    static public StateGame stateGame = new StateGame();
 
     public static void main(String[] args) {
         Humanoid knight=createKnight();

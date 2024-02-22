@@ -14,10 +14,8 @@ import java.util.Arrays;
 @Component("Zombie")
 @Scope("prototype")
 public class Zombie extends Humanoid {
+    private final EnemyAttack enemyAttack;
 
-    final EnemyAttack enemyAttack;
-
-    @Autowired
     Zombie(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Внезапный мертвец";
         this.enemyAttack = enemyAttack;
