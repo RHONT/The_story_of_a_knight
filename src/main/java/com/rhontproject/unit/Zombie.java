@@ -1,6 +1,5 @@
 package com.rhontproject.unit;
 
-
 import com.rhontproject.interfaceAttack.EnemyAttack;
 import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
 import com.rhontproject.abstractUnitParent.Humanoid;

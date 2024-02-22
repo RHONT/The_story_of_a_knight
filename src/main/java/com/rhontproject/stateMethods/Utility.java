@@ -4,10 +4,7 @@ import com.rhontproject.abstractUnitParent.Humanoid;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Utility {
 
@@ -290,20 +287,15 @@ public class Utility {
 
     }
 
-    public static void fight_test(Humanoid first, Humanoid... enemy) {
+    public static void fight(Humanoid first, Humanoid... enemy) {
         int round = 0;
-        int sum_enemy = enemy.length;
-        //System.out.println(sum_enemy);
         ArrayList<Humanoid> list_participant = new ArrayList<>();
         list_participant.add(first);
-
-        for (int i = 0; i < sum_enemy; i++) {
-            list_participant.add(enemy[i]);
-        }
+        list_participant.addAll(List.of(enemy));
 
         while ((list_participant.get(0).Humanoid_is_alife()) && (list_participant.size() > 1)) {
             round++;
-            System.out.println("*****" + "ROUND " + round + "**********************************************************************************************");
+            System.out.println("*".repeat(5) + "ROUND " + round + "*".repeat(94));
             print_battle_life_test(list_participant);
             first.Attack(first, list_participant.get(1));
 
@@ -322,7 +314,7 @@ public class Utility {
                 list_participant.get(i).print_info_fight();
             }
 
-            for (int i = 1; i < list_participant.size(); i++) {         // куда я полез... Ввел ветер, теперь перемены!
+            for (int i = 1; i < list_participant.size(); i++) {
                 if (!list_participant.get(i).Humanoid_is_alife()) {
                     list_participant.get(i).money = new Random().nextInt(90) + 100;
                     System.out.println("Враг пал, вы собрали с трупа: " + list_participant.get(i).money + " золотых");
@@ -341,7 +333,7 @@ public class Utility {
             }
 
         }
-        first.down_health();  // Зелье бодрит, и завышает временно характеристики здоровья. После боя, все приходит в норму.
+        first.down_health();
     }
 
     /**
@@ -350,7 +342,6 @@ public class Utility {
      *               метод запускающий события на мосту.
      */
     public static void bridge(Humanoid knight, StateGame stateGame, Humanoid... enemy) {
-
         while (!stateGame.event_on_bridge) {
             String for_market_scanner;
             Scanner scan_market = new Scanner(System.in);
@@ -382,7 +373,7 @@ public class Utility {
                         break;
                     }
                 case ("1"):
-                    fight_test(knight, enemy);
+                    fight(knight, enemy);
                     stateGame.event_on_bridge = true;
                     break;
                 default:
