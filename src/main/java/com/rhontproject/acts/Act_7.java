@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.rhontproject.fabrica.UnitFabric.*;
+import static com.rhontproject.fabrica.ActsFabric.halt;
+import static com.rhontproject.fabrica.ActsFabric.levelUp;
+import static com.rhontproject.fabrica.UnitFabric.createKnight;
+import static com.rhontproject.fabrica.UnitFabric.createKnightDark;
 import static com.rhontproject.stateMethods.Utility.*;
 
 public class Act_7 extends Act {
@@ -16,12 +19,17 @@ public class Act_7 extends Act {
         scanner.nextLine();
         printFromFile("[4].txt");
         scanner.nextLine();
-
         fightVsShadow(createKnightDark(), createKnight());
         System.out.println("Нажмиет Enter для продолжения");
-        scanner.nextLine();
-    }
 
+        halt();
+        levelUp();
+
+        printFromFile("[5].txt");
+        System.out.println("Нажмиет Enter для продолжения");
+        scanner.nextLine();
+        fightVsShadow(createKnightDark(), createKnightDark(), createKnightDark());
+    }
     private void fightVsShadow(Humanoid... enemy) {
         int round = 0;
         ArrayList<Humanoid> list_participant = new ArrayList<>();
@@ -30,11 +38,11 @@ public class Act_7 extends Act {
 
         while ((list_participant.get(0).Humanoid_is_alife()) && (list_participant.size() > 1)) {
             round++;
-            System.out.println("*****" + "ROUND " + round + "**********************************************************************************************");
+            System.out.println("*".repeat(5) + "ROUND " + round + "*".repeat(94));
             printBattleVsShadow(list_participant);
             knight.Attack(knight, list_participant.get(1));
 
-            if (knight.vortex == true) {
+            if (knight.vortex) {
                 for (int i = 1; i < list_participant.size(); i++) {
                     for (int j = 0; j < 4; j++) {
                         list_participant.get(i).param_humanoid[j] -= 40;

@@ -44,9 +44,6 @@ public final class ActsFabric {
     public static void act_8() {
         new Act_8().run();
     }
-    public static void act_9() {
-        new Act_9().run();
-    }
 
     public static void halt() {
         halt.run();
