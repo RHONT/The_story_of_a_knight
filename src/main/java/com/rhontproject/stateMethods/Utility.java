@@ -1,10 +1,14 @@
 package com.rhontproject.stateMethods;
 
 import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.acts.actsaction.PrinterBattleArea;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+
+import static com.rhontproject.acts.actsaction.PrinterBattleArea.*;
+import static java.lang.System.*;
 
 public class Utility {
 
@@ -29,11 +33,11 @@ public class Utility {
                 try (Scanner scan_for_read = new Scanner(inputStream);
                 ) {
                     while (scan_for_read.hasNext()) {
-                        System.out.println(scan_for_read.nextLine());
+                        out.println(scan_for_read.nextLine());
                     }
                 }
             } else {
-                System.out.println("Часть истории не найдена");
+                out.println("Часть истории не найдена");
             }
         } catch (IOException ignored) {
         }
@@ -67,7 +71,7 @@ public class Utility {
             }
         }
         for (String s : str_final_print) {
-            System.out.println(s);
+            out.println(s);
 
         }
     }
@@ -81,6 +85,7 @@ public class Utility {
 
         while ((list_participant.get(0).Humanoid_is_alife()) && (list_participant.size() > 1)) {
             round++;
+            out.println(printBattleArea(list_participant, round));
             first.Attack(first, list_participant.get(1));
 
             if (first.vortex == true) {
@@ -101,19 +106,18 @@ public class Utility {
             for (int i = 1; i < list_participant.size(); i++) {
                 if (!list_participant.get(i).Humanoid_is_alife()) {
                     list_participant.get(i).money = new Random().nextInt(90) + 100;
-                    System.out.println("Враг пал, вы собрали с трупа: " + list_participant.get(i).money + " золотых");
+                    out.println("Враг пал, вы собрали с трупа: " + list_participant.get(i).money + " золотых");
                     first.money += list_participant.get(i).money;
-                    System.out.println();
+                    out.println();
                     list_participant.get(i).reborn();
                     list_participant.remove(i);
                     i--;
                 }
             }
 
-
             if (!first.Humanoid_is_alife()) {
-                System.out.println("Сэр Томас погиб. Его натура не выдержала вызова судьбы.");
-                System.exit(0);
+                out.println("Сэр Томас погиб. Его натура не выдержала вызова судьбы.");
+                exit(0);
             }
 
         }

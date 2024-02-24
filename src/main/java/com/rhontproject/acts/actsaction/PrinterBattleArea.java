@@ -2,64 +2,42 @@ package com.rhontproject.acts.actsaction;
 
 import com.rhontproject.abstractUnitParent.Humanoid;
 
+import java.util.Formatter;
 import java.util.List;
 
 public class PrinterBattleArea {
-    public static String printBattleArea(List<Humanoid> list, int round){
-        StringBuilder battleInfo=new StringBuilder();
-        battleInfo.append(roundLine(round));
-        int maxlenght = 0;
-        String[] str_final_print = new String[]
-                {       "                " + list.get(0).name,
-                        "Шлем:           " + intToStr(list.get(0).param_humanoid[0]) + "/" + intToStr(list.get(0).copy_param_humanoid[0]) + " [" + intToStr(list.get(0).defense[0]) + "]",
-                        "Нагрудник:      " + intToStr(list.get(0).param_humanoid[1]) + "/" + intToStr(list.get(0).copy_param_humanoid[1]) + " [" + intToStr(list.get(0).defense[1]) + "]",
-                        "Нарукавники:    " + intToStr(list.get(0).param_humanoid[2]) + "/" + intToStr(list.get(0).copy_param_humanoid[2]) + " [" + intToStr(list.get(0).defense[2]) + "]",
-                        "Поножи:         " + intToStr(list.get(0).param_humanoid[3]) + "/" + intToStr(list.get(0).copy_param_humanoid[3]) + " [" + intToStr(list.get(0).defense[3]) + "]",
-                        "Сила орудия:    " + intToStr(list.get(0).param_humanoid[4])};
+    public static String printBattleArea(List<Humanoid> listUnit, int round) {
+        StringBuilder sb = new StringBuilder();
+        String header = "*".repeat(5) + "ROUND " + round + "*".repeat(94) + "\n";
+        sb.append(header);
 
-
-        for (int i = 1; i < list.size(); i++) {
-
-            String[] str = {list.get(i).name,
-                    intToStr(list.get(i).param_humanoid[0]) + "/" + intToStr(list.get(i).copy_param_humanoid[0]) + " [" + intToStr(list.get(i).defense[0]) + "]",
-                    intToStr(list.get(i).param_humanoid[1]) + "/" + intToStr(list.get(i).copy_param_humanoid[1]) + " [" + intToStr(list.get(i).defense[1]) + "]",
-                    intToStr(list.get(i).param_humanoid[2]) + "/" + intToStr(list.get(i).copy_param_humanoid[2]) + " [" + intToStr(list.get(i).defense[2]) + "]",
-                    intToStr(list.get(i).param_humanoid[3]) + "/" + intToStr(list.get(i).copy_param_humanoid[3]) + " [" + intToStr(list.get(i).defense[3]) + "]",
-                    intToStr(list.get(i).param_humanoid[4])};
-
-            for (String z : str_final_print) {
-                if (z.length() > maxlenght) {
-                    maxlenght = z.length();
+        try (Formatter formatter = new Formatter(sb)) {
+            String[][] formatUnits = listUnit.stream().map(PrinterBattleArea::converter).toArray(String[][]::new);
+            String[] info = {"", "Шлем:", "Нагрудник:", "Нарукавник:", "Поножи:", "Сила орудия:"};
+            for (int i = 0; i < info.length; i++) {
+                formatter.format("%-15s", info[i]);
+                for (int j = 0; j < formatUnits.length; j++) {
+                    int nameLength = formatUnits[j][0].length();
+                    int space = nameLength > 12 ? nameLength + 3 : 15;
+                    formatter.format("%-" + space + "s", formatUnits[j][i]);
                 }
-            }
-            maxlenght += 4;
-
-            for (int q = 0; q < str.length; q++) {
-                str_final_print[q] = str_final_print[q].concat(space(str_final_print[q], maxlenght)).concat(str[q]);
-
+                formatter.format("\n");
             }
         }
-        for (String s : str_final_print) {
-            System.out.println(s);
+        return sb.toString();
+    }
+
+    private static String[] converter(Humanoid unit) {
+        String[] converted = new String[6];
+        converted[0] = unit.name;
+        converted[5] = String.valueOf(unit.param_humanoid[4]);
+        for (int i = 0; i < 4; i++) {
+            converted[i + 1] = String.format(
+                    "%-3s/%-3s [%s]",
+                    unit.param_humanoid[i],
+                    unit.copy_param_humanoid[i],
+                    unit.defense[i]);
         }
-        return "";
-    }
-
-    private static String roundLine(int round) {
-       return  "*".repeat(5) + "ROUND " + round + "*".repeat(94);
-    }
-
-    public static String intToStr(int a) {
-        return Integer.toString(a);
-    }
-
-    /**
-     *Добавляет нужное количество пробелов(функции связана с ровным выводами по столбцам)
-     */
-    public static String space(String s, int a) {
-        StringBuilder spaces = new StringBuilder();
-        int buf = a - s.length();
-        spaces.append(" ".repeat(buf));
-        return spaces.toString();
+        return converted;
     }
 }
