@@ -1,7 +1,6 @@
 package com.rhontproject.stateMethods;
 
 import com.rhontproject.abstractUnitParent.Humanoid;
-import com.rhontproject.acts.actsaction.PrinterBattleArea;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -85,7 +84,7 @@ public class Utility {
 
         while ((list_participant.get(0).Humanoid_is_alife()) && (list_participant.size() > 1)) {
             round++;
-            out.println(printBattleArea(list_participant, round));
+            out.println(printStandartBattleArea(list_participant, round));
             first.Attack(first, list_participant.get(1));
 
             if (first.vortex == true) {
