@@ -1,6 +1,6 @@
 package com.rhontproject.acts;
 
-import static com.rhontproject.stateMethods.Utility.printFromFile;
+import static com.rhontproject.stateMethods.SystemUtility.printFromFile;
 
 public final class Act_3 extends Act {
     @Override

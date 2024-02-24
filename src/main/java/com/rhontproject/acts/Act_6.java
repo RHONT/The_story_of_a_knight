@@ -4,8 +4,9 @@ import com.rhontproject.abstractUnitParent.Humanoid;
 
 import java.util.Arrays;
 
+import static com.rhontproject.acts.actsaction.FightArea.fight;
 import static com.rhontproject.fabrica.UnitFabric.createOutLowBridge;
-import static com.rhontproject.stateMethods.Utility.*;
+import static com.rhontproject.stateMethods.SystemUtility.*;
 import static java.lang.System.*;
 
 public class Act_6 extends Act {

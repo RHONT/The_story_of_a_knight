@@ -1,9 +1,10 @@
 package com.rhontproject.acts;
 
+import static com.rhontproject.acts.actsaction.FightArea.fight;
 import static com.rhontproject.fabrica.ActsFabric.halt;
 import static com.rhontproject.fabrica.ActsFabric.levelUp;
 import static com.rhontproject.fabrica.UnitFabric.createKnightDark;
-import static com.rhontproject.stateMethods.Utility.*;
+import static com.rhontproject.stateMethods.SystemUtility.*;
 
 public class Act_7 extends Act {
     @Override

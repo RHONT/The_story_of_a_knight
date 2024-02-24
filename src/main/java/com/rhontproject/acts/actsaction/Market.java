@@ -3,7 +3,6 @@ package com.rhontproject.acts.actsaction;
 import com.rhontproject.abstractUnitParent.Humanoid;
 import com.rhontproject.acts.Act;
 import com.rhontproject.enums.MarketEnum;
-import com.rhontproject.stateMethods.StateGame;
 
 import java.util.Scanner;
 

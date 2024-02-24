@@ -113,8 +113,8 @@ public abstract class Humanoid implements HumanoidSupportFunctional {
     }
 
     @Override
-    public void swith_for_halt() {
-        humanoidSupportFunctional.swith_for_halt();
+    public void switch_for_halt() {
+        humanoidSupportFunctional.switch_for_halt();
     }
 
     @Override

@@ -23,7 +23,7 @@ public interface HumanoidSupportFunctional {
 
     void print_info_fight();
 
-    void swith_for_halt();
+    void switch_for_halt();
 
     void halt();
 

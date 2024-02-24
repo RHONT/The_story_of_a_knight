@@ -1,7 +1,7 @@
 package com.rhontproject.acts;
 
 import com.rhontproject.abstractUnitParent.Humanoid;
-import com.rhontproject.stateMethods.StateGame;
+import com.rhontproject.acts.actsaction.StateGame;
 
 import java.util.Scanner;
 

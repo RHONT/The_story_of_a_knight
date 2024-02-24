@@ -38,7 +38,7 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
                 "3 - Отремонтировать на выбор один элемент брони\n" +
                 "0 - Продолжить путешествие\n");
         while (!Act.stateGame.halt_param) {
-            swith_for_halt();
+            switch_for_halt();
         }
         Act.stateGame.halt_param = false;
         Act.stateGame.halt_craft = false;
@@ -55,7 +55,7 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
      * вспомогательный метод реализующий функционал метода halt()
      */
 
-    public void swith_for_halt() {
+    public void switch_for_halt() {
         Scanner scan_halt = new Scanner(in);
         String buf_str = scan_halt.nextLine();
         switch (buf_str) {

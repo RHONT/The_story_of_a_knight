@@ -1,9 +1,9 @@
 package com.rhontproject.acts;
 
+import static com.rhontproject.acts.actsaction.FightArea.fight;
 import static com.rhontproject.fabrica.UnitFabric.createOutLowBig;
 import static com.rhontproject.fabrica.UnitFabric.createOutLowSmall;
-import static com.rhontproject.stateMethods.Utility.fight;
-import static com.rhontproject.stateMethods.Utility.printFromFile;
+import static com.rhontproject.stateMethods.SystemUtility.printFromFile;
 
 public class Act_4 extends Act {
     @Override
