@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.rhontproject.fabrica.UnitFabric.createKnight;
 import static com.rhontproject.fabrica.UnitFabric.createZombie;
@@ -37,15 +38,19 @@ class PrinterBattleAreaTest {
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
         List<Humanoid> humanoidList=new ArrayList<>(List.of(createKnight(), createZombie(),createZombie()));
+
+        String[][] formatUnits= humanoidList.stream().map(this::converter).toArray(String[][]::new);
         String[] info={"","Шлем:","Нагрудник:","Нарукавник:","Поножи:","Сила орудия:"};
         for (int i = 0; i < info.length; i++) {
             formatter.format("%-15s",info[i]);
-            for (int j = 0; j < humanoidList.size(); j++) {
-
-                formatter.format("%15s",info[i]);
-
+            for (int j = 0; j < formatUnits.length; j++) {
+                int nameLength=formatUnits[j][0].length();
+                int space=nameLength>12?nameLength+3:15;
+                formatter.format("%-"+space+"s",formatUnits[j][i]);
             }
+            formatter.format("\n");
         }
+        System.out.println(sb);
 
     }
 
@@ -62,8 +67,11 @@ class PrinterBattleAreaTest {
         converted[0]=unit.name;
         converted[5]=String.valueOf(unit.param_humanoid[4]);
         for (int i = 0; i <4 ; i++) {
-            Formatter formatter=new Formatter();
-            converted[i+1]=formatter.format("%-3s/%-3s [%s]",unit.param_humanoid[i],unit.copy_param_humanoid[i],unit.defense[i]).toString();
+            converted[i+1]=String.format(
+                    "%-3s/%-3s [%s]",
+                    unit.param_humanoid[i],
+                    unit.copy_param_humanoid[i],
+                    unit.defense[i]);
         }
         return converted;
     }
