@@ -15,9 +15,8 @@ import java.util.Random;
 @Component("Knight")
 public class Knight extends Humanoid {
 
-    final KnightAttack knightAttack;
+    private final KnightAttack knightAttack;
 
-    @Autowired
     Knight(KnightAttack knightAttack, HumanoidStandardSupportImpl supportFunction) {
         this.name = "Сэр Томас";
         this.knightAttack = knightAttack;

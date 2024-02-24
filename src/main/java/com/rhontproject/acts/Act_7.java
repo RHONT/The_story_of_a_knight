@@ -32,20 +32,20 @@ public class Act_7 extends Act {
     }
     private void fightVsShadow(Humanoid... enemy) {
         int round = 0;
-        ArrayList<Humanoid> list_participant = new ArrayList<>();
-        list_participant.add(knight);
-        list_participant.addAll(List.of(enemy));
+        ArrayList<Humanoid> party = new ArrayList<>();
+        party.add(knight);
+        party.addAll(List.of(enemy));
 
-        while ((list_participant.get(0).Humanoid_is_alife()) && (list_participant.size() > 1)) {
+        while (knight.Humanoid_is_alife() && (party.size() > 1)) {
             round++;
             System.out.println("*".repeat(5) + "ROUND " + round + "*".repeat(94));
-            printBattleVsShadow(list_participant);
-            knight.Attack(knight, list_participant.get(1));
+            printBattleVsShadow(party);
+            knight.Attack(knight, party.get(1));
 
             if (knight.vortex) {
-                for (int i = 1; i < list_participant.size(); i++) {
+                for (int i = 1; i < party.size(); i++) {
                     for (int j = 0; j < 4; j++) {
-                        list_participant.get(i).param_humanoid[j] -= 40;
+                        party.get(i).param_humanoid[j] -= 40;
                     }
                 }
                 knight.vortex = false;
@@ -53,19 +53,18 @@ public class Act_7 extends Act {
 
 
             knight.print_info_fight();
-            for (int i = 1; i < list_participant.size(); i++) {
-                list_participant.get(i).Attack(list_participant.get(i), knight);
-                list_participant.get(i).print_info_fight();
+            for (int i = 1; i < party.size(); i++) {
+                party.get(i).Attack(party.get(i), knight);
+                party.get(i).print_info_fight();
             }
 
-            for (int i = 1; i < list_participant.size(); i++) {         // куда я полез... Ввел ветер, теперь перемены!
-                if (!list_participant.get(i).Humanoid_is_alife()) {
-                    list_participant.get(i).money = new Random().nextInt(90) + 100;
-                    System.out.println("Враг пал, вы собрали с трупа: " + list_participant.get(i).money + " золотых");
-                    knight.money += list_participant.get(i).money;
+            for (int i = 1; i < party.size(); i++) {         // куда я полез... Ввел ветер, теперь перемены!
+                if (!party.get(i).Humanoid_is_alife()) {
+                    party.get(i).money = new Random().nextInt(90) + 100;
+                    System.out.println("Враг пал, вы собрали с трупа: " + party.get(i).money + " золотых");
+                    knight.money += party.get(i).money;
                     System.out.println();
-                    list_participant.get(i).reborn();
-                    list_participant.remove(i);
+                    party.remove(i);
                     i--;
                 }
             }
