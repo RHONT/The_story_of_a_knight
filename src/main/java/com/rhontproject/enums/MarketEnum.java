@@ -2,7 +2,7 @@ package com.rhontproject.enums;
 
 public enum MarketEnum {
     SHIELD(1, 200),
-    POITIO_OF_HEALTH(2, 100),
+    POTION_OF_HEALTH(2, 100),
     MOLOTOV(3, 150);
 
     private final int itemNumber;

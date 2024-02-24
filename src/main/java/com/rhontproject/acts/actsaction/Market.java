@@ -18,7 +18,7 @@ public final class Market extends Act {
     private void market_place(Humanoid knight, StateGame stateGame) {
         out.println("Вас встречает трактирщик. На его прилавке скучают вещи, вы внимательно смотрите на них.");
         out.println(MarketEnum.SHIELD.getItemNumber() + " Щит | Цена: " + MarketEnum.SHIELD.getCost());
-        out.println(MarketEnum.POITIO_OF_HEALTH.getItemNumber() + " Зелье здоровья | Цена: " + MarketEnum.POITIO_OF_HEALTH.getCost());
+        out.println(MarketEnum.POTION_OF_HEALTH.getItemNumber() + " Зелье здоровья | Цена: " + MarketEnum.POTION_OF_HEALTH.getCost());
         out.println(MarketEnum.MOLOTOV.getItemNumber() + " Коктейль молотова | Цена: " + MarketEnum.MOLOTOV.getCost());
         out.println("0 Выход из трактира");
 
@@ -38,13 +38,13 @@ public final class Market extends Act {
                         break;
                     }
                 case ("2"):
-                    if (MarketEnum.POITIO_OF_HEALTH.getCost() <= knight.money) {
-                        knight.money -= MarketEnum.POITIO_OF_HEALTH.getCost();
+                    if (MarketEnum.POTION_OF_HEALTH.getCost() <= knight.money) {
+                        knight.money -= MarketEnum.POTION_OF_HEALTH.getCost();
                         knight.param_inventory[3] += 1;
                         out.println("Вы купили зелье!");
                         break;
                     } else {
-                        out.println("Невозможно купить зелье. Вам не хватает " + (MarketEnum.POITIO_OF_HEALTH.getCost() - knight.money));
+                        out.println("Невозможно купить зелье. Вам не хватает " + (MarketEnum.POTION_OF_HEALTH.getCost() - knight.money));
                         break;
                     }
 
