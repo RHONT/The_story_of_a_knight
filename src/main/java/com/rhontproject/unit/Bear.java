@@ -35,6 +35,7 @@ class Bear extends Unit {
     @Override
     public void setUnit(Unit unit) {
 
+
     }
 
     @Autowired
