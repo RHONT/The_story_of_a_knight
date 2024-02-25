@@ -8,8 +8,7 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 import static com.rhontproject.acts.actsaction.PrinterBattleArea.printStandartBattleArea;
-import static java.lang.System.exit;
-import static java.lang.System.out;
+import static java.lang.System.*;
 
 public final class FightArea {
     public static void fight(Unit hero, Unit... enemy) {
@@ -23,7 +22,7 @@ public final class FightArea {
             out.println(printStandartBattleArea(party, round));
             hero.attack(hero, party.get(1));
             isVortexActive(hero, party);
-            IntStream.range(1,party.size()).forEach(e->party.get(e).attack(party.get(e),hero));
+            IntStream.range(1, party.size()).forEach(e -> party.get(e).attack(party.get(e), hero));
             party.forEach(Unit::print_info_fight);
             сollectMoneyFromCorpses(hero, party);
             isAlifeHero(hero);
@@ -60,10 +59,12 @@ public final class FightArea {
     }
 
     private static void vortexPower(ArrayList<Unit> party) {
-        for (int i = 1; i < party.size(); i++) {
-            for (int j = 0; j < 4; j++) {
-                party.get(i).param_humanoid[j] -= 40;
-            }
-        }
+        IntStream.range(1, party.size()).forEach(
+                index -> {
+                    IntStream.range(0, 4).forEach(
+                            innerIndex ->
+                                    party.get(index).param_humanoid[innerIndex] -= 40);
+                }
+        );
     }
 }
