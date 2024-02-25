@@ -136,12 +136,31 @@ public class KnightAttackImpl implements Attack {
     }
 
     private int hitTheEnemy() {
-        int damage;
-        damage = (int) (Math.round((attackPower * damageMultiplier) * (enemy.defense[indexTargetBody - 1] > 0 ? 0.25 : 1)));
-        enemy.param_humanoid[indexTargetBody - 1] -= damage;
+        int effectiveDamage = calcEffectiveDamage();
+        crushBody(effectiveDamage);
+        crushArmor();
+        stabilizeArmorValue();
+        return effectiveDamage;
+    }
+    
+    private int calcEffectiveDamage(){
+        return (int) (Math.round((attackPower * damageMultiplier) * multiplierIncludingArmor()));
+    }
+    
+    private void crushBody(int effectiveDamage){
+        enemy.param_humanoid[indexTargetBody - 1]-=effectiveDamage;
+    }
+
+    private double multiplierIncludingArmor(){
+        return enemy.defense[indexTargetBody - 1] > 0 ? 0.25 : 1;
+    }
+
+    private void crushArmor(){
         enemy.defense[indexTargetBody - 1] -= Math.round(enemy.defense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
+    }
+
+    private void stabilizeArmorValue(){
         enemy.defense[indexTargetBody - 1] = (Math.max(enemy.defense[indexTargetBody - 1], 0));
-        return damage;
     }
 
     private int getDamageMultiplier() {
