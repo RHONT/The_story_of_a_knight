@@ -54,7 +54,7 @@ public class KnightAttackImpl implements Attack {
                     break;
                 case ("p"):
                     if (hero.param_inventory[3] > 0) {
-                        drinkPotion();
+                        drinkPotion(70);
                         return;
                     } else {
                         out.println("У вас нет зелья!");
@@ -74,7 +74,7 @@ public class KnightAttackImpl implements Attack {
         }
     }
 
-    private String battleOption(){
+    private String battleOption() {
         return "Атакуй! 1 - голова "
                 + (hero.chance_to_attack - 10)
                 + "% | 2 -тело " + (hero.chance_to_attack)
@@ -104,12 +104,12 @@ public class KnightAttackImpl implements Attack {
         hero.param_inventory[2] -= 1;
     }
 
-    private void drinkPotion() {
+    private void drinkPotion(int powerPotion) {
         for (int i = 0; i < 4; i++) {
-            hero.param_humanoid[i] += 70;
+            hero.param_humanoid[i] += powerPotion;
         }
         hero.param_inventory[3] -= 1;
-        hero.info_str_fight = "Вы исцелились на 70 очков";
+        hero.info_str_fight = "Вы исцелились на " + powerPotion + " очков";
     }
 
     private void hitToBodyPart(String inputConsole) {
@@ -142,24 +142,24 @@ public class KnightAttackImpl implements Attack {
         stabilizeArmorValue();
         return effectiveDamage;
     }
-    
-    private int calcEffectiveDamage(){
+
+    private int calcEffectiveDamage() {
         return (int) (Math.round((attackPower * damageMultiplier) * multiplierIncludingArmor()));
     }
-    
-    private void crushBody(int effectiveDamage){
-        enemy.param_humanoid[indexTargetBody - 1]-=effectiveDamage;
+
+    private void crushBody(int effectiveDamage) {
+        enemy.param_humanoid[indexTargetBody - 1] -= effectiveDamage;
     }
 
-    private double multiplierIncludingArmor(){
+    private double multiplierIncludingArmor() {
         return enemy.defense[indexTargetBody - 1] > 0 ? 0.25 : 1;
     }
 
-    private void crushArmor(){
+    private void crushArmor() {
         enemy.defense[indexTargetBody - 1] -= Math.round(enemy.defense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
     }
 
-    private void stabilizeArmorValue(){
+    private void stabilizeArmorValue() {
         enemy.defense[indexTargetBody - 1] = (Math.max(enemy.defense[indexTargetBody - 1], 0));
     }
 
