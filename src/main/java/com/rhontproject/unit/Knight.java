@@ -1,11 +1,12 @@
 package com.rhontproject.unit;
 
 
-import com.rhontproject.interfaceAttack.KnightAttack;
-import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
+import com.rhontproject.interfaceAttack.Attack;
+import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import com.rhontproject.abstractUnitParent.Unit;
-import com.rhontproject.supports.outputinfo.PrintImpl;
+import com.rhontproject.supports.outputinfo.Printable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -16,15 +17,12 @@ import java.util.Random;
 @Component("Knight")
 public class Knight extends Unit {
 
-    private final KnightAttack knightAttack;
-
-    Knight(KnightAttack knightAttack, UnitStandardBaseImpl supportFunction, PrintImpl printable) {
-        this.name = "Сэр Томас";
-        this.knightAttack = knightAttack;
-        this.setHumanoidSupportFunctional(supportFunction);
-        this.setPrintable(printable);
+    public Knight(@Qualifier("knightAttackImpl") Attack attack,
+                  @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
+                  @Qualifier("printImpl") Printable printable) {
+        super(attack, unitBaseFunctional, printable);
+        this.name="Сэр Томас";
     }
-
 
     /**
      * @param selectedPartBody на вход индекс части по которой приходиться удар
@@ -60,11 +58,6 @@ public class Knight extends Unit {
             }
         }
         return result;
-    }
-
-    @Override
-    public void attack(Unit attacking, Unit victim) {
-        knightAttack.AttackKnight(attacking, victim);
     }
 
     @Override

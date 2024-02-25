@@ -1,7 +1,7 @@
 package com.rhontproject.typesOfAttack;
 
 import com.rhontproject.unit.*;
-import com.rhontproject.interfaceAttack.KnightAttack;
+import com.rhontproject.interfaceAttack.Attack;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +11,9 @@ import java.util.Scanner;
 import static java.lang.System.*;
 
 @Service
-public class KnightAttackImpl implements KnightAttack {
+public class KnightAttackImpl implements Attack {
     @Override
-    public void AttackKnight(Unit attacking, Unit victim) {
+    public void attacking(Unit attacking, Unit victim) {
 
         String checkInputConsoleString;
         boolean stringAccepted = false;

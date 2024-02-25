@@ -1,9 +1,12 @@
 package com.rhontproject.unit;
 
-import com.rhontproject.interfaceAttack.EnemyAttack;
+import com.rhontproject.interfaceAttack.Attack;
+import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.supports.outputinfo.Printable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -14,17 +17,13 @@ import java.util.Arrays;
 @Scope("prototype")
 public
 class OutLawBridge extends Unit {
-    private final EnemyAttack enemyAttack;
 
-    OutLawBridge(EnemyAttack enemyAttack, UnitStandardBaseImpl supportFunction) {
+    public OutLawBridge(@Qualifier("enemyAttackImpl") Attack attack,
+                @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
+                @Qualifier("printImpl") Printable printable) {
+        super(attack, unitBaseFunctional, printable);
         this.name = "Разбойник";
-        this.enemyAttack = enemyAttack;
-        this.setHumanoidSupportFunctional(supportFunction);
-    }
 
-    @Override
-    public void attack(Unit attacking, Unit victim) {
-        enemyAttack.attackStandardEnemy(attacking, victim);
     }
 
     @Override

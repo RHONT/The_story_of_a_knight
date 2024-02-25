@@ -1,7 +1,9 @@
 package com.rhontproject.abstractUnitParent;
 
+import com.rhontproject.interfaceAttack.Attack;
 import com.rhontproject.supports.outputinfo.Printable;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -35,8 +37,19 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     public int[] copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     public int[] copy_param_defense = Arrays.copyOfRange(defense, 0, defense.length);
 
-    private UnitBaseFunctional unitBaseFunctional;
-    private Printable printable;
+    private Attack attack;
+    private final UnitBaseFunctional unitBaseFunctional;
+    private final Printable printable;
+
+    public Unit(@Qualifier("knightAttackImpl") Attack attack,
+                @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
+                @Qualifier("printImpl") Printable printable) {
+        this.attack = attack;
+        this.unitBaseFunctional = unitBaseFunctional;
+        unitBaseFunctional.setUnit(this);
+        this.printable = printable;
+        printable.setUnit(this);
+    }
 
     /**
      * Мапа с нумерацией частей тела,
@@ -65,7 +78,9 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     /**
      * метод, который реализуют интерфейсы из каталога TypesOfAttack
      */
-    public abstract void attack(Unit attacking, Unit victim);
+    public void attack(Unit attacking, Unit victim){
+        attack.attacking(this,victim);
+    }
 
     @Override
     public void level_up() {
@@ -112,14 +127,11 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
         unitBaseFunctional.halt();
     }
 
-
-    public void setHumanoidSupportFunctional(UnitBaseFunctional unitBaseFunctional) {
-        this.unitBaseFunctional = unitBaseFunctional;
-        unitBaseFunctional.setUnit(this);
+    public UnitBaseFunctional getUnitBaseFunctional() {
+        return unitBaseFunctional;
     }
 
-    public void setPrintable(Printable printable) {
-        this.printable = printable;
-        printable.setUnit(this);
+    public Printable getPrintable() {
+        return printable;
     }
 }

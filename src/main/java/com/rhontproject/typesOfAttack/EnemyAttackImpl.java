@@ -1,7 +1,7 @@
 package com.rhontproject.typesOfAttack;
 
+import com.rhontproject.interfaceAttack.Attack;
 import com.rhontproject.unit.Knight;
-import com.rhontproject.interfaceAttack.*;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +11,9 @@ import java.util.Random;
  * Описание стандартной атаки
  */
 @Service
-public class StandardAttackImpl implements EnemyAttack {
+public class EnemyAttackImpl implements Attack {
     @Override
-    public void attackStandardEnemy(Unit attacking, Unit victim) {
+    public void attacking(Unit attacking, Unit victim) {
 
         int criticalStrikeRange = new Random().nextInt(101) + 1;
         int randomPartBody = new Random().nextInt(4);
