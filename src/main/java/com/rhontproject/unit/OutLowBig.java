@@ -1,8 +1,8 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
-import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -13,22 +13,22 @@ import java.util.Arrays;
 @Component("OutLowBig")
 @Scope("prototype")
 public
-class OutLowBig extends Humanoid {
+class OutLowBig extends Unit {
     private final EnemyAttack enemyAttack;
 
-    OutLowBig(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
+    OutLowBig(EnemyAttack enemyAttack, UnitStandardSupportImpl supportFunction) {
         this.name = "Здоровяк";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);
     }
 
     @Override
-    public void attack(Humanoid attacking, Humanoid victim) {
+    public void attack(Unit attacking, Unit victim) {
         enemyAttack.attackStandardEnemy(attacking, victim);
     }
 
     @Override
-    public void setHumanoid(Humanoid humanoid) {
+    public void setUnit(Unit unit) {
 
     }
 

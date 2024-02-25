@@ -1,6 +1,6 @@
 package com.rhontproject.acts;
 
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 
 import java.util.Arrays;
 
@@ -26,7 +26,7 @@ public class Act_6 extends Act {
     /**
      * метод запускающий события на мосту.
      */
-    private void bridge(Humanoid... enemy) {
+    private void bridge(Unit... enemy) {
         while (true) {
             String eventOnBridge = scanner.nextLine();
             switch (eventOnBridge) {

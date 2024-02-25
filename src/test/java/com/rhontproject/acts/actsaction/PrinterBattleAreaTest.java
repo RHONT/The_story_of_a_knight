@@ -1,6 +1,6 @@
 package com.rhontproject.acts.actsaction;
 
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,15 +14,15 @@ class PrinterBattleAreaTest {
 
     @Test
     void printBattleArea() {
-        List<Humanoid> humanoidList=new ArrayList<>(List.of(createKnight(), createZombie(),createZombie()));
-        PrinterBattleArea.printStandartBattleArea(humanoidList,5);
+        List<Unit> unitList =new ArrayList<>(List.of(createKnight(), createZombie(),createZombie()));
+        PrinterBattleArea.printStandartBattleArea(unitList,5);
     }
 
     @Test
     void learn(){
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
-        Humanoid zombie = createZombie();
+        Unit zombie = createZombie();
         int g=100;
 
         formatter.format("%"+g+"s%10s%10s", zombie.name,zombie.param_humanoid[0]+"/"+zombie.copy_param_humanoid[0],zombie.defense[0]);
@@ -36,9 +36,9 @@ class PrinterBattleAreaTest {
     void createHead(){
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
-        List<Humanoid> humanoidList=new ArrayList<>(List.of(createKnight(), createZombie(),createZombie()));
+        List<Unit> unitList =new ArrayList<>(List.of(createKnight(), createZombie(),createZombie()));
 
-        String[][] formatUnits= humanoidList.stream().map(this::converter).toArray(String[][]::new);
+        String[][] formatUnits= unitList.stream().map(this::converter).toArray(String[][]::new);
         String[] info={"","Шлем:","Нагрудник:","Нарукавник:","Поножи:","Сила орудия:"};
         for (int i = 0; i < info.length; i++) {
             formatter.format("%-15s",info[i]);
@@ -61,7 +61,7 @@ class PrinterBattleAreaTest {
         }
     }
 
-    private String[] converter(Humanoid unit) {
+    private String[] converter(Unit unit) {
         String[] converted=new String[6];
         converted[0]=unit.name;
         converted[5]=String.valueOf(unit.param_humanoid[4]);

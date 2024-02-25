@@ -1,6 +1,6 @@
 package com.rhontproject.acts.actsaction;
 
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.unit.Knight_In_The_Dark;
 
 import java.util.Arrays;
@@ -22,7 +22,7 @@ public final class PrinterBattleArea {
      * @param round
      * @return
      */
-    public static String printStandartBattleArea(List<Humanoid> listUnit, int round) {
+    public static String printStandartBattleArea(List<Unit> listUnit, int round) {
         StringBuilder sb=getTemplateSb(round);
         try (Formatter formatter = new Formatter(sb)) {
             String[][] formatUnits = listUnit.stream().map(PrinterBattleArea::converter).toArray(String[][]::new);
@@ -51,7 +51,7 @@ public final class PrinterBattleArea {
      * @param unit
      * @return
      */
-    private static String[] converter(Humanoid unit) {
+    private static String[] converter(Unit unit) {
         String[] converted = new String[6];
         converted[0] = unit.name;
 

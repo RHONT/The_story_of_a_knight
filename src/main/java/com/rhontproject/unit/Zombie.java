@@ -1,8 +1,8 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
-import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -12,21 +12,21 @@ import java.util.Arrays;
 
 @Component("Zombie")
 @Scope("prototype")
-public class Zombie extends Humanoid {
+public class Zombie extends Unit {
     private final EnemyAttack enemyAttack;
 
-    Zombie(EnemyAttack enemyAttack, HumanoidStandardSupportImpl supportFunction) {
+    Zombie(EnemyAttack enemyAttack, UnitStandardSupportImpl supportFunction) {
         this.name = "Внезапный мертвец";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);
     }
 
     @Override
-    public void attack(Humanoid attacking, Humanoid victim) {
+    public void attack(Unit attacking, Unit victim) {
         enemyAttack.attackStandardEnemy(attacking, victim);
     }
     @Override
-    public void setHumanoid(Humanoid humanoid) {
+    public void setUnit(Unit unit) {
     }
 
 

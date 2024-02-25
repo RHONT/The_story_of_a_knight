@@ -2,7 +2,7 @@ package com.rhontproject.typesOfAttack;
 
 import com.rhontproject.unit.*;
 import com.rhontproject.interfaceAttack.KnightAttack;
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -13,7 +13,7 @@ import static java.lang.System.*;
 @Service
 public class KnightAttackImpl implements KnightAttack {
     @Override
-    public void AttackKnight(Humanoid attacking, Humanoid victim) {
+    public void AttackKnight(Unit attacking, Unit victim) {
 
         String checkInputConsoleString;
         boolean stringAccepted = false;
@@ -129,7 +129,7 @@ public class KnightAttackImpl implements KnightAttack {
 
     }
 
-    private int getDamage_to_enemy(Humanoid victim, int temp_attack, int armorOrBodyIndex, int damageMultiplier) {
+    private int getDamage_to_enemy(Unit victim, int temp_attack, int armorOrBodyIndex, int damageMultiplier) {
         int damage_to_enemy;
         damage_to_enemy = (int) (Math.round((temp_attack * damageMultiplier) * (victim.defense[armorOrBodyIndex - 1] > 0 ? 0.25 : 1)));
         victim.param_humanoid[armorOrBodyIndex - 1] -= damage_to_enemy;

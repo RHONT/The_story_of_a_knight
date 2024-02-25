@@ -1,6 +1,6 @@
 package com.rhontproject.abstractUnitParent;
 
-import com.rhontproject.interfaceSupporFunctionHumanoid.HumanoidSupportFunctional;
+import com.rhontproject.interfaceSupporFunctionHumanoid.UnitSupportFunctional;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -18,7 +18,7 @@ import java.util.*;
  * money - каждый юнит несет в себе золото, отдает при смерти<br>
  */
 @Component
-public abstract class Humanoid implements HumanoidSupportFunctional {
+public abstract class Unit implements UnitSupportFunctional {
     public boolean vortex = false;
     public String name;
     public String info_str_fight;
@@ -34,7 +34,7 @@ public abstract class Humanoid implements HumanoidSupportFunctional {
     public int[] copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     public int[] copy_param_defense = Arrays.copyOfRange(defense, 0, defense.length);
 
-    private HumanoidSupportFunctional humanoidSupportFunctional;
+    private UnitSupportFunctional unitSupportFunctional;
 
     /**
      * Мапа с нумерацией частей тела,
@@ -63,68 +63,68 @@ public abstract class Humanoid implements HumanoidSupportFunctional {
     /**
      * метод, который реализуют интерфейсы из каталога TypesOfAttack
      */
-    public abstract void attack(Humanoid attacking, Humanoid victim);
+    public abstract void attack(Unit attacking, Unit victim);
 
     @Override
     public void switch_for_level_up() {
-        humanoidSupportFunctional.switch_for_level_up();
+        unitSupportFunctional.switch_for_level_up();
     }
 
     @Override
     public void level_up() {
-        humanoidSupportFunctional.level_up();
+        unitSupportFunctional.level_up();
 
     }
 
     @Override
     public boolean isAlife() {
-        return humanoidSupportFunctional.isAlife();
+        return unitSupportFunctional.isAlife();
     }
 
     @Override
     public void print_health_info() {
-        humanoidSupportFunctional.isAlife();
+        unitSupportFunctional.isAlife();
 
     }
 
     @Override
-    public void down_health() {
-        humanoidSupportFunctional.down_health();
+    public void stabilizeHealth() {
+        unitSupportFunctional.stabilizeHealth();
     }
 
     @Override
     public void reborn() {
-        humanoidSupportFunctional.reborn();
+        unitSupportFunctional.reborn();
     }
 
     @Override
     public void print_defense() {
-        humanoidSupportFunctional.print_defense();
+        unitSupportFunctional.print_defense();
     }
 
     @Override
     public void print_inv_and_money() {
-        humanoidSupportFunctional.print_inv_and_money();
+        unitSupportFunctional.print_inv_and_money();
     }
 
     @Override
     public void print_info_fight() {
-        humanoidSupportFunctional.print_info_fight();
+        unitSupportFunctional.print_info_fight();
     }
 
     @Override
     public void switch_for_halt() {
-        humanoidSupportFunctional.switch_for_halt();
+        unitSupportFunctional.switch_for_halt();
     }
 
     @Override
     public void halt() {
-        humanoidSupportFunctional.halt();
+        unitSupportFunctional.halt();
     }
 
 
-    public void setHumanoidSupportFunctional(HumanoidSupportFunctional humanoidSupportFunctional) {
-        this.humanoidSupportFunctional = humanoidSupportFunctional;
-        humanoidSupportFunctional.setHumanoid(this);
+    public void setHumanoidSupportFunctional(UnitSupportFunctional unitSupportFunctional) {
+        this.unitSupportFunctional = unitSupportFunctional;
+        unitSupportFunctional.setUnit(this);
     }
 }

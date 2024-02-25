@@ -1,9 +1,9 @@
 package com.rhontproject.interfaceSupporFunctionHumanoid;
 
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 
-public interface HumanoidSupportFunctional {
-    void setHumanoid(Humanoid humanoid);
+public interface UnitSupportFunctional {
+    void setUnit(Unit unit);
 
     void switch_for_level_up();
 
@@ -13,7 +13,7 @@ public interface HumanoidSupportFunctional {
 
     void print_health_info();
 
-    void down_health();
+    void stabilizeHealth();
 
     void reborn();
 

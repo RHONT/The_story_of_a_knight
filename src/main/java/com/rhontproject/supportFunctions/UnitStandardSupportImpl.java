@@ -1,8 +1,8 @@
 package com.rhontproject.supportFunctions;
 
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.acts.Act;
-import com.rhontproject.interfaceSupporFunctionHumanoid.HumanoidSupportFunctional;
+import com.rhontproject.interfaceSupporFunctionHumanoid.UnitSupportFunctional;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -14,12 +14,12 @@ import static java.lang.System.*;
 
 @Component
 @Scope("prototype")
-public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
-    Humanoid humanoid;
+public class UnitStandardSupportImpl implements UnitSupportFunctional {
+    Unit unit;
 
     @Override
-    public void setHumanoid(Humanoid humanoid) {
-        this.humanoid = humanoid;
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 
     /**
@@ -60,13 +60,13 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
         String buf_str = scan_halt.nextLine();
         switch (buf_str) {
             case "1":
-                if (humanoid.param_inventory[3] > 0) {
-                    for (int i = 0; i < humanoid.param_inventory.length; i++) {
-                        humanoid.param_humanoid[i] += 70;
+                if (unit.param_inventory[3] > 0) {
+                    for (int i = 0; i < unit.param_inventory.length; i++) {
+                        unit.param_humanoid[i] += 70;
                     }
-                    humanoid.param_inventory[3] -= 1;
+                    unit.param_inventory[3] -= 1;
                     out.println("Вы выпили зелье! Теперь ваше здовровье");
-                    down_health();
+                    stabilizeHealth();
                     print_health_info();
                     out.println("Что еще хотите сделать?");
                     break;
@@ -76,11 +76,11 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
                 }
 
             case "2":
-                if (humanoid.param_inventory[0] == 0) {
+                if (unit.param_inventory[0] == 0) {
 
-                    if (humanoid.param_inventory[1] >= 2) {
-                        humanoid.param_inventory[0] += 2;
-                        humanoid.param_inventory[1] -= 2;
+                    if (unit.param_inventory[1] >= 2) {
+                        unit.param_inventory[0] += 2;
+                        unit.param_inventory[1] -= 2;
                         out.println("Вы приготовили щит к следующему бою");
                         break;
                     } else {
@@ -88,7 +88,7 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
                         break;
                     }
                 } else {
-                    out.println("Ваш щит уже приготовлен, его прочность: " + humanoid.param_inventory[0]);
+                    out.println("Ваш щит уже приготовлен, его прочность: " + unit.param_inventory[0]);
                     break;
                 }
 
@@ -102,28 +102,28 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
                     String buf_str_for_craft = str_craft.nextLine();
                     switch (buf_str_for_craft) {
                         case "1": {
-                            humanoid.defense[0] += 30;
+                            unit.defense[0] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             print_defense();
                             break;
                         }
                         case "2": {
-                            humanoid.defense[1] += 30;
+                            unit.defense[1] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             print_defense();
                             break;
                         }
                         case "3": {
-                            humanoid.defense[2] += 30;
+                            unit.defense[2] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             print_defense();
                             break;
                         }
                         case "4": {
-                            humanoid.defense[3] += 30;
+                            unit.defense[3] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             print_defense();
@@ -154,26 +154,26 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
      */
 
     public void print_info_fight() {
-        out.println(humanoid.info_str_fight);
-        humanoid.info_str_fight = "";
+        out.println(unit.info_str_fight);
+        unit.info_str_fight = "";
     }
 
     public void print_inv_and_money() {
         String sb = "\n" +
-                "Золота у вас: " + humanoid.money + "\n" +
-                "Прочность щита в руке: " + humanoid.param_inventory[0] + "\n" +
-                "Количество щитов: " + humanoid.param_inventory[1] + "\n" +
-                "Коктейля молотова: " + humanoid.param_inventory[2] + "\n" +
-                "Целебного зелья: " + humanoid.param_inventory[3] + "\n";
+                "Золота у вас: " + unit.money + "\n" +
+                "Прочность щита в руке: " + unit.param_inventory[0] + "\n" +
+                "Количество щитов: " + unit.param_inventory[1] + "\n" +
+                "Коктейля молотова: " + unit.param_inventory[2] + "\n" +
+                "Целебного зелья: " + unit.param_inventory[3] + "\n";
         out.println(sb);
     }
 
     public void print_defense() {
         out.println("Состояние брони:\n" +
-                "Шлем: " + humanoid.defense[0] +
-                " Нагрудник: " + humanoid.defense[1] +
-                " Нарукавники: " + humanoid.defense[2] +
-                " Поножи: " + humanoid.defense[3]);
+                "Шлем: " + unit.defense[0] +
+                " Нагрудник: " + unit.defense[1] +
+                " Нарукавники: " + unit.defense[2] +
+                " Поножи: " + unit.defense[3]);
     }
 
     /**
@@ -181,10 +181,10 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
      * Чтобы была возможность использовать его вновь, не создавая еще один экземпляр
      */
     public void reborn() {
-        humanoid.param_humanoid = Arrays.copyOfRange(humanoid.copy_param_humanoid, 0, 5);
-        humanoid.defense = Arrays.copyOfRange(humanoid.copy_param_defense, 0, humanoid.copy_param_defense.length);
-        humanoid.i_am_fire = false;
-        humanoid.chance_to_attack = 80;
+        unit.param_humanoid = Arrays.copyOfRange(unit.copy_param_humanoid, 0, 5);
+        unit.defense = Arrays.copyOfRange(unit.copy_param_defense, 0, unit.copy_param_defense.length);
+        unit.i_am_fire = false;
+        unit.chance_to_attack = 80;
     }
 
     /**
@@ -192,10 +192,10 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
      * После боя завышенные показатели должны приходить в норму
      */
 
-    public void down_health() {
+    public void stabilizeHealth() {
         for (int i = 0; i < 4; i++) {
-            if (humanoid.copy_param_humanoid[i] < humanoid.param_humanoid[i]) {
-                humanoid.param_humanoid[i] = humanoid.copy_param_humanoid[i];
+            if (unit.copy_param_humanoid[i] < unit.param_humanoid[i]) {
+                unit.param_humanoid[i] = unit.copy_param_humanoid[i];
             }
         }
     }
@@ -208,17 +208,17 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
         String info_str;
         String spec_char = "";
 
-        info_str = ("Голова: " + humanoid.param_humanoid[0] + "/" + humanoid.copy_param_humanoid[0] + " [" + humanoid.defense[0] + "]" +
-                " Тело: " + humanoid.param_humanoid[1] + "/" + humanoid.copy_param_humanoid[1] + " [" + humanoid.defense[1] + "]" +
-                " Руки: " + humanoid.param_humanoid[2] + "/" + humanoid.copy_param_humanoid[2] + " [" + humanoid.defense[2] + "]" +
-                " Ноги: " + humanoid.param_humanoid[3] + "/" + humanoid.copy_param_humanoid[3] + " [" + humanoid.defense[3] + "]" +
-                " Сила оружия: " + humanoid.param_humanoid[4]);
+        info_str = ("Голова: " + unit.param_humanoid[0] + "/" + unit.copy_param_humanoid[0] + " [" + unit.defense[0] + "]" +
+                " Тело: " + unit.param_humanoid[1] + "/" + unit.copy_param_humanoid[1] + " [" + unit.defense[1] + "]" +
+                " Руки: " + unit.param_humanoid[2] + "/" + unit.copy_param_humanoid[2] + " [" + unit.defense[2] + "]" +
+                " Ноги: " + unit.param_humanoid[3] + "/" + unit.copy_param_humanoid[3] + " [" + unit.defense[3] + "]" +
+                " Сила оружия: " + unit.param_humanoid[4]);
         for (int i = 0; i < info_str.length(); i++) {
             spec_char += "-";
         }
 
         out.println(spec_char);
-        out.println(humanoid.name);
+        out.println(unit.name);
         out.println(info_str);
     }
 
@@ -228,7 +228,7 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
 
     public boolean isAlife() {
         boolean life = false;
-        for (int checkPartOfBody : humanoid.param_humanoid) {
+        for (int checkPartOfBody : unit.param_humanoid) {
             if (checkPartOfBody <= 0) {
                 life = false;
                 break;
@@ -265,26 +265,26 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
         switch (buf_str) {
             case "1":
                 for (int i = 0; i < 4; i++) {
-                    humanoid.param_humanoid[i] += 10;
-                    humanoid.copy_param_humanoid[i] += 10;
+                    unit.param_humanoid[i] += 10;
+                    unit.copy_param_humanoid[i] += 10;
                 }
                 out.println("Ваше здоровье увеличено на 10 едениц по каждому пунку.");
                 print_health_info();
                 Act.stateGame.level_up_param = true;
                 break;
             case "2":
-                humanoid.chance_to_attack += 5;
+                unit.chance_to_attack += 5;
                 out.println
                         ("Ваша базовая меткость увеличилась на 5 едениц, теперь она состовляет:" +
-                                humanoid.chance_to_attack);
+                                unit.chance_to_attack);
                 Act.stateGame.level_up_param = true;
                 break;
             case "3":
-                humanoid.param_humanoid[4] += 7;
-                humanoid.copy_param_humanoid[4] += 7;
+                unit.param_humanoid[4] += 7;
+                unit.copy_param_humanoid[4] += 7;
                 out.println
                         ("Ваш меч острее не стал, но мастерство увеличило наносимый урон:" +
-                                humanoid.param_humanoid[4]);
+                                unit.param_humanoid[4]);
                 print_health_info();
                 Act.stateGame.level_up_param = true;
                 break;

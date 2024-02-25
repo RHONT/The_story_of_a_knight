@@ -1,6 +1,6 @@
 package com.rhontproject.acts.actsaction;
 
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.acts.Act;
 import com.rhontproject.enums.MarketEnum;
 
@@ -15,7 +15,7 @@ public final class Market extends Act {
         market_place(knight, stateGame);
     }
 
-    private void market_place(Humanoid knight, StateGame stateGame) {
+    private void market_place(Unit knight, StateGame stateGame) {
         out.println("Вас встречает трактирщик. На его прилавке скучают вещи, вы внимательно смотрите на них.");
         out.println(MarketEnum.SHIELD.getItemNumber() + " Щит | Цена: " + MarketEnum.SHIELD.getCost());
         out.println(MarketEnum.POTION_OF_HEALTH.getItemNumber() + " Зелье здоровья | Цена: " + MarketEnum.POTION_OF_HEALTH.getCost());

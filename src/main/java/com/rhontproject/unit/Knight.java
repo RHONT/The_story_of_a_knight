@@ -2,8 +2,8 @@ package com.rhontproject.unit;
 
 
 import com.rhontproject.interfaceAttack.KnightAttack;
-import com.rhontproject.supportFunctions.HumanoidStandardSupportImpl;
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -13,11 +13,11 @@ import java.util.Random;
 
 
 @Component("Knight")
-public class Knight extends Humanoid {
+public class Knight extends Unit {
 
     private final KnightAttack knightAttack;
 
-    Knight(KnightAttack knightAttack, HumanoidStandardSupportImpl supportFunction) {
+    Knight(KnightAttack knightAttack, UnitStandardSupportImpl supportFunction) {
         this.name = "Сэр Томас";
         this.knightAttack = knightAttack;
         this.setHumanoidSupportFunctional(supportFunction);
@@ -61,12 +61,12 @@ public class Knight extends Humanoid {
     }
 
     @Override
-    public void attack(Humanoid attacking, Humanoid victim) {
+    public void attack(Unit attacking, Unit victim) {
         knightAttack.AttackKnight(attacking, victim);
     }
 
     @Override
-    public void setHumanoid(Humanoid humanoid) {
+    public void setUnit(Unit unit) {
 
     }
 

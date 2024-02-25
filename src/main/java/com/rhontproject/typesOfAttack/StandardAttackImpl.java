@@ -2,7 +2,7 @@ package com.rhontproject.typesOfAttack;
 
 import com.rhontproject.unit.Knight;
 import com.rhontproject.interfaceAttack.*;
-import com.rhontproject.abstractUnitParent.Humanoid;
+import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -13,7 +13,7 @@ import java.util.Random;
 @Service
 public class StandardAttackImpl implements EnemyAttack {
     @Override
-    public void attackStandardEnemy(Humanoid attacking, Humanoid victim) {
+    public void attackStandardEnemy(Unit attacking, Unit victim) {
 
         int criticalStrikeRange = new Random().nextInt(101) + 1;
         int randomPartBody = new Random().nextInt(4);
