@@ -1,6 +1,6 @@
 package com.rhontproject.unit;
 
-import com.rhontproject.interfaceAttack.Attack;
+import com.rhontproject.attack.Attack;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.supports.outputinfo.Printable;

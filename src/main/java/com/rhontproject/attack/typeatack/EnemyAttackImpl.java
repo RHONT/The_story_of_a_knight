@@ -1,8 +1,10 @@
-package com.rhontproject.typesOfAttack;
+package com.rhontproject.attack.typeatack;
 
-import com.rhontproject.interfaceAttack.Attack;
+import com.rhontproject.attack.Attack;
 import com.rhontproject.unit.Knight;
 import com.rhontproject.abstractUnitParent.Unit;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -10,8 +12,10 @@ import java.util.Random;
 /**
  * Описание стандартной атаки
  */
-@Service
+@Component
+@Scope("prototype")
 public class EnemyAttackImpl implements Attack {
+
     @Override
     public void attacking(Unit attacking, Unit victim) {
 

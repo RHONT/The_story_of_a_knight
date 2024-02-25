@@ -20,9 +20,9 @@ public final class FightArea {
         while (hero.isAlife() && (party.size() > 1)) {
             round++;
             out.println(printStandartBattleArea(party, round));
-            hero.attack(hero, party.get(1));
+            hero.attack(party.get(1));
             isVortexActive(hero, party);
-            IntStream.range(1, party.size()).forEach(e -> party.get(e).attack(party.get(e), hero));
+            IntStream.range(1, party.size()).forEach(e -> party.get(e).attack(hero));
             party.forEach(Unit::printInfoFight);
             сollectMoneyFromCorpses(hero, party);
             isAlifeHero(hero);

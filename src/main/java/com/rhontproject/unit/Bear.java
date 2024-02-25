@@ -1,8 +1,7 @@
 package com.rhontproject.unit;
 
-import com.rhontproject.interfaceAttack.Attack;
+import com.rhontproject.attack.Attack;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
-import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.supports.outputinfo.Printable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,6 @@ class Bear extends Unit {
 
     @Override
     public void setUnit(Unit unit) {
-
-
     }
 
     @Autowired

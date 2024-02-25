@@ -1,7 +1,7 @@
 package com.rhontproject.unit;
 
 
-import com.rhontproject.interfaceAttack.Attack;
+import com.rhontproject.attack.Attack;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.supports.outputinfo.Printable;
@@ -22,6 +22,7 @@ public class Knight extends Unit {
                   @Qualifier("printImpl") Printable printable) {
         super(attack, unitBaseFunctional, printable);
         this.name="Сэр Томас";
+
     }
 
     /**
@@ -42,22 +43,17 @@ public class Knight extends Unit {
      * Итоговое значение будет вычитаться из общего шанса попасть.
      */
     public static int Calculate_chance_attack(int armorOrBodyIndex) {
-        int result;
         switch (armorOrBodyIndex) {
             case 1: {
-                result = -10;
-                break;
+                return -10;
             }
             case 2: {
-                result = 0;
-                break;
+                return 0;
             }
             default: {
-                result = -20;
-                break;
+                return -20;
             }
         }
-        return result;
     }
 
     @Override

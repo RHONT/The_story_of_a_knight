@@ -1,4 +1,4 @@
-package com.rhontproject.interfaceAttack;
+package com.rhontproject.attack;
 
 import com.rhontproject.abstractUnitParent.Unit;
 

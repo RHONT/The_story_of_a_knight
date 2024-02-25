@@ -4,7 +4,7 @@ import static com.rhontproject.fabrica.ActsFabric.*;
 
 public class Battle_area {
     public static void main(String[] args) {
-        act_1();
+//        act_1();
 
         act_2();
         halt();

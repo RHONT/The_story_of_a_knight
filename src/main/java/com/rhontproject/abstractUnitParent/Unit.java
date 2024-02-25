@@ -1,6 +1,6 @@
 package com.rhontproject.abstractUnitParent;
 
-import com.rhontproject.interfaceAttack.Attack;
+import com.rhontproject.attack.Attack;
 import com.rhontproject.supports.outputinfo.Printable;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -78,7 +78,7 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     /**
      * метод, который реализуют интерфейсы из каталога TypesOfAttack
      */
-    public void attack(Unit attacking, Unit victim){
+    public void attack(Unit victim){
         attack.attacking(this,victim);
     }
 
