@@ -1,7 +1,7 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
-import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,7 @@ public
 class Knight_In_The_Dark extends Unit {
     private final EnemyAttack enemyAttack;
 
-    Knight_In_The_Dark(EnemyAttack enemyAttack, UnitStandardSupportImpl supportFunction) {
+    Knight_In_The_Dark(EnemyAttack enemyAttack, UnitStandardBaseImpl supportFunction) {
         this.name = "Скелет во тьме";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);

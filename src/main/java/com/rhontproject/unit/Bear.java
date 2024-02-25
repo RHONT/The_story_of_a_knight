@@ -1,7 +1,7 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
-import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +23,7 @@ public
 class Bear extends Unit {
     private final EnemyAttack enemyAttack;
 
-    Bear(EnemyAttack enemyAttack, UnitStandardSupportImpl supportFunction) {
+    Bear(EnemyAttack enemyAttack, UnitStandardBaseImpl supportFunction) {
         this.name = "Зомбо-Медведь";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);

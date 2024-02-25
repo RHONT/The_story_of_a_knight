@@ -1,7 +1,7 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
-import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,7 @@ public
 class OutLawBridge extends Unit {
     private final EnemyAttack enemyAttack;
 
-    OutLawBridge(EnemyAttack enemyAttack, UnitStandardSupportImpl supportFunction) {
+    OutLawBridge(EnemyAttack enemyAttack, UnitStandardBaseImpl supportFunction) {
         this.name = "Разбойник";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);

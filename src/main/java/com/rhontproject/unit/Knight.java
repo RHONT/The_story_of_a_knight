@@ -2,8 +2,9 @@ package com.rhontproject.unit;
 
 
 import com.rhontproject.interfaceAttack.KnightAttack;
-import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.supports.outputinfo.PrintImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -17,10 +18,11 @@ public class Knight extends Unit {
 
     private final KnightAttack knightAttack;
 
-    Knight(KnightAttack knightAttack, UnitStandardSupportImpl supportFunction) {
+    Knight(KnightAttack knightAttack, UnitStandardBaseImpl supportFunction, PrintImpl printable) {
         this.name = "Сэр Томас";
         this.knightAttack = knightAttack;
         this.setHumanoidSupportFunctional(supportFunction);
+        this.setPrintable(printable);
     }
 
 

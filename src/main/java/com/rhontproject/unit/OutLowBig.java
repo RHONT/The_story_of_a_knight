@@ -1,7 +1,7 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
-import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,7 @@ public
 class OutLowBig extends Unit {
     private final EnemyAttack enemyAttack;
 
-    OutLowBig(EnemyAttack enemyAttack, UnitStandardSupportImpl supportFunction) {
+    OutLowBig(EnemyAttack enemyAttack, UnitStandardBaseImpl supportFunction) {
         this.name = "Здоровяк";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);

@@ -1,25 +1,17 @@
-package com.rhontproject.supports;
+package com.rhontproject.supports.basemechanics;
 
 import com.rhontproject.abstractUnitParent.Unit;
 
-public interface UnitSupportFunctional {
+public interface UnitBaseFunctional {
     void setUnit(Unit unit);
 
     void level_up();
 
     boolean isAlife();
 
-    void printHealthDefense();
-
     void stabilizeHealth();
 
     void reborn();
-
-    void printDefense();
-
-    void printInventory();
-
-    void printInfoFight();
 
     void halt();
 

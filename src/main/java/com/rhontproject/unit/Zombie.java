@@ -1,7 +1,7 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.interfaceAttack.EnemyAttack;
-import com.rhontproject.supportFunctions.UnitStandardSupportImpl;
+import com.rhontproject.supports.basemechanics.UnitStandardBaseImpl;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class Zombie extends Unit {
     private final EnemyAttack enemyAttack;
 
-    Zombie(EnemyAttack enemyAttack, UnitStandardSupportImpl supportFunction) {
+    Zombie(EnemyAttack enemyAttack, UnitStandardBaseImpl supportFunction) {
         this.name = "Внезапный мертвец";
         this.enemyAttack = enemyAttack;
         this.setHumanoidSupportFunctional(supportFunction);

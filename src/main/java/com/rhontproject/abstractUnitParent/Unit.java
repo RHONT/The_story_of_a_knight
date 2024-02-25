@@ -1,6 +1,7 @@
 package com.rhontproject.abstractUnitParent;
 
-import com.rhontproject.supports.UnitSupportFunctional;
+import com.rhontproject.supports.outputinfo.Printable;
+import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -18,7 +19,7 @@ import java.util.*;
  * money - каждый юнит несет в себе золото, отдает при смерти<br>
  */
 @Component
-public abstract class Unit implements UnitSupportFunctional {
+public abstract class Unit implements UnitBaseFunctional, Printable {
     public boolean vortex = false;
     public String name;
     public String info_str_fight;
@@ -34,7 +35,8 @@ public abstract class Unit implements UnitSupportFunctional {
     public int[] copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
     public int[] copy_param_defense = Arrays.copyOfRange(defense, 0, defense.length);
 
-    private UnitSupportFunctional unitSupportFunctional;
+    private UnitBaseFunctional unitBaseFunctional;
+    private Printable printable;
 
     /**
      * Мапа с нумерацией частей тела,
@@ -67,54 +69,57 @@ public abstract class Unit implements UnitSupportFunctional {
 
     @Override
     public void level_up() {
-        unitSupportFunctional.level_up();
-
+        unitBaseFunctional.level_up();
     }
 
     @Override
     public boolean isAlife() {
-        return unitSupportFunctional.isAlife();
+        return unitBaseFunctional.isAlife();
     }
 
     @Override
     public void printHealthDefense() {
-        unitSupportFunctional.isAlife();
-
+        printable.printHealthDefense();
     }
 
     @Override
     public void stabilizeHealth() {
-        unitSupportFunctional.stabilizeHealth();
+        unitBaseFunctional.stabilizeHealth();
     }
 
     @Override
     public void reborn() {
-        unitSupportFunctional.reborn();
+        unitBaseFunctional.reborn();
     }
 
     @Override
     public void printDefense() {
-        unitSupportFunctional.printDefense();
+        printable.printDefense();
     }
 
     @Override
     public void printInventory() {
-        unitSupportFunctional.printInventory();
+        printable.printInventory();
     }
 
     @Override
     public void printInfoFight() {
-        unitSupportFunctional.printInfoFight();
+        printable.printInfoFight();
     }
 
     @Override
     public void halt() {
-        unitSupportFunctional.halt();
+        unitBaseFunctional.halt();
     }
 
 
-    public void setHumanoidSupportFunctional(UnitSupportFunctional unitSupportFunctional) {
-        this.unitSupportFunctional = unitSupportFunctional;
-        unitSupportFunctional.setUnit(this);
+    public void setHumanoidSupportFunctional(UnitBaseFunctional unitBaseFunctional) {
+        this.unitBaseFunctional = unitBaseFunctional;
+        unitBaseFunctional.setUnit(this);
+    }
+
+    public void setPrintable(Printable printable) {
+        this.printable = printable;
+        printable.setUnit(this);
     }
 }
