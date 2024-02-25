@@ -11,7 +11,7 @@ import static java.lang.System.*;
 public final class Market extends Act {
     @Override
     public void run() {
-        knight.print_inv_and_money();
+        knight.printInventory();
         market_place(knight, stateGame);
     }
 

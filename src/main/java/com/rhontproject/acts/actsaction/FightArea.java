@@ -23,7 +23,7 @@ public final class FightArea {
             hero.attack(hero, party.get(1));
             isVortexActive(hero, party);
             IntStream.range(1, party.size()).forEach(e -> party.get(e).attack(party.get(e), hero));
-            party.forEach(Unit::print_info_fight);
+            party.forEach(Unit::printInfoFight);
             сollectMoneyFromCorpses(hero, party);
             isAlifeHero(hero);
         }
@@ -51,7 +51,6 @@ public final class FightArea {
                 out.println("Враг пал, вы собрали с трупа: " + party.get(i).money + " золотых");
                 hero.money += party.get(i).money;
                 out.println();
-                party.get(i).reborn();
                 party.remove(i);
                 i--;
             }

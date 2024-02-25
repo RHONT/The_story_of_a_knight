@@ -2,7 +2,7 @@ package com.rhontproject.supportFunctions;
 
 import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.acts.Act;
-import com.rhontproject.interfaceSupporFunctionHumanoid.UnitSupportFunctional;
+import com.rhontproject.supports.UnitSupportFunctional;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +25,12 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
     /**
      * метод реализующий привал/отдых, когда персонаж подготавливаеться к следующему вызову
      */
-
+    @Override
     public void halt() {
         out.println();
         out.println("После битвы вы решили устроить короткий привал");
-        print_health_info();
-        print_inv_and_money();
+        printHealthDefense();
+        printInventory();
         out.println();
         out.println("Что будете делать?\n" +
                 "1 - Выпить зелье\n" +
@@ -54,8 +54,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
     /**
      * вспомогательный метод реализующий функционал метода halt()
      */
-
-    public void switch_for_halt() {
+    private void switch_for_halt() {
         Scanner scan_halt = new Scanner(in);
         String buf_str = scan_halt.nextLine();
         switch (buf_str) {
@@ -67,7 +66,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
                     unit.param_inventory[3] -= 1;
                     out.println("Вы выпили зелье! Теперь ваше здовровье");
                     stabilizeHealth();
-                    print_health_info();
+                    printHealthDefense();
                     out.println("Что еще хотите сделать?");
                     break;
                 } else {
@@ -105,28 +104,28 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
                             unit.defense[0] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            print_defense();
+                            printDefense();
                             break;
                         }
                         case "2": {
                             unit.defense[1] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            print_defense();
+                            printDefense();
                             break;
                         }
                         case "3": {
                             unit.defense[2] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            print_defense();
+                            printDefense();
                             break;
                         }
                         case "4": {
                             unit.defense[3] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            print_defense();
+                            printDefense();
                             break;
                         }
                         default:
@@ -152,13 +151,13 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
      * Вывод на экран накопительной строки info_str_figth
      * в используемых методах она перезаписываеться, после того как выдала актуальную информацию
      */
-
-    public void print_info_fight() {
+    @Override
+    public void printInfoFight() {
         out.println(unit.info_str_fight);
         unit.info_str_fight = "";
     }
-
-    public void print_inv_and_money() {
+    @Override
+    public void printInventory() {
         String sb = "\n" +
                 "Золота у вас: " + unit.money + "\n" +
                 "Прочность щита в руке: " + unit.param_inventory[0] + "\n" +
@@ -167,8 +166,8 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
                 "Целебного зелья: " + unit.param_inventory[3] + "\n";
         out.println(sb);
     }
-
-    public void print_defense() {
+    @Override
+    public void printDefense() {
         out.println("Состояние брони:\n" +
                 "Шлем: " + unit.defense[0] +
                 " Нагрудник: " + unit.defense[1] +
@@ -180,6 +179,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
      * Воскрешение юнита
      * Чтобы была возможность использовать его вновь, не создавая еще один экземпляр
      */
+    @Override
     public void reborn() {
         unit.param_humanoid = Arrays.copyOfRange(unit.copy_param_humanoid, 0, 5);
         unit.defense = Arrays.copyOfRange(unit.copy_param_defense, 0, unit.copy_param_defense.length);
@@ -191,7 +191,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
      * Когда выпиваеться зелье здоровья, то показатели выходят за пределы
      * После боя завышенные показатели должны приходить в норму
      */
-
+    @Override
     public void stabilizeHealth() {
         for (int i = 0; i < 4; i++) {
             if (unit.copy_param_humanoid[i] < unit.param_humanoid[i]) {
@@ -203,8 +203,8 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
     /**
      * Выводит информацию о состоянии здоровья и брони
      */
-
-    public void print_health_info() {
+    @Override
+    public void printHealthDefense() {
         String info_str;
         String spec_char = "";
 
@@ -225,7 +225,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
     /**
      * Проверка на жизнеспособность юнита
      */
-
+    @Override
     public boolean isAlife() {
         boolean life = false;
         for (int checkPartOfBody : unit.param_humanoid) {
@@ -240,7 +240,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
     /**
      * Повышения уровня юнита
      */
-
+    @Override
     public void level_up() {
         out.println();
         out.println("Сэр Томас отдышался. Оглядел поле боя и решил задуматься, точнее некоторые мысли " +
@@ -259,7 +259,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
      * Вспомогательный метод для реализации метода level_up
      */
 
-    public void switch_for_level_up() {
+    private void switch_for_level_up() {
         Scanner scan_level_up = new Scanner(in);
         String buf_str = scan_level_up.nextLine();
         switch (buf_str) {
@@ -269,7 +269,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
                     unit.copy_param_humanoid[i] += 10;
                 }
                 out.println("Ваше здоровье увеличено на 10 едениц по каждому пунку.");
-                print_health_info();
+                printHealthDefense();
                 Act.stateGame.level_up_param = true;
                 break;
             case "2":
@@ -285,7 +285,7 @@ public class UnitStandardSupportImpl implements UnitSupportFunctional {
                 out.println
                         ("Ваш меч острее не стал, но мастерство увеличило наносимый урон:" +
                                 unit.param_humanoid[4]);
-                print_health_info();
+                printHealthDefense();
                 Act.stateGame.level_up_param = true;
                 break;
             default:

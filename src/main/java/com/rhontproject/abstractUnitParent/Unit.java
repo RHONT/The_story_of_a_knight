@@ -1,6 +1,6 @@
 package com.rhontproject.abstractUnitParent;
 
-import com.rhontproject.interfaceSupporFunctionHumanoid.UnitSupportFunctional;
+import com.rhontproject.supports.UnitSupportFunctional;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -66,11 +66,6 @@ public abstract class Unit implements UnitSupportFunctional {
     public abstract void attack(Unit attacking, Unit victim);
 
     @Override
-    public void switch_for_level_up() {
-        unitSupportFunctional.switch_for_level_up();
-    }
-
-    @Override
     public void level_up() {
         unitSupportFunctional.level_up();
 
@@ -82,7 +77,7 @@ public abstract class Unit implements UnitSupportFunctional {
     }
 
     @Override
-    public void print_health_info() {
+    public void printHealthDefense() {
         unitSupportFunctional.isAlife();
 
     }
@@ -98,23 +93,18 @@ public abstract class Unit implements UnitSupportFunctional {
     }
 
     @Override
-    public void print_defense() {
-        unitSupportFunctional.print_defense();
+    public void printDefense() {
+        unitSupportFunctional.printDefense();
     }
 
     @Override
-    public void print_inv_and_money() {
-        unitSupportFunctional.print_inv_and_money();
+    public void printInventory() {
+        unitSupportFunctional.printInventory();
     }
 
     @Override
-    public void print_info_fight() {
-        unitSupportFunctional.print_info_fight();
-    }
-
-    @Override
-    public void switch_for_halt() {
-        unitSupportFunctional.switch_for_halt();
+    public void printInfoFight() {
+        unitSupportFunctional.printInfoFight();
     }
 
     @Override
