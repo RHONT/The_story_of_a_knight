@@ -61,7 +61,7 @@ public class Knight extends Humanoid {
     }
 
     @Override
-    public void Attack(Humanoid attacking, Humanoid victim) {
+    public void attack(Humanoid attacking, Humanoid victim) {
         knightAttack.AttackKnight(attacking, victim);
     }
 

@@ -5,11 +5,11 @@ import com.rhontproject.abstractUnitParent.Humanoid;
 public interface HumanoidSupportFunctional {
     void setHumanoid(Humanoid humanoid);
 
-    void swith_for_level_up();
+    void switch_for_level_up();
 
     void level_up();
 
-    boolean Humanoid_is_alife();
+    boolean isAlife();
 
     void print_health_info();
 

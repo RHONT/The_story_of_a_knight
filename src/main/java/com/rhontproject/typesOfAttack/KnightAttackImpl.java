@@ -116,14 +116,13 @@ public class KnightAttackImpl implements KnightAttack {
                                     "Вы нанесли урон: " + damage_to_enemy + (damageMultiplier == 2 ? " Критический удар!" : "") +
                                     " Противник смог отразить " + (temp_attack - damage_to_enemy) + " урона";
                         } else attacking.info_str_fight = "Вы промахнулись!";
-
                     }
-
                     break;
 
                 default:
-                    out.println("Введено неправильное значение.\nАтакуйте часть тела (1-4) \nИли совершите действие (Щит, Молотов, Зелье)");
-
+                    out.println("Введено неправильное значение.\n" +
+                            "Атакуйте часть тела (1-4) \n" +
+                            "Или совершите действие (Щит, Молотов, Зелье)");
             }
 
         }

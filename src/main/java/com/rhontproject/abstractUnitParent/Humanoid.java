@@ -63,11 +63,11 @@ public abstract class Humanoid implements HumanoidSupportFunctional {
     /**
      * метод, который реализуют интерфейсы из каталога TypesOfAttack
      */
-    public abstract void Attack(Humanoid attacking, Humanoid victim);
+    public abstract void attack(Humanoid attacking, Humanoid victim);
 
     @Override
-    public void swith_for_level_up() {
-        humanoidSupportFunctional.swith_for_level_up();
+    public void switch_for_level_up() {
+        humanoidSupportFunctional.switch_for_level_up();
     }
 
     @Override
@@ -77,13 +77,13 @@ public abstract class Humanoid implements HumanoidSupportFunctional {
     }
 
     @Override
-    public boolean Humanoid_is_alife() {
-        return humanoidSupportFunctional.Humanoid_is_alife();
+    public boolean isAlife() {
+        return humanoidSupportFunctional.isAlife();
     }
 
     @Override
     public void print_health_info() {
-        humanoidSupportFunctional.Humanoid_is_alife();
+        humanoidSupportFunctional.isAlife();
 
     }
 

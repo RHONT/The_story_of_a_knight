@@ -22,7 +22,7 @@ public class OutLowSmall extends Humanoid {
     }
 
     @Override
-    public void Attack(Humanoid attacking, Humanoid victim) {
+    public void attack(Humanoid attacking, Humanoid victim) {
         enemyAttack.attackStandardEnemy(attacking, victim);
     }
 

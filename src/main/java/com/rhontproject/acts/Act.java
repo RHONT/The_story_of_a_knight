@@ -11,8 +11,5 @@ public abstract class Act {
     protected static final Scanner scanner=new Scanner(System.in);
     protected static final Humanoid knight= createKnight();
     public static final StateGame stateGame = new StateGame();
-
     public abstract void run();
-
-
 }

@@ -159,25 +159,27 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
     }
 
     public void print_inv_and_money() {
-        out.println();
-        out.println("Золота у вас: " + humanoid.money +
-                "\nПрочность щита в руке: " + humanoid.param_inventory[0] + "\nКоличество щитов: " +
-                humanoid.param_inventory[1] + "\nКоктейля молотова: " + humanoid.param_inventory[2] +
-                "\nЦелебного зелья: " + humanoid.param_inventory[3]);
-        out.println();
+        String sb = "\n" +
+                "Золота у вас: " + humanoid.money + "\n" +
+                "Прочность щита в руке: " + humanoid.param_inventory[0] + "\n" +
+                "Количество щитов: " + humanoid.param_inventory[1] + "\n" +
+                "Коктейля молотова: " + humanoid.param_inventory[2] + "\n" +
+                "Целебного зелья: " + humanoid.param_inventory[3] + "\n";
+        out.println(sb);
     }
 
     public void print_defense() {
-        out.println("Состояние брони: " +
-                "\nШлем: " + humanoid.defense[0] + " Нагрудник: " + humanoid.defense[1] +
-                " Нарукавники: " + humanoid.defense[2] + " Поножи: " + humanoid.defense[3]);
+        out.println("Состояние брони:\n" +
+                "Шлем: " + humanoid.defense[0] +
+                " Нагрудник: " + humanoid.defense[1] +
+                " Нарукавники: " + humanoid.defense[2] +
+                " Поножи: " + humanoid.defense[3]);
     }
 
     /**
      * Воскрешение юнита
      * Чтобы была возможность использовать его вновь, не создавая еще один экземпляр
      */
-
     public void reborn() {
         humanoid.param_humanoid = Arrays.copyOfRange(humanoid.copy_param_humanoid, 0, 5);
         humanoid.defense = Arrays.copyOfRange(humanoid.copy_param_defense, 0, humanoid.copy_param_defense.length);
@@ -224,7 +226,7 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
      * Проверка на жизнеспособность юнита
      */
 
-    public boolean Humanoid_is_alife() {
+    public boolean isAlife() {
         boolean life = false;
         for (int checkPartOfBody : humanoid.param_humanoid) {
             if (checkPartOfBody <= 0) {
@@ -247,7 +249,7 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
                 "\n2 - А ведь не так быстро двигался враг, был момент даже когда мне показалось, что время замедлилось." +
                 "\n3 - Я несколько иначе ощущал свой меч, словно он стал моим продолжением");
         while (!Act.stateGame.level_up_param) {
-            swith_for_level_up();
+            switch_for_level_up();
         }
         Act.stateGame.level_up_param = false;
         out.println();
@@ -257,7 +259,7 @@ public class HumanoidStandardSupportImpl implements HumanoidSupportFunctional {
      * Вспомогательный метод для реализации метода level_up
      */
 
-    public void swith_for_level_up() {
+    public void switch_for_level_up() {
         Scanner scan_level_up = new Scanner(in);
         String buf_str = scan_level_up.nextLine();
         switch (buf_str) {

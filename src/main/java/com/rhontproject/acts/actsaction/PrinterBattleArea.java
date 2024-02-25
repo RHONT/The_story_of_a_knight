@@ -8,6 +8,20 @@ import java.util.Formatter;
 import java.util.List;
 
 public final class PrinterBattleArea {
+    /**
+     * Перед нанесением удара показывает текущие состояния для каждого юнита:
+     *
+     *                Сэр Томас      Внезапный мертвец   Внезапный мертвец
+     * Шлем:          80 /80  [30]   80 /80  [6]         80 /80  [7]
+     * Нагрудник:     120/120 [30]   120/120 [6]         120/120 [16]
+     * Нарукавник:    50 /50  [30]   50 /50  [4]         50 /50  [3]
+     * Поножи:        50 /50  [30]   50 /50  [2]         50 /50  [4]
+     * Сила орудия:   23             23                  23
+     *
+     * @param listUnit
+     * @param round
+     * @return
+     */
     public static String printStandartBattleArea(List<Humanoid> listUnit, int round) {
         StringBuilder sb=getTemplateSb(round);
         try (Formatter formatter = new Formatter(sb)) {
@@ -26,7 +40,17 @@ public final class PrinterBattleArea {
         return sb.toString();
     }
 
-
+    /**
+     * Приводит объект unit в string[] формата:
+     * Внезапный мертвец
+     * 80 /80  [3]
+     * 120/120 [2]
+     * 50 /50  [1]
+     * 50 /50  [3]
+     * 23
+     * @param unit
+     * @return
+     */
     private static String[] converter(Humanoid unit) {
         String[] converted = new String[6];
         converted[0] = unit.name;
@@ -47,6 +71,11 @@ public final class PrinterBattleArea {
         return converted;
     }
 
+    /**
+     * Создаем готовый sb с подготовленной шапкой ***ROUND 5******
+     * @param round
+     * @return
+     */
     private static StringBuilder getTemplateSb(int round) {
         StringBuilder sb = new StringBuilder();
         String header = "*".repeat(5) + "ROUND " + round + "*".repeat(94) + "\n";
