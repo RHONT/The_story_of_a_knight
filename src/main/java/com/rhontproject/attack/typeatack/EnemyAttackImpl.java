@@ -5,7 +5,6 @@ import com.rhontproject.unit.Knight;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
@@ -22,16 +21,16 @@ public class EnemyAttackImpl implements Attack {
         int criticalStrikeRange = new Random().nextInt(101) + 1;
         int randomPartBody = new Random().nextInt(4);
 
-        if (victim.i_am_fire) {
-            victim.param_humanoid[4] = Math.round(victim.copy_param_humanoid[4] / 2);
-            victim.chance_to_attack = victim.chance_to_attack_in_fire;
+        if (attacking.i_am_fire) {
+            attacking.param_humanoid[4] = attacking.param_humanoid[4] - (attacking.param_humanoid[4] / 8);
+            attacking.chance_to_attack = attacking.chance_to_attack_in_fire;
             for (int i = 0; i <= 3; i++) {
-                victim.param_humanoid[i] -= 10;
+                attacking.param_humanoid[i] -= 10;
             }
             System.out.println(attacking.name
-                    + " Получил урон 30. И теперь теряет здоровье каждый ход (- 10).Урон снижен вдвое! " +
-                    "Меткость его упала до "
-                    + attacking.chance_to_attack);
+                    + " теряет здоровье каждый ход (- 10).Урон снижен вдвое! " +
+                    "Текущая меткость:  "
+                    + attacking.chance_to_attack+ " и урон снизился!");
         }
 
         if (victim.param_inventory[0] > 0) {
