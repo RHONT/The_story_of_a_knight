@@ -1,10 +1,9 @@
 package com.rhontproject.abstractUnitParent;
 
 import com.rhontproject.attack.Attack;
+import com.rhontproject.newarchitecture.state.StateHolder;
 import com.rhontproject.supports.outputinfo.Printable;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -20,11 +19,13 @@ import java.util.*;
  * param_inventory - {Щит на готове, щит в инвентаре, коктейль Молотова,зелье здоровья}<br>
  * money - каждый юнит несет в себе золото, отдает при смерти<br>
  */
-@Component
 public abstract class Unit implements UnitBaseFunctional, Printable {
+    private final StateHolder stateHolder;
+
     public boolean vortex = false;
     public String name;
-    public String info_str_fight;
+    public String info_str_fight = "";
+    public String info_state = "";
     public boolean i_am_fire = false;
     public int chance_to_attack = 80;
     public int chance_to_attack_in_fire = chance_to_attack - 15;
@@ -41,14 +42,18 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     private final UnitBaseFunctional unitBaseFunctional;
     private final Printable printable;
 
-    public Unit(@Qualifier("knightAttackImpl") Attack attack,
-                @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
-                @Qualifier("printImpl") Printable printable) {
+    public Unit(StateHolder stateHolder, Attack attack,
+                UnitBaseFunctional unitBaseFunctional,
+                Printable printable) {
+        this.stateHolder = stateHolder;
         this.attack = attack;
         this.unitBaseFunctional = unitBaseFunctional;
         unitBaseFunctional.setUnit(this);
         this.printable = printable;
         printable.setUnit(this);
+        stateHolder.setUnit(this);
+//        stateHolder=
+//        stateHolder.setUnit(this);
     }
 
     /**
@@ -78,8 +83,8 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     /**
      * метод, который реализуют интерфейсы из каталога TypesOfAttack
      */
-    public void attack(Unit victim){
-        attack.attacking(this,victim);
+    public void attack(Unit victim) {
+        attack.attacking(this, victim);
     }
 
     @Override
@@ -133,5 +138,9 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
 
     public Printable getPrintable() {
         return printable;
+    }
+
+    public StateHolder getStateHolder() {
+        return stateHolder;
     }
 }

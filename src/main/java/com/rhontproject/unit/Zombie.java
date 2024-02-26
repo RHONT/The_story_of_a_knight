@@ -1,6 +1,7 @@
 package com.rhontproject.unit;
 
 import com.rhontproject.attack.Attack;
+import com.rhontproject.newarchitecture.state.StateHolder;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.supports.outputinfo.Printable;
@@ -16,9 +17,9 @@ import java.util.Arrays;
 @Scope("prototype")
 public class Zombie extends Unit {
     public Zombie(@Qualifier("enemyAttackImpl") Attack attack,
-                       @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
-                       @Qualifier("printImpl") Printable printable) {
-        super(attack, unitBaseFunctional, printable);
+                  @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
+                  @Qualifier("printImpl") Printable printable, StateHolder stateHolder) {
+        super(stateHolder, attack, unitBaseFunctional, printable);
         this.name = "Внезапный мертвец";
     }
 

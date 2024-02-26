@@ -10,7 +10,9 @@ import java.util.Arrays;
 @Component
 @Scope("prototype")
 public class Regenerate extends AbstractState {
-
+    {
+        message = " Восстановление!";
+    }
     @Override
     public void activate() {
         count += 3;
@@ -25,17 +27,15 @@ public class Regenerate extends AbstractState {
     public void action(Unit unit) {
         if (count > 0) {
             count--;
-            Arrays.stream(unit.param_humanoid).forEach(e->e=e+10);
+            for (int i = 0; i <= 3; i++) {
+                unit.param_humanoid[i] += 100;
+            }
             unit.stabilizeHealth();
-            unit.info_str_fight += unit.name + " " + message;
-            unit.info_str_fight += Arrays.toString(unit.param_humanoid) +"\n";
+            unit.info_state += unit.name + " " + message+"\n";
+            unit.info_state += Arrays.toString(unit.param_humanoid) +"\n";
         }
     }
 
-    @Override
-    public void setMessage() {
-        message = " Восстановление!";
-    }
 
     public int getCount() {
         return count;

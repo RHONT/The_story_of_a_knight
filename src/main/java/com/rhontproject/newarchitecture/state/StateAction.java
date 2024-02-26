@@ -6,6 +6,5 @@ public interface StateAction {
     void activate();
     void disable();
     void action(Unit unit);
-    void setMessage();
 
 }
