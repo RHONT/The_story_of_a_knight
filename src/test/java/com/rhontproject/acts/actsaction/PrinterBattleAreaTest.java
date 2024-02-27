@@ -25,7 +25,7 @@ class PrinterBattleAreaTest {
         Unit zombie = createZombie();
         int g=100;
 
-        formatter.format("%"+g+"s%10s%10s", zombie.name,zombie.health[0]+"/"+zombie.baseHealth[0],zombie.defense[0]);
+        formatter.format("%"+g+"s%10s%10s", zombie.name,zombie.attribute.curHealth[0]+"/"+zombie.attribute.baseHealth[0],zombie.attribute.curDefense[0]);
         System.out.println(sb);
 //        formatter.format("%-10s\n", "stack");
 
@@ -64,13 +64,13 @@ class PrinterBattleAreaTest {
     private String[] converter(Unit unit) {
         String[] converted=new String[6];
         converted[0]=unit.name;
-        converted[5]=String.valueOf(unit.health[4]);
+        converted[5]=String.valueOf(unit.attribute.curHealth[4]);
         for (int i = 0; i <4 ; i++) {
             converted[i+1]=String.format(
                     "%-3s/%-3s [%s]",
-                    unit.health[i],
-                    unit.baseHealth[i],
-                    unit.defense[i]);
+                    unit.attribute.curHealth[i],
+                    unit.attribute.baseHealth[i],
+                    unit.attribute.curDefense[i]);
         }
         return converted;
     }

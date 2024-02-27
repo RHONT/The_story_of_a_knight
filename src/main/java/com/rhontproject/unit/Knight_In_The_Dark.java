@@ -32,6 +32,6 @@ class Knight_In_The_Dark extends Unit {
     @Autowired
     @Override
     public void setHealth(@Value("${knight_in_the_dark}") int[] health) {
-        this.baseAttribute.setCurHealth(health);
+        this.attribute.setCurHealth(health);
     }
 }

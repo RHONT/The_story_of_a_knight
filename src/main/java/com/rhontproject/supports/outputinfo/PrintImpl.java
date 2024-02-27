@@ -23,11 +23,11 @@ public class PrintImpl implements Printable{
         String info_str;
         String spec_char = "";
 
-        info_str = ("Голова: " + unit.baseAttribute.curHealth[0] + "/" + unit.baseAttribute.baseHealth[0] + " [" + unit.baseAttribute.curDefense[0] + "]" +
-                " Тело: " + unit.baseAttribute.curHealth[1] + "/" + unit.baseAttribute.baseHealth[1] + " [" + unit.baseAttribute.curDefense[1] + "]" +
-                " Руки: " + unit.baseAttribute.curHealth[2] + "/" + unit.baseAttribute.baseHealth[2] + " [" + unit.baseAttribute.curDefense[2] + "]" +
-                " Ноги: " + unit.baseAttribute.curHealth[3] + "/" + unit.baseAttribute.baseHealth[3] + " [" + unit.baseAttribute.curDefense[3] + "]" +
-                " Сила оружия: " + unit.baseAttribute.curHealth[4]);
+        info_str = ("Голова: " + unit.attribute.curHealth[0] + "/" + unit.attribute.baseHealth[0] + " [" + unit.attribute.curDefense[0] + "]" +
+                " Тело: " + unit.attribute.curHealth[1] + "/" + unit.attribute.baseHealth[1] + " [" + unit.attribute.curDefense[1] + "]" +
+                " Руки: " + unit.attribute.curHealth[2] + "/" + unit.attribute.baseHealth[2] + " [" + unit.attribute.curDefense[2] + "]" +
+                " Ноги: " + unit.attribute.curHealth[3] + "/" + unit.attribute.baseHealth[3] + " [" + unit.attribute.curDefense[3] + "]" +
+                " Сила оружия: " + unit.attribute.curHealth[4]);
         for (int i = 0; i < info_str.length(); i++) {
             spec_char += "-";
         }
@@ -59,10 +59,10 @@ public class PrintImpl implements Printable{
     @Override
     public void printDefense() {
         out.println("Состояние брони:\n" +
-                "Шлем: " + unit.baseAttribute.curDefense[0] +
-                " Нагрудник: " + unit.baseAttribute.curDefense[1] +
-                " Нарукавники: " + unit.baseAttribute.curDefense[2] +
-                " Поножи: " + unit.baseAttribute.curDefense[3]);
+                "Шлем: " + unit.attribute.curDefense[0] +
+                " Нагрудник: " + unit.attribute.curDefense[1] +
+                " Нарукавники: " + unit.attribute.curDefense[2] +
+                " Поножи: " + unit.attribute.curDefense[3]);
     }
 
 }

@@ -60,13 +60,13 @@ public final class PrinterBattleArea {
             return converted;
         }
 
-        converted[5] = String.valueOf(unit.baseAttribute.curHealth[4]);
+        converted[5] = String.valueOf(unit.attribute.curHealth[4]);
         for (int i = 0; i < 4; i++) {
             converted[i + 1] = String.format(
                     "%-3s/%-3s [%s]",
-                    unit.baseAttribute.curHealth[i],
-                    unit.baseAttribute.baseHealth[i],
-                    unit.baseAttribute.curDefense[i]);
+                    unit.attribute.curHealth[i],
+                    unit.attribute.baseHealth[i],
+                    unit.attribute.curDefense[i]);
         }
         return converted;
     }

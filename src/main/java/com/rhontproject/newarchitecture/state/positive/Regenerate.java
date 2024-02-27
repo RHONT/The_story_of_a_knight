@@ -5,8 +5,6 @@ import com.rhontproject.newarchitecture.state.AbstractState;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 @Component
 @Scope("prototype")
 public class Regenerate extends AbstractState {
@@ -28,7 +26,7 @@ public class Regenerate extends AbstractState {
         if (count > 0) {
             count--;
             for (int i = 0; i <= 3; i++) {
-                unit.baseAttribute.curHealth[i] += 100;
+                unit.attribute.curHealth[i] += 100;
             }
             unit.stabilizeHealth();
             unit.info_state += unit.name + " " + message;

@@ -65,7 +65,7 @@ public final class FightArea {
                 index -> {
                     IntStream.range(0, 4).forEach(
                             innerIndex ->
-                                    party.get(index).baseAttribute.curHealth[innerIndex] -= 40);
+                                    party.get(index).attribute.curHealth[innerIndex] -= 40);
                 }
         );
     }

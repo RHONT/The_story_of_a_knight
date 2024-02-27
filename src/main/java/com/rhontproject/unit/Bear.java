@@ -38,6 +38,6 @@ class Bear extends Unit {
     @Autowired
     @Override
     public void setHealth(@Value("${bear}") int[] health) {
-        this.baseAttribute.setCurHealth(health);
+        this.attribute.setCurHealth(health);
     }
 }

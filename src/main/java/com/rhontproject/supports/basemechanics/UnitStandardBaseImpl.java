@@ -60,7 +60,7 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
             case "1":
                 if (unit.inventory[3] > 0) {
                     for (int i = 0; i < unit.inventory.length; i++) {
-                        unit.baseAttribute.curHealth[i] += 70;
+                        unit.attribute.curHealth[i] += 70;
                     }
                     unit.inventory[3] -= 1;
                     out.println("Вы выпили зелье! Теперь ваше здовровье");
@@ -100,28 +100,28 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                     String buf_str_for_craft = str_craft.nextLine();
                     switch (buf_str_for_craft) {
                         case "1": {
-                            unit.baseAttribute.curDefense[0] += 30;
+                            unit.attribute.curDefense[0] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();
                             break;
                         }
                         case "2": {
-                            unit.baseAttribute.curDefense[1] += 30;
+                            unit.attribute.curDefense[1] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();
                             break;
                         }
                         case "3": {
-                            unit.baseAttribute.curDefense[2] += 30;
+                            unit.attribute.curDefense[2] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();
                             break;
                         }
                         case "4": {
-                            unit.baseAttribute.curDefense[3] += 30;
+                            unit.attribute.curDefense[3] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();
@@ -152,8 +152,7 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
      */
     @Override
     public void reborn() {
-        unit.baseAttribute.curHealth = Arrays.copyOfRange(unit.baseAttribute.baseHealth, 0, 5);
-        unit.baseAttribute.curDefense = Arrays.copyOfRange(unit.baseAttribute.baseDefense, 0, unit.baseAttribute.baseDefense.length);
+        unit.attribute.curHealth = Arrays.copyOfRange(unit.attribute.baseHealth, 0, 5);
         unit.chance_to_attack = 80;
     }
 
@@ -164,8 +163,8 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
     @Override
     public void stabilizeHealth() {
         for (int i = 0; i < 4; i++) {
-            if (unit.baseAttribute.baseHealth[i] < unit.baseAttribute.curHealth[i]) {
-                unit.baseAttribute.curHealth[i] = unit.baseAttribute.baseHealth[i];
+            if (unit.attribute.baseHealth[i] < unit.attribute.curHealth[i]) {
+                unit.attribute.curHealth[i] = unit.attribute.baseHealth[i];
             }
         }
     }
@@ -178,7 +177,7 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
     @Override
     public boolean isAlife() {
         boolean life = false;
-        for (int checkPartOfBody : unit.baseAttribute.curHealth) {
+        for (int checkPartOfBody : unit.attribute.curHealth) {
             if (checkPartOfBody <= 0) {
                 life = false;
                 break;
@@ -215,8 +214,8 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
         switch (buf_str) {
             case "1":
                 for (int i = 0; i < 4; i++) {
-                    unit.baseAttribute.curHealth[i] += 10;
-                    unit.baseAttribute.baseHealth[i] += 10;
+                    unit.attribute.curHealth[i] += 10;
+                    unit.attribute.baseHealth[i] += 10;
                 }
                 out.println("Ваше здоровье увеличено на 10 едениц по каждому пунку.");
                 unit.printHealthDefense();
@@ -230,11 +229,11 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                 Act.stateGame.level_up_param = true;
                 break;
             case "3":
-                unit.baseAttribute.curHealth[4] += 7;
-                unit.baseAttribute.baseHealth[4] += 7;
+                unit.attribute.curHealth[4] += 7;
+                unit.attribute.baseHealth[4] += 7;
                 out.println
                         ("Ваш меч острее не стал, но мастерство увеличило наносимый урон:" +
-                                unit.baseAttribute.curHealth[4]);
+                                unit.attribute.curHealth[4]);
                 unit.printHealthDefense();
                 Act.stateGame.level_up_param = true;
                 break;

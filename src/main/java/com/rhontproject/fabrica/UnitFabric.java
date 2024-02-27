@@ -13,13 +13,13 @@ public final class UnitFabric {
 
     public static Unit createKnight(){
         Knight knight = context.getBean("Knight", Knight.class);
-        knight.baseAttribute.setDefense(30, 30, 30, 30);
+        knight.attribute.setDefense(30, 30, 30, 30);
         return knight;
     }
 
     public static Unit createZombie(){
         Zombie zombie = context.getBean("Zombie", Zombie.class);
-        zombie.baseAttribute.setDefense(random(10), random(20), random(10), random(5));
+        zombie.attribute.setDefense(random(10), random(20), random(10), random(5));
         return zombie;
     }
 

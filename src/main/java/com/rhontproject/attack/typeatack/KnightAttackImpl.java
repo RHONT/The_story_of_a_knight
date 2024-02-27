@@ -28,7 +28,7 @@ public class KnightAttackImpl implements Attack {
         hero = attacking;
         enemy = victim;
         hero.getStateHolder().activate();
-        attackPower = hero.baseAttribute.curHealth[4];
+        attackPower = hero.attribute.curHealth[4];
         damageMultiplier = getDamageMultiplier();
         out.println(battleOption());
 
@@ -100,7 +100,7 @@ public class KnightAttackImpl implements Attack {
 
     private void drinkPotion(int powerPotion) {
         for (int i = 0; i < 4; i++) {
-            hero.baseAttribute.curHealth[i] += powerPotion;
+            hero.attribute.curHealth[i] += powerPotion;
         }
         hero.inventory[3] -= 1;
         hero.info_fight = "Вы исцелились на " + powerPotion + " очков";
@@ -142,19 +142,19 @@ public class KnightAttackImpl implements Attack {
     }
 
     private void crushBody(int effectiveDamage) {
-        enemy.baseAttribute.curHealth[indexTargetBody - 1] -= effectiveDamage;
+        enemy.attribute.curHealth[indexTargetBody - 1] -= effectiveDamage;
     }
 
     private double multiplierIncludingArmor() {
-        return enemy.baseAttribute.curDefense[indexTargetBody - 1] > 0 ? 0.25 : 1;
+        return enemy.attribute.curDefense[indexTargetBody - 1] > 0 ? 0.25 : 1;
     }
 
     private void crushArmor() {
-        enemy.baseAttribute.curDefense[indexTargetBody - 1] -= (int) Math.round(enemy.baseAttribute.curDefense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
+        enemy.attribute.curDefense[indexTargetBody - 1] -= (int) Math.round(enemy.attribute.curDefense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
     }
 
     private void stabilizeArmorValue() {
-        enemy.baseAttribute.curDefense[indexTargetBody - 1] = (Math.max(enemy.baseAttribute.curDefense[indexTargetBody - 1], 0));
+        enemy.attribute.curDefense[indexTargetBody - 1] = (Math.max(enemy.attribute.curDefense[indexTargetBody - 1], 0));
     }
 
     private int getDamageMultiplier() {

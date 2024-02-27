@@ -33,6 +33,6 @@ class OutLawBridge extends Unit {
     @Autowired
     @Override
     public void setHealth(@Value("${outlowbridge}") int[] health) {
-        this.baseAttribute.setCurHealth(health);
+        this.attribute.setCurHealth(health);
     }
 }

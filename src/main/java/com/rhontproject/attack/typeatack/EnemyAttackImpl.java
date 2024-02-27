@@ -27,20 +27,20 @@ public class EnemyAttackImpl implements Attack {
         } else {
             if (criticalStrikeRange < attacking.chance_to_attack) {
 
-                if (victim.baseAttribute.curDefense[randomPartBody] > 0) {
-                    victim.baseAttribute.curDefense[randomPartBody] -= (int) Math.round(attacking.baseAttribute.curHealth[4] * 0.33);
-                    victim.baseAttribute.curHealth[randomPartBody] -= (int) Math.round(attacking.baseAttribute.curHealth[4] * 0.25);
-                    victim.baseAttribute.curDefense[randomPartBody] = (Math.max(victim.baseAttribute.curDefense[randomPartBody], 0));
+                if (victim.attribute.curDefense[randomPartBody] > 0) {
+                    victim.attribute.curDefense[randomPartBody] -= (int) Math.round(attacking.attribute.curHealth[4] * 0.33);
+                    victim.attribute.curHealth[randomPartBody] -= (int) Math.round(attacking.attribute.curHealth[4] * 0.25);
+                    victim.attribute.curDefense[randomPartBody] = (Math.max(victim.attribute.curDefense[randomPartBody], 0));
 
                     attacking.info_fight = "Ваш доспех снизил урон, вы получили " +
-                            Math.round(attacking.baseAttribute.curHealth[4] * 0.25) +
+                            Math.round(attacking.attribute.curHealth[4] * 0.25) +
                             " Урона по " + Knight.Parts_of_body(randomPartBody + 1) +
                             " | " + " Доспех повредился на " +
-                            Math.round(attacking.baseAttribute.curHealth[4] * 0.33);
+                            Math.round(attacking.attribute.curHealth[4] * 0.33);
 
                 } else {
-                    victim.baseAttribute.curHealth[randomPartBody] -= attacking.baseAttribute.curHealth[4];
-                    attacking.info_fight = "Вы  получили урон:" + attacking.baseAttribute.curHealth[4];
+                    victim.attribute.curHealth[randomPartBody] -= attacking.attribute.curHealth[4];
+                    attacking.info_fight = "Вы  получили урон:" + attacking.attribute.curHealth[4];
                 }
             } else {
                 attacking.info_fight = attacking.name + " промахнулся!";

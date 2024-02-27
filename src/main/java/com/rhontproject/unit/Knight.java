@@ -65,6 +65,6 @@ public class Knight extends Unit {
     @Autowired
     @Override
     public void setHealth(@Value("${knight}") int[] health) {
-        this.baseAttribute.setCurHealth(health);
+        this.attribute.setCurHealth(health);
     }
 }

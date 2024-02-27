@@ -5,8 +5,6 @@ import com.rhontproject.newarchitecture.state.AbstractState;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 @Component
 @Scope("prototype")
 public class Burning extends AbstractState {
@@ -29,7 +27,7 @@ public class Burning extends AbstractState {
 
             count--;
             for (int i = 0; i <= 3; i++) {
-                unit.baseAttribute.curHealth[i] -= 10;
+                unit.attribute.curHealth[i] -= 10;
             }
             unit.info_state += unit.name + " " + message;
         }

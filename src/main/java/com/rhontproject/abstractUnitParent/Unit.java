@@ -29,18 +29,18 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     public int chance_to_attack = 80;
     public int[] inventory = {0, 2, 1, 1};
     public int money = new Random().nextInt(150) + 75;
-    public final BaseAttribute baseAttribute;
+    public final BaseAttribute attribute;
     private Weapon weapon;
     private Inventorys inventorys;
     private Attack attack;
     private final UnitBaseFunctional unitBaseFunctional;
     private final Printable printable;
 
-    public Unit(StateHolder stateHolder, BaseAttribute baseAttribute, Attack attack,
+    public Unit(StateHolder stateHolder, BaseAttribute attribute, Attack attack,
                 UnitBaseFunctional unitBaseFunctional,
                 Printable printable) {
         this.stateHolder = stateHolder;
-        this.baseAttribute = baseAttribute;
+        this.attribute = attribute;
         this.attack = attack;
         this.unitBaseFunctional = unitBaseFunctional;
         unitBaseFunctional.setUnit(this);

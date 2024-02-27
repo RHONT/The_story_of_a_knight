@@ -30,6 +30,6 @@ public class OutLowBig extends Unit {
     @Autowired
     @Override
     public void setHealth(@Value("${outlowbig}") int[] health) {
-        this.baseAttribute.setCurHealth(health);
+        this.attribute.setCurHealth(health);
     }
 }
