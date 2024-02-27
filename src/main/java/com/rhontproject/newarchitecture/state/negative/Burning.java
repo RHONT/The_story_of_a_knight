@@ -29,11 +29,9 @@ public class Burning extends AbstractState {
 
             count--;
             for (int i = 0; i <= 3; i++) {
-                unit.param_humanoid[i] -= 10;
+                unit.baseAttribute.curHealth[i] -= 10;
             }
-            unit.info_state += unit.name + " " + message+"\n";
-            unit.info_state += Arrays.toString(unit.param_humanoid) +"\n";
-
+            unit.info_state += unit.name + " " + message;
         }
     }
 

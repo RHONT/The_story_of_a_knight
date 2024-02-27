@@ -23,7 +23,10 @@ public final class FightArea {
             hero.attack(party.get(1));
             isVortexActive(hero, party);
             IntStream.range(1, party.size()).forEach(e -> party.get(e).attack(hero));
-            party.forEach(Unit::printInfoFight);
+            party.forEach(e-> {
+                out.println(e.info_state);
+                out.println(e.info_fight);
+            });
             сollectMoneyFromCorpses(hero, party);
             isAlifeHero(hero);
         }
@@ -62,7 +65,7 @@ public final class FightArea {
                 index -> {
                     IntStream.range(0, 4).forEach(
                             innerIndex ->
-                                    party.get(index).param_humanoid[innerIndex] -= 40);
+                                    party.get(index).baseAttribute.curHealth[innerIndex] -= 40);
                 }
         );
     }

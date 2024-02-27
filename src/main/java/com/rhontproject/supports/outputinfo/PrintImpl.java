@@ -23,11 +23,11 @@ public class PrintImpl implements Printable{
         String info_str;
         String spec_char = "";
 
-        info_str = ("Голова: " + unit.param_humanoid[0] + "/" + unit.copy_param_humanoid[0] + " [" + unit.defense[0] + "]" +
-                " Тело: " + unit.param_humanoid[1] + "/" + unit.copy_param_humanoid[1] + " [" + unit.defense[1] + "]" +
-                " Руки: " + unit.param_humanoid[2] + "/" + unit.copy_param_humanoid[2] + " [" + unit.defense[2] + "]" +
-                " Ноги: " + unit.param_humanoid[3] + "/" + unit.copy_param_humanoid[3] + " [" + unit.defense[3] + "]" +
-                " Сила оружия: " + unit.param_humanoid[4]);
+        info_str = ("Голова: " + unit.baseAttribute.curHealth[0] + "/" + unit.baseAttribute.baseHealth[0] + " [" + unit.baseAttribute.curDefense[0] + "]" +
+                " Тело: " + unit.baseAttribute.curHealth[1] + "/" + unit.baseAttribute.baseHealth[1] + " [" + unit.baseAttribute.curDefense[1] + "]" +
+                " Руки: " + unit.baseAttribute.curHealth[2] + "/" + unit.baseAttribute.baseHealth[2] + " [" + unit.baseAttribute.curDefense[2] + "]" +
+                " Ноги: " + unit.baseAttribute.curHealth[3] + "/" + unit.baseAttribute.baseHealth[3] + " [" + unit.baseAttribute.curDefense[3] + "]" +
+                " Сила оружия: " + unit.baseAttribute.curHealth[4]);
         for (int i = 0; i < info_str.length(); i++) {
             spec_char += "-";
         }
@@ -43,26 +43,26 @@ public class PrintImpl implements Printable{
      */
     @Override
     public void printInfoFight() {
-        out.println(unit.info_str_fight);
-        unit.info_str_fight = "";
+        out.println(unit.info_fight);
+        unit.info_fight = "";
     }
     @Override
     public void printInventory() {
         String sb = "\n" +
                 "Золота у вас: " + unit.money + "\n" +
-                "Прочность щита в руке: " + unit.param_inventory[0] + "\n" +
-                "Количество щитов: " + unit.param_inventory[1] + "\n" +
-                "Коктейля молотова: " + unit.param_inventory[2] + "\n" +
-                "Целебного зелья: " + unit.param_inventory[3] + "\n";
+                "Прочность щита в руке: " + unit.inventory[0] + "\n" +
+                "Количество щитов: " + unit.inventory[1] + "\n" +
+                "Коктейля молотова: " + unit.inventory[2] + "\n" +
+                "Целебного зелья: " + unit.inventory[3] + "\n";
         out.println(sb);
     }
     @Override
     public void printDefense() {
         out.println("Состояние брони:\n" +
-                "Шлем: " + unit.defense[0] +
-                " Нагрудник: " + unit.defense[1] +
-                " Нарукавники: " + unit.defense[2] +
-                " Поножи: " + unit.defense[3]);
+                "Шлем: " + unit.baseAttribute.curDefense[0] +
+                " Нагрудник: " + unit.baseAttribute.curDefense[1] +
+                " Нарукавники: " + unit.baseAttribute.curDefense[2] +
+                " Поножи: " + unit.baseAttribute.curDefense[3]);
     }
 
 }

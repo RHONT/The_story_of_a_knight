@@ -27,9 +27,8 @@ public class Posion extends AbstractState {
     public void action(Unit unit) {
         if (count > 0) {
             count--;
-            Arrays.stream(unit.param_humanoid).forEach(e->e=e-10);
-            unit.info_state += unit.name + " " + message+"\n";
-            unit.info_state += Arrays.toString(unit.param_humanoid) +"\n";
+            Arrays.stream(unit.baseAttribute.curHealth).forEach(e->e=e-10);
+            unit.info_state += unit.name + " " + message;
         }
     }
 

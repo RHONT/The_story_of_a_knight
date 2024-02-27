@@ -30,7 +30,7 @@ public final class Market extends Act {
                 case ("1"):
                     if (MarketEnum.SHIELD.getCost() <= knight.money) {
                         knight.money -= MarketEnum.SHIELD.getCost();
-                        knight.param_inventory[1] += 2;
+                        knight.inventory[1] += 2;
                         out.println("Вы купили щит!");
                         break;
                     } else {
@@ -40,7 +40,7 @@ public final class Market extends Act {
                 case ("2"):
                     if (MarketEnum.POTION_OF_HEALTH.getCost() <= knight.money) {
                         knight.money -= MarketEnum.POTION_OF_HEALTH.getCost();
-                        knight.param_inventory[3] += 1;
+                        knight.inventory[3] += 1;
                         out.println("Вы купили зелье!");
                         break;
                     } else {
@@ -51,7 +51,7 @@ public final class Market extends Act {
                 case ("3"):
                     if (MarketEnum.MOLOTOV.getCost() <= knight.money) {
                         knight.money -= MarketEnum.MOLOTOV.getCost();
-                        knight.param_inventory[2] += 1;
+                        knight.inventory[2] += 1;
                         out.println("Вы купили молотов");
                         break;
                     } else {

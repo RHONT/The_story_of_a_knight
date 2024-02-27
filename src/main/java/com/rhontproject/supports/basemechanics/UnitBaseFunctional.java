@@ -15,6 +15,6 @@ public interface UnitBaseFunctional {
 
     void halt();
 
-    void setParam_humanoid(int[] param_humanoid);
+    void setHealth(int[] health);
 
 }

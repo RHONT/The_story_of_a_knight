@@ -21,7 +21,7 @@ public class Act_6 extends Act {
     public void run() {
         printFromFile("[2-1].txt");
         bridge(createOutLowBridge(), createOutLowBridge(), createOutLowBridge(), createOutLowBridge());
-        out.println(Arrays.toString(knight.param_inventory));
+        out.println(Arrays.toString(knight.inventory));
     }
     /**
      * метод запускающий события на мосту.
@@ -39,7 +39,7 @@ public class Act_6 extends Act {
                     } else {
                         knight.chance_to_attack -= 15;
                         knight.money = 0;
-                        Arrays.fill(knight.param_inventory,0);
+                        Arrays.fill(knight.inventory,0);
                         out.println(moneyIsTaught  + knight.chance_to_attack);
                         return;
                     }

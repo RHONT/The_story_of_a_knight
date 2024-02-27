@@ -1,6 +1,7 @@
 package com.rhontproject.attack.typeatack;
 
 import com.rhontproject.attack.Attack;
+import com.rhontproject.newarchitecture.state.NameStates;
 import com.rhontproject.unit.*;
 import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.context.annotation.Scope;
@@ -23,9 +24,11 @@ public class KnightAttackImpl implements Attack {
 
     @Override
     public void attacking(Unit attacking, Unit victim) {
+
         hero = attacking;
         enemy = victim;
-        attackPower = hero.param_humanoid[4];
+        hero.getStateHolder().activate();
+        attackPower = hero.baseAttribute.curHealth[4];
         damageMultiplier = getDamageMultiplier();
         out.println(battleOption());
 
@@ -37,7 +40,7 @@ public class KnightAttackImpl implements Attack {
                     activeVortex();
                     return;
                 case ("s"):
-                    if (hero.param_inventory[1] >= 2) {
+                    if (hero.inventory[1] >= 2) {
                         getTheShield();
                         return;
                     } else {
@@ -45,15 +48,15 @@ public class KnightAttackImpl implements Attack {
                     }
                     break;
                 case ("m"):
-                    if (hero.param_inventory[2] > 0) {
-                        setTheEnemyOnFire();
+                    if (hero.inventory[2] > 0) {
+                        enemy.getStateHolder().activeSelectState(NameStates.BURN);
                         return;
                     } else {
                         out.println("У вас нет Молотова");
                     }
                     break;
                 case ("p"):
-                    if (hero.param_inventory[3] > 0) {
+                    if (hero.inventory[3] > 0) {
                         drinkPotion(70);
                         return;
                     } else {
@@ -85,31 +88,22 @@ public class KnightAttackImpl implements Attack {
 
     private void activeVortex() {
         hero.vortex = true;
-        hero.info_str_fight = "Вы разрываете врагов мощным порывом ветра! "
+        hero.info_fight = "Вы разрываете врагов мощным порывом ветра! "
                 + "Урон каждому составил по 40 единиц!";
     }
 
     private void getTheShield() {
-        hero.param_inventory[0] += 2;
-        hero.param_inventory[1] -= 2;
-        hero.info_str_fight = "Вы достали щит!";
-    }
-
-    private void setTheEnemyOnFire() {
-        for (int i = 0; i < 4; i++) {
-            enemy.param_humanoid[i] -= 30;
-        }
-        hero.info_str_fight = "Противник в огне!";
-        enemy.i_am_fire = true;
-        hero.param_inventory[2] -= 1;
+        hero.inventory[0] += 2;
+        hero.inventory[1] -= 2;
+        hero.info_fight = "Вы достали щит!";
     }
 
     private void drinkPotion(int powerPotion) {
         for (int i = 0; i < 4; i++) {
-            hero.param_humanoid[i] += powerPotion;
+            hero.baseAttribute.curHealth[i] += powerPotion;
         }
-        hero.param_inventory[3] -= 1;
-        hero.info_str_fight = "Вы исцелились на " + powerPotion + " очков";
+        hero.inventory[3] -= 1;
+        hero.info_fight = "Вы исцелились на " + powerPotion + " очков";
     }
 
     private void hitToBodyPart(String inputConsole) {
@@ -121,17 +115,17 @@ public class KnightAttackImpl implements Attack {
         int damage;
         if (isIncludeInRange()) {
             damage = hitTheEnemy();
-            hero.info_str_fight = "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
+            hero.info_fight = "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                     " Противник смог отразить " + (Math.max(attackPower - damage, 0)) + " урона";
         } else {
             if (isIncludeInRangeLastTry()) {
                 indexTargetBody = Knight.Missiles_attack(indexTargetBody);
                 attackPower /= 2;
                 damage = hitTheEnemy();
-                hero.info_str_fight = "Вы промазали, но чудом попали по " + Knight.Parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
+                hero.info_fight = "Вы промазали, но чудом попали по " + Knight.Parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
                         "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                         " Противник смог отразить " + (attackPower - damage) + " урона";
-            } else hero.info_str_fight = "Вы промахнулись!";
+            } else hero.info_fight = "Вы промахнулись!";
         }
     }
 
@@ -148,19 +142,19 @@ public class KnightAttackImpl implements Attack {
     }
 
     private void crushBody(int effectiveDamage) {
-        enemy.param_humanoid[indexTargetBody - 1] -= effectiveDamage;
+        enemy.baseAttribute.curHealth[indexTargetBody - 1] -= effectiveDamage;
     }
 
     private double multiplierIncludingArmor() {
-        return enemy.defense[indexTargetBody - 1] > 0 ? 0.25 : 1;
+        return enemy.baseAttribute.curDefense[indexTargetBody - 1] > 0 ? 0.25 : 1;
     }
 
     private void crushArmor() {
-        enemy.defense[indexTargetBody - 1] -= Math.round(enemy.defense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
+        enemy.baseAttribute.curDefense[indexTargetBody - 1] -= (int) Math.round(enemy.baseAttribute.curDefense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
     }
 
     private void stabilizeArmorValue() {
-        enemy.defense[indexTargetBody - 1] = (Math.max(enemy.defense[indexTargetBody - 1], 0));
+        enemy.baseAttribute.curDefense[indexTargetBody - 1] = (Math.max(enemy.baseAttribute.curDefense[indexTargetBody - 1], 0));
     }
 
     private int getDamageMultiplier() {

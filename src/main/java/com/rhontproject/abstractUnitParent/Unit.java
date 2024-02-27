@@ -24,36 +24,29 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
 
     public boolean vortex = false;
     public String name;
-    public String info_str_fight = "";
+    public String info_fight = "";
     public String info_state = "";
-    public boolean i_am_fire = false;
     public int chance_to_attack = 80;
-    public int chance_to_attack_in_fire = chance_to_attack - 15;
-    public int[] param_humanoid = {1, 1, 1, 1, 1};
-    public int[] defense = {0, 0, 0, 0};
-    public int[] param_inventory = {0, 2, 1, 1};
+    public int[] inventory = {0, 2, 1, 1};
     public int money = new Random().nextInt(150) + 75;
-
-    // копии параметров здоровья и брони для расчетов, для понимания относительности изменений
-    public int[] copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
-    public int[] copy_param_defense = Arrays.copyOfRange(defense, 0, defense.length);
-
+    public final BaseAttribute baseAttribute;
+    private Weapon weapon;
+    private Inventorys inventorys;
     private Attack attack;
     private final UnitBaseFunctional unitBaseFunctional;
     private final Printable printable;
 
-    public Unit(StateHolder stateHolder, Attack attack,
+    public Unit(StateHolder stateHolder, BaseAttribute baseAttribute, Attack attack,
                 UnitBaseFunctional unitBaseFunctional,
                 Printable printable) {
         this.stateHolder = stateHolder;
+        this.baseAttribute = baseAttribute;
         this.attack = attack;
         this.unitBaseFunctional = unitBaseFunctional;
         unitBaseFunctional.setUnit(this);
         this.printable = printable;
         printable.setUnit(this);
         stateHolder.setUnit(this);
-//        stateHolder=
-//        stateHolder.setUnit(this);
     }
 
     /**
@@ -67,17 +60,6 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
         parts_of_body.put(3, "рукам");
         parts_of_body.put(4, "ногам");
         return parts_of_body.get(a);
-    }
-
-    @Override
-    public void setParam_humanoid(int[] param_humanoid) {
-        this.param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
-        this.copy_param_humanoid = Arrays.copyOfRange(param_humanoid, 0, param_humanoid.length);
-    }
-
-    public void setDefense(int a, int b, int c, int d) {
-        defense = new int[]{a, b, c, d};
-        copy_param_defense = Arrays.copyOfRange(defense, 0, defense.length);
     }
 
     /**

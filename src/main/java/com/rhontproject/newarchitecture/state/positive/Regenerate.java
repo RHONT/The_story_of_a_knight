@@ -28,11 +28,10 @@ public class Regenerate extends AbstractState {
         if (count > 0) {
             count--;
             for (int i = 0; i <= 3; i++) {
-                unit.param_humanoid[i] += 100;
+                unit.baseAttribute.curHealth[i] += 100;
             }
             unit.stabilizeHealth();
-            unit.info_state += unit.name + " " + message+"\n";
-            unit.info_state += Arrays.toString(unit.param_humanoid) +"\n";
+            unit.info_state += unit.name + " " + message;
         }
     }
 
