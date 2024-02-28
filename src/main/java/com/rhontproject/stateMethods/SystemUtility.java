@@ -11,7 +11,7 @@ public class SystemUtility {
         try (InputStream inputStream = SystemUtility.class.getResourceAsStream("/stories/" + str);
         ) {
             if (inputStream != null) {
-                try (Scanner scan_for_read = new Scanner(inputStream);
+                try (Scanner scan_for_read = new Scanner(inputStream,"Windows-1251");
                 ) {
                     while (scan_for_read.hasNext()) {
                         out.println(scan_for_read.nextLine());

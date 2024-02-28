@@ -19,8 +19,8 @@ public class KnightAttackImpl implements Attack {
     private Unit victim;
     int damageMultiplier;
     int indexTargetBody;
-    int attackPower;
     int chanceToHitSelectedPartBody;
+    int attackPower;
 
     @Override
     public void attacking(Unit attacking, Unit victim) {
@@ -162,7 +162,7 @@ public class KnightAttackImpl implements Attack {
     }
 
     private boolean isIncludeInRange() {
-        return new Random().nextInt(100) <= 50;
+        return new Random().nextInt(100) <= chanceToHitSelectedPartBody;
     }
 
     private boolean isIncludeInRangeLastTry() {
