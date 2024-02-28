@@ -17,9 +17,6 @@ import static java.lang.System.*;
 public class KnightAttackImpl implements Attack {
     private Unit attacking;
     private Unit victim;
-    int damageMultiplier;
-    int indexTargetBody;
-    int chanceToHitSelectedPartBody;
     int attackPower;
 
     @Override
@@ -29,12 +26,16 @@ public class KnightAttackImpl implements Attack {
         this.victim = victim;
         this.attacking.getStateHolder().activate();
         attackPower = this.attacking.attribute.curHealth[4];
-        damageMultiplier = getDamageMultiplier();
         out.println(battleOption());
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            Scanner scanner = new Scanner(System.in);
-            String inputConsole = scanner.nextLine().toLowerCase();
+            String inputConsole;
+            if (!attacking.isHero) {
+                 inputConsole=String.valueOf((new Random().nextInt(3)+1));
+            } else {
+                 inputConsole = scanner.nextLine().toLowerCase();
+            }
             switch (inputConsole) {
                 case ("w"):
                     activeVortex();
@@ -67,7 +68,6 @@ public class KnightAttackImpl implements Attack {
                 case ("2"):
                 case ("3"):
                 case ("4"):
-//                    hitToBodyPart(inputConsole);
                     attacking.getWeapon().attackVictim(Integer.parseInt(inputConsole),victim);
                     return;
                 default:
@@ -105,69 +105,6 @@ public class KnightAttackImpl implements Attack {
         }
         attacking.inventory[3] -= 1;
         attacking.info_fight = "Вы исцелились на " + powerPotion + " очков";
-    }
-
-    private void hitToBodyPart(String inputConsole) {
-
-        indexTargetBody = Integer.parseInt(inputConsole);
-        chanceToHitSelectedPartBody =
-                attacking.chance_to_attack + Knight.Calculate_chance_attack(indexTargetBody);
-
-        int damage;
-        if (isIncludeInRange()) {
-            damage = hitTheEnemy();
-            attacking.info_fight = "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
-                    " Противник смог отразить " + (Math.max(attackPower - damage, 0)) + " урона";
-        } else {
-            if (isIncludeInRangeLastTry()) {
-                indexTargetBody = Knight.Missiles_attack(indexTargetBody);
-                attackPower /= 2;
-                damage = hitTheEnemy();
-                attacking.info_fight = "Вы промазали, но чудом попали по " + Knight.Parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
-                        "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
-                        " Противник смог отразить " + (attackPower - damage) + " урона";
-            } else attacking.info_fight = "Вы промахнулись!";
-        }
-    }
-
-    private int hitTheEnemy() {
-        int effectiveDamage = calcEffectiveDamage();
-        crushBody(effectiveDamage);
-        crushArmor();
-        stabilizeArmorValue();
-        return effectiveDamage;
-    }
-
-    private int calcEffectiveDamage() {
-        return (int) (Math.round((attackPower * damageMultiplier) * multiplierIncludingArmor()));
-    }
-
-    private void crushBody(int effectiveDamage) {
-        victim.attribute.curHealth[indexTargetBody - 1] -= effectiveDamage;
-    }
-
-    private double multiplierIncludingArmor() {
-        return victim.attribute.defense[indexTargetBody - 1] > 0 ? 0.25 : 1;
-    }
-
-    private void crushArmor() {
-        victim.attribute.defense[indexTargetBody - 1] -= (int) Math.round(victim.attribute.defense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
-    }
-
-    private void stabilizeArmorValue() {
-        victim.attribute.defense[indexTargetBody - 1] = (Math.max(victim.attribute.defense[indexTargetBody - 1], 0));
-    }
-
-    private int getDamageMultiplier() {
-        return new Random().nextInt(100) < 20 ? 2 : 1;
-    }
-
-    private boolean isIncludeInRange() {
-        return new Random().nextInt(100) <= chanceToHitSelectedPartBody;
-    }
-
-    private boolean isIncludeInRangeLastTry() {
-        return new Random().nextInt(100) <= 50;
     }
 }
 

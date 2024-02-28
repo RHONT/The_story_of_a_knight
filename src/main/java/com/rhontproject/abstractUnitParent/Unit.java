@@ -21,7 +21,7 @@ import java.util.*;
  */
 public abstract class Unit implements UnitBaseFunctional, Printable {
     private final StateHolder stateHolder;
-
+    public boolean isHero;
     public boolean vortex = false;
     public String name;
     public String info_fight = "";
@@ -132,5 +132,9 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
 
     public Weapon getWeapon() {
         return weapon;
+    }
+
+    public void setHero(boolean hero) {
+        isHero = hero;
     }
 }

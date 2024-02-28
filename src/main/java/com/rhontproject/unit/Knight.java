@@ -18,13 +18,13 @@ import java.util.Random;
 
 @Component("Knight")
 public class Knight extends Unit {
-
     public Knight(@Qualifier("knightAttackImpl") Attack attack,
                   @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
                   @Qualifier("printImpl") Printable printable,
                   StateHolder stateHolder, BaseAttribute baseAttribute) {
         super(stateHolder, baseAttribute, attack, unitBaseFunctional, printable);
         this.name="Сэр Томас";
+        this.isHero=true;
     }
 
     /**
