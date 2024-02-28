@@ -15,8 +15,8 @@ import static java.lang.System.*;
 @Component
 @Scope("prototype")
 public class KnightAttackImpl implements Attack {
-    private Unit hero;
-    private Unit enemy;
+    private Unit attacking;
+    private Unit victim;
     int damageMultiplier;
     int indexTargetBody;
     int attackPower;
@@ -25,10 +25,10 @@ public class KnightAttackImpl implements Attack {
     @Override
     public void attacking(Unit attacking, Unit victim) {
 
-        hero = attacking;
-        enemy = victim;
-        hero.getStateHolder().activate();
-        attackPower = hero.attribute.curHealth[4];
+        this.attacking = attacking;
+        this.victim = victim;
+        this.attacking.getStateHolder().activate();
+        attackPower = this.attacking.attribute.curHealth[4];
         damageMultiplier = getDamageMultiplier();
         out.println(battleOption());
 
@@ -40,7 +40,7 @@ public class KnightAttackImpl implements Attack {
                     activeVortex();
                     return;
                 case ("s"):
-                    if (hero.inventory[1] >= 2) {
+                    if (this.attacking.inventory[1] >= 2) {
                         getTheShield();
                         return;
                     } else {
@@ -48,15 +48,15 @@ public class KnightAttackImpl implements Attack {
                     }
                     break;
                 case ("m"):
-                    if (hero.inventory[2] > 0) {
-                        enemy.getStateHolder().activeSelectState(NameStates.BURN);
+                    if (this.attacking.inventory[2] > 0) {
+                        this.victim.getStateHolder().activeSelectState(NameStates.BURN);
                         return;
                     } else {
                         out.println("У вас нет Молотова");
                     }
                     break;
                 case ("p"):
-                    if (hero.inventory[3] > 0) {
+                    if (this.attacking.inventory[3] > 0) {
                         drinkPotion(70);
                         return;
                     } else {
@@ -79,53 +79,53 @@ public class KnightAttackImpl implements Attack {
 
     private String battleOption() {
         return "Атакуй! 1 - голова "
-                + (hero.chance_to_attack - 10)
-                + "% | 2 -тело " + (hero.chance_to_attack)
-                + "% | 3 - руки " + (hero.chance_to_attack - 20)
-                + "% | 4 - ноги " + (hero.chance_to_attack - 20)
+                + (attacking.chance_to_attack - 10)
+                + "% | 2 -тело " + (attacking.chance_to_attack)
+                + "% | 3 - руки " + (attacking.chance_to_attack - 20)
+                + "% | 4 - ноги " + (attacking.chance_to_attack - 20)
                 + "% | Символ  s = (щит)  m = (коктейль Молотова)  p=(Зелье исцеления)";
     }
 
     private void activeVortex() {
-        hero.vortex = true;
-        hero.info_fight = "Вы разрываете врагов мощным порывом ветра! "
+        attacking.vortex = true;
+        attacking.info_fight = "Вы разрываете врагов мощным порывом ветра! "
                 + "Урон каждому составил по 40 единиц!";
     }
 
     private void getTheShield() {
-        hero.inventory[0] += 2;
-        hero.inventory[1] -= 2;
-        hero.info_fight = "Вы достали щит!";
+        attacking.inventory[0] += 2;
+        attacking.inventory[1] -= 2;
+        attacking.info_fight = "Вы достали щит!";
     }
 
     private void drinkPotion(int powerPotion) {
         for (int i = 0; i < 4; i++) {
-            hero.attribute.curHealth[i] += powerPotion;
+            attacking.attribute.curHealth[i] += powerPotion;
         }
-        hero.inventory[3] -= 1;
-        hero.info_fight = "Вы исцелились на " + powerPotion + " очков";
+        attacking.inventory[3] -= 1;
+        attacking.info_fight = "Вы исцелились на " + powerPotion + " очков";
     }
 
     private void hitToBodyPart(String inputConsole) {
 
         indexTargetBody = Integer.parseInt(inputConsole);
         chanceToHitSelectedPartBody =
-                hero.chance_to_attack + Knight.Calculate_chance_attack(indexTargetBody);
+                attacking.chance_to_attack + Knight.Calculate_chance_attack(indexTargetBody);
 
         int damage;
         if (isIncludeInRange()) {
             damage = hitTheEnemy();
-            hero.info_fight = "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
+            attacking.info_fight = "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                     " Противник смог отразить " + (Math.max(attackPower - damage, 0)) + " урона";
         } else {
             if (isIncludeInRangeLastTry()) {
                 indexTargetBody = Knight.Missiles_attack(indexTargetBody);
                 attackPower /= 2;
                 damage = hitTheEnemy();
-                hero.info_fight = "Вы промазали, но чудом попали по " + Knight.Parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
+                attacking.info_fight = "Вы промазали, но чудом попали по " + Knight.Parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
                         "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                         " Противник смог отразить " + (attackPower - damage) + " урона";
-            } else hero.info_fight = "Вы промахнулись!";
+            } else attacking.info_fight = "Вы промахнулись!";
         }
     }
 
@@ -142,19 +142,19 @@ public class KnightAttackImpl implements Attack {
     }
 
     private void crushBody(int effectiveDamage) {
-        enemy.attribute.curHealth[indexTargetBody - 1] -= effectiveDamage;
+        victim.attribute.curHealth[indexTargetBody - 1] -= effectiveDamage;
     }
 
     private double multiplierIncludingArmor() {
-        return enemy.attribute.curDefense[indexTargetBody - 1] > 0 ? 0.25 : 1;
+        return victim.attribute.defense[indexTargetBody - 1] > 0 ? 0.25 : 1;
     }
 
     private void crushArmor() {
-        enemy.attribute.curDefense[indexTargetBody - 1] -= (int) Math.round(enemy.attribute.curDefense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
+        victim.attribute.defense[indexTargetBody - 1] -= (int) Math.round(victim.attribute.defense[indexTargetBody - 1] > 0 ? attackPower * 0.33 : 0);
     }
 
     private void stabilizeArmorValue() {
-        enemy.attribute.curDefense[indexTargetBody - 1] = (Math.max(enemy.attribute.curDefense[indexTargetBody - 1], 0));
+        victim.attribute.defense[indexTargetBody - 1] = (Math.max(victim.attribute.defense[indexTargetBody - 1], 0));
     }
 
     private int getDamageMultiplier() {

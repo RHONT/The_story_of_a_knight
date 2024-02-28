@@ -9,7 +9,7 @@ import java.util.Arrays;
 @Scope("prototype")
 public class BaseAttribute {
     public int[] curHealth = {1, 1, 1, 1, 1};
-    public int[] curDefense = {0, 0, 0, 0};
+    public int[] defense = {0, 0, 0, 0};
     public int[] baseHealth;
 
     public void setCurHealth(int[] curHealth) {
@@ -19,6 +19,6 @@ public class BaseAttribute {
 
 
     public void setDefense(int helm, int tors, int hand, int leg) {
-        this.curDefense = new int[]{helm, tors, hand, leg};
+        this.defense = new int[]{helm, tors, hand, leg};
     }
 }

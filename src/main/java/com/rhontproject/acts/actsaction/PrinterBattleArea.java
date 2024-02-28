@@ -66,7 +66,7 @@ public final class PrinterBattleArea {
                     "%-3s/%-3s [%s]",
                     unit.attribute.curHealth[i],
                     unit.attribute.baseHealth[i],
-                    unit.attribute.curDefense[i]);
+                    unit.attribute.defense[i]);
         }
         return converted;
     }

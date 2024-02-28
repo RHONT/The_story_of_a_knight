@@ -100,28 +100,28 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                     String buf_str_for_craft = str_craft.nextLine();
                     switch (buf_str_for_craft) {
                         case "1": {
-                            unit.attribute.curDefense[0] += 30;
+                            unit.attribute.defense[0] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();
                             break;
                         }
                         case "2": {
-                            unit.attribute.curDefense[1] += 30;
+                            unit.attribute.defense[1] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();
                             break;
                         }
                         case "3": {
-                            unit.attribute.curDefense[2] += 30;
+                            unit.attribute.defense[2] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();
                             break;
                         }
                         case "4": {
-                            unit.attribute.curDefense[3] += 30;
+                            unit.attribute.defense[3] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
                             unit.printDefense();

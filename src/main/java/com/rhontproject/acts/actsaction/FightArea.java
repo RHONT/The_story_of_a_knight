@@ -28,7 +28,7 @@ public final class FightArea {
                 out.println(e.info_fight);
             });
             сollectMoneyFromCorpses(hero, party);
-            isAlifeHero(hero);
+            checkLifeHero(hero);
         }
         hero.stabilizeHealth();
     }
@@ -40,7 +40,7 @@ public final class FightArea {
         }
     }
 
-    private static void isAlifeHero(Unit hero) {
+    private static void checkLifeHero(Unit hero) {
         if (!hero.isAlife()) {
             out.println("Сэр Томас погиб. Его натура не выдержала вызова судьбы.");
             exit(0);

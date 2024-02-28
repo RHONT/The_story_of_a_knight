@@ -27,10 +27,10 @@ public class EnemyAttackImpl implements Attack {
         } else {
             if (criticalStrikeRange < attacking.chance_to_attack) {
 
-                if (victim.attribute.curDefense[randomPartBody] > 0) {
-                    victim.attribute.curDefense[randomPartBody] -= (int) Math.round(attacking.attribute.curHealth[4] * 0.33);
+                if (victim.attribute.defense[randomPartBody] > 0) {
+                    victim.attribute.defense[randomPartBody] -= (int) Math.round(attacking.attribute.curHealth[4] * 0.33);
                     victim.attribute.curHealth[randomPartBody] -= (int) Math.round(attacking.attribute.curHealth[4] * 0.25);
-                    victim.attribute.curDefense[randomPartBody] = (Math.max(victim.attribute.curDefense[randomPartBody], 0));
+                    victim.attribute.defense[randomPartBody] = (Math.max(victim.attribute.defense[randomPartBody], 0));
 
                     attacking.info_fight = "Ваш доспех снизил урон, вы получили " +
                             Math.round(attacking.attribute.curHealth[4] * 0.25) +
