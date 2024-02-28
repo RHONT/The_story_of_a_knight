@@ -26,24 +26,24 @@ public final class ActsFabric {
         new Act_3().run();
     }
 
-    public static void act_4() {
-        new Act_4().run();
-    }
-
-    public static void act_5() {
-        new Act_5().run();
-    }
-    public static void act_6() {
-        new Act_6().run();
-    }
-
-    public static void act_7() {
-        new Act_7().run();
-    }
-
-    public static void act_8() {
-        new Act_8().run();
-    }
+//    public static void act_4() {
+//        new Act_4().run();
+//    }
+//
+//    public static void act_5() {
+//        new Act_5().run();
+//    }
+//    public static void act_6() {
+//        new Act_6().run();
+//    }
+//
+//    public static void act_7() {
+//        new Act_7().run();
+//    }
+//
+//    public static void act_8() {
+//        new Act_8().run();
+//    }
 
     public static void halt() {
         halt.run();

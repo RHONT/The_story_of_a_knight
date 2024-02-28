@@ -1,8 +1,10 @@
 package com.rhontproject.abstractUnitParent;
 
+import com.rhontproject.newarchitecture.state.NameStates;
+
 import java.util.Random;
 
-public class NormalSword extends Weapon{
+public class NormalSword extends Weapon {
     int damageMultiplier;
     int indexTargetBody;
     int chanceToHitSelectedPartBody;
@@ -11,9 +13,15 @@ public class NormalSword extends Weapon{
         super(power);
     }
 
+    public NormalSword(int power, NameStates attackState) {
+        super(power, attackState);
+    }
+
     @Override
     protected void attackPartBody(int partBody, Unit enemy) {
-        victim=enemy;
+        indexTargetBody = partBody;
+        damageMultiplier = getDamageMultiplier();
+        victim = enemy;
         chanceToHitSelectedPartBody =
                 master.chance_to_attack + calculate_chance_attack(indexTargetBody);
 
@@ -68,6 +76,10 @@ public class NormalSword extends Weapon{
 
     private boolean isIncludeInRangeLastTry() {
         return new Random().nextInt(100) <= 50;
+    }
+
+    private int getDamageMultiplier() {
+        return new Random().nextInt(100) < 20 ? 2 : 1;
     }
 
 

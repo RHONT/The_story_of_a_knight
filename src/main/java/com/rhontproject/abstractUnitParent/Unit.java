@@ -125,4 +125,12 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     public StateHolder getStateHolder() {
         return stateHolder;
     }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
 }

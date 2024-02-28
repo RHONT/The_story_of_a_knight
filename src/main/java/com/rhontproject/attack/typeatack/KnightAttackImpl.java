@@ -67,7 +67,8 @@ public class KnightAttackImpl implements Attack {
                 case ("2"):
                 case ("3"):
                 case ("4"):
-                    hitToBodyPart(inputConsole);
+//                    hitToBodyPart(inputConsole);
+                    attacking.getWeapon().attackVictim(Integer.parseInt(inputConsole),victim);
                     return;
                 default:
                     out.println("Введено неправильное значение.\n" +

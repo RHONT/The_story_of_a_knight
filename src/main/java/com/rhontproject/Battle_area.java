@@ -13,20 +13,20 @@ public class Battle_area {
 
         act_3();
 
-        act_4();
-
-        act_5();
-        halt();
-        levelUp();
-
-        act_6();
-        halt();
-        levelUp();
-
-        act_7();
-        act_8();
-        halt();
-        levelUp();
+//        act_4();
+//
+//        act_5();
+//        halt();
+//        levelUp();
+//
+//        act_6();
+//        halt();
+//        levelUp();
+//
+//        act_7();
+//        act_8();
+//        halt();
+//        levelUp();
     }
 }
 

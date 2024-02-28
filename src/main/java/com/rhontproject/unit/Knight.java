@@ -2,6 +2,7 @@ package com.rhontproject.unit;
 
 
 import com.rhontproject.abstractUnitParent.BaseAttribute;
+import com.rhontproject.abstractUnitParent.Weapon;
 import com.rhontproject.attack.Attack;
 import com.rhontproject.newarchitecture.state.StateHolder;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
@@ -60,6 +61,13 @@ public class Knight extends Unit {
     @Override
     public void setUnit(Unit unit) {
 
+    }
+
+    @Autowired
+    @Override
+    public void setWeapon(@Qualifier("getKnightFireWeapon") Weapon weapon) {
+        super.setWeapon(weapon);
+        this.getWeapon().setMaster(this);
     }
 
     @Autowired
