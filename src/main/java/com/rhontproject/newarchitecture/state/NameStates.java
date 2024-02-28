@@ -1,11 +1,12 @@
 package com.rhontproject.newarchitecture.state;
 
 import com.rhontproject.newarchitecture.state.negative.Burning;
+import com.rhontproject.newarchitecture.state.negative.Posion;
 import com.rhontproject.newarchitecture.state.positive.Regenerate;
 
 public enum NameStates {
     BURN(Burning.class.getSimpleName()),
-    POSION("Posion"),
+    POSION(Posion.class.getSimpleName()),
     REGENERATE(Regenerate.class.getSimpleName());
 
     private final String nameClass;
