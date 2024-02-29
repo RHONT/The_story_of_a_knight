@@ -1,11 +1,8 @@
 package com.rhontproject.attack.typeatack;
 
-import com.rhontproject.MessageService;
 import com.rhontproject.attack.Attack;
 import com.rhontproject.newarchitecture.state.NameStates;
-import com.rhontproject.unit.*;
 import com.rhontproject.abstractUnitParent.Unit;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

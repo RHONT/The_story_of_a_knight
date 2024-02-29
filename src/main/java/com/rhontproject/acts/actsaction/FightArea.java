@@ -1,8 +1,6 @@
 package com.rhontproject.acts.actsaction;
 
-import com.rhontproject.MessageService;
 import com.rhontproject.abstractUnitParent.Unit;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,7 +8,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static com.rhontproject.acts.actsaction.PrinterBattleArea.printStandartBattleArea;
 import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 import static java.lang.System.*;
 @Component
@@ -24,7 +21,7 @@ public final class FightArea {
 
         while (hero.isAlife() && (party.size() > 1)) {
             round++;
-            out.println(printStandartBattleArea(party, round));
+            out.println(messageService.printStandartBattleArea(party, round));
             hero.attack(party.get(1));
             isVortexActive(hero, party);
             IntStream.range(1, party.size()).forEach(e -> party.get(e).attack(hero));

@@ -1,6 +1,6 @@
 package com.rhontproject.stateMethods;
 
-import com.rhontproject.MessageService;
+import com.rhontproject.service.MessageService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 

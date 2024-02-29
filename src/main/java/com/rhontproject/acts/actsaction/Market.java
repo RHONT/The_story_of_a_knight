@@ -6,12 +6,13 @@ import com.rhontproject.enums.MarketEnum;
 
 import java.util.Scanner;
 
+import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 import static java.lang.System.*;
 
 public final class Market extends Act {
     @Override
     public void run() {
-        knight.printInventory();
+        messageService.printInventory(knight);
         market_place(knight, stateGame);
     }
 

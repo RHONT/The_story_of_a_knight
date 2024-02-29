@@ -1,8 +1,6 @@
 package com.rhontproject.abstractUnitParent;
 
-import com.rhontproject.MessageService;
 import com.rhontproject.newarchitecture.state.NameStates;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 

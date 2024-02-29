@@ -6,7 +6,6 @@ import com.rhontproject.attack.Attack;
 import com.rhontproject.newarchitecture.state.StateHolder;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 import com.rhontproject.abstractUnitParent.Unit;
-import com.rhontproject.supports.outputinfo.Printable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,9 +18,9 @@ import javax.annotation.PostConstruct;
 @Scope("prototype")
 public class Zombie extends Unit {
     public Zombie(@Qualifier("knightAttackImpl") Attack attack,
-                  @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
-                  @Qualifier("printImpl") Printable printable, StateHolder stateHolder, BaseAttribute baseAttribute) {
-        super(stateHolder, baseAttribute, attack, unitBaseFunctional, printable);
+                  @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional
+                  , StateHolder stateHolder, BaseAttribute baseAttribute) {
+        super(stateHolder, baseAttribute, attack, unitBaseFunctional);
         this.name = "Внезапный мертвец";
         this.isHero = false;
     }

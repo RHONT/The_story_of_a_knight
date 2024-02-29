@@ -9,13 +9,14 @@ import java.util.List;
 
 import static com.rhontproject.fabrica.UnitFabric.createKnight;
 import static com.rhontproject.fabrica.UnitFabric.createZombie;
+import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 
 class PrinterBattleAreaTest {
 
     @Test
     void printBattleArea() {
         List<Unit> unitList =new ArrayList<>(List.of(createKnight(), createZombie(),createZombie()));
-        PrinterBattleArea.printStandartBattleArea(unitList,5);
+        messageService.printStandartBattleArea(unitList,5);
     }
 
     @Test

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 import static java.lang.System.*;
 
 
@@ -28,8 +29,8 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
     public void halt() {
         out.println();
         out.println("После битвы вы решили устроить короткий привал");
-        unit.printHealthDefense();
-        unit.printInventory();
+        messageService.printHealthDefense(unit);
+        messageService.printInventory(unit);
         out.println();
         out.println("Что будете делать?\n" +
                 "1 - Выпить зелье\n" +
@@ -65,7 +66,7 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                     unit.inventory[3] -= 1;
                     out.println("Вы выпили зелье! Теперь ваше здовровье");
                     stabilizeHealth();
-                    unit.printHealthDefense();
+                    messageService.printHealthDefense(unit);
                     out.println("Что еще хотите сделать?");
                     break;
                 } else {
@@ -103,28 +104,24 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                             unit.attribute.defense[0] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            unit.printDefense();
                             break;
                         }
                         case "2": {
                             unit.attribute.defense[1] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            unit.printDefense();
                             break;
                         }
                         case "3": {
                             unit.attribute.defense[2] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            unit.printDefense();
                             break;
                         }
                         case "4": {
                             unit.attribute.defense[3] += 30;
                             Act.stateGame.halt_craft = true;
                             out.println("Доспех починен! Что выберете еще?");
-                            unit.printDefense();
                             break;
                         }
                         default:
@@ -132,6 +129,7 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                             out.println();
                             continue LABEL_1;
                     }
+                    messageService.printDefense(unit);
                     break;
                 }
                 break;
@@ -218,7 +216,7 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                     unit.attribute.baseHealth[i] += 10;
                 }
                 out.println("Ваше здоровье увеличено на 10 едениц по каждому пунку.");
-                unit.printHealthDefense();
+                messageService.printHealthDefense(unit);
                 Act.stateGame.level_up_param = true;
                 break;
             case "2":
@@ -234,7 +232,7 @@ public class UnitStandardBaseImpl implements UnitBaseFunctional {
                 out.println
                         ("Ваш меч острее не стал, но мастерство увеличило наносимый урон:" +
                                 unit.attribute.curHealth[4]);
-                unit.printHealthDefense();
+                messageService.printHealthDefense(unit);
                 Act.stateGame.level_up_param = true;
                 break;
             default:

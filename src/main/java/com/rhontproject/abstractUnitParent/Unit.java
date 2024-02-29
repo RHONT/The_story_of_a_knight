@@ -2,7 +2,6 @@ package com.rhontproject.abstractUnitParent;
 
 import com.rhontproject.attack.Attack;
 import com.rhontproject.newarchitecture.state.StateHolder;
-import com.rhontproject.supports.outputinfo.Printable;
 import com.rhontproject.supports.basemechanics.UnitBaseFunctional;
 
 import java.util.*;
@@ -19,7 +18,7 @@ import java.util.*;
  * param_inventory - {Щит на готове, щит в инвентаре, коктейль Молотова,зелье здоровья}<br>
  * money - каждый юнит несет в себе золото, отдает при смерти<br>
  */
-public abstract class Unit implements UnitBaseFunctional, Printable {
+public abstract class Unit implements UnitBaseFunctional {
     private final StateHolder stateHolder;
     public boolean isHero;
     public boolean vortex = false;
@@ -32,22 +31,16 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     private Inventorys inventorys;
     private Attack attack;
     private final UnitBaseFunctional unitBaseFunctional;
-    private final Printable printable;
 
     public Unit(StateHolder stateHolder, BaseAttribute attribute, Attack attack,
-                UnitBaseFunctional unitBaseFunctional,
-                Printable printable) {
+                UnitBaseFunctional unitBaseFunctional) {
         this.stateHolder = stateHolder;
         this.attribute = attribute;
         this.attack = attack;
         this.unitBaseFunctional = unitBaseFunctional;
         unitBaseFunctional.setUnit(this);
-        this.printable = printable;
-        printable.setUnit(this);
         stateHolder.setUnit(this);
     }
-
-
 
     /**
      * метод, который реализуют интерфейсы из каталога TypesOfAttack
@@ -67,11 +60,6 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     }
 
     @Override
-    public void printHealthDefense() {
-        printable.printHealthDefense();
-    }
-
-    @Override
     public void stabilizeHealth() {
         unitBaseFunctional.stabilizeHealth();
     }
@@ -82,31 +70,12 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     }
 
     @Override
-    public void printDefense() {
-        printable.printDefense();
-    }
-
-    @Override
-    public void printInventory() {
-        printable.printInventory();
-    }
-
-    @Override
-    public void printInfoFight() {
-        printable.printInfoFight();
-    }
-
-    @Override
     public void halt() {
         unitBaseFunctional.halt();
     }
 
     public UnitBaseFunctional getUnitBaseFunctional() {
         return unitBaseFunctional;
-    }
-
-    public Printable getPrintable() {
-        return printable;
     }
 
     public StateHolder getStateHolder() {
