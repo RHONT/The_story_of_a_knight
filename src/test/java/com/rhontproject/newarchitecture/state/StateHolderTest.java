@@ -1,13 +1,13 @@
 package com.rhontproject.newarchitecture.state;
 
-import com.rhontproject.abstractUnitParent.Unit;
-import com.rhontproject.fabrica.UnitFabric;
+import com.rhontproject.unit.Unit;
+import com.rhontproject.fabrics.UnitFabric;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rhontproject.newarchitecture.state.NameStates.*;
+import static com.rhontproject.unit.Statless.NameStates.*;
 
 class StateHolderTest {
 

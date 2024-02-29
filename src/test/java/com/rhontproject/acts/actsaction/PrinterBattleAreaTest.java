@@ -1,15 +1,15 @@
 package com.rhontproject.acts.actsaction;
 
-import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.unit.Unit;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 
-import static com.rhontproject.fabrica.UnitFabric.createKnight;
-import static com.rhontproject.fabrica.UnitFabric.createZombie;
-import static com.rhontproject.stateMethods.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.UnitFabric.createKnight;
+import static com.rhontproject.fabrics.UnitFabric.createZombie;
+import static com.rhontproject.fabrics.GlobalVariable.messageService;
 
 class PrinterBattleAreaTest {
 

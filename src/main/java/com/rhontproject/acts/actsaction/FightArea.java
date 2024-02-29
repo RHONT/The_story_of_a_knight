@@ -1,6 +1,6 @@
 package com.rhontproject.acts.actsaction;
 
-import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.unit.Unit;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static com.rhontproject.stateMethods.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.GlobalVariable.messageService;
 import static java.lang.System.*;
 @Component
 public final class FightArea {

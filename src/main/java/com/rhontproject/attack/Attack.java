@@ -1,6 +1,6 @@
 package com.rhontproject.attack;
 
-import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.unit.Unit;
 
 public interface Attack {
     void attacking(Unit attacking, Unit victim);

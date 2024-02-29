@@ -1,6 +1,6 @@
 package com.rhontproject;
 
-import static com.rhontproject.fabrica.ActsFabric.*;
+import static com.rhontproject.fabrics.ActsFabric.*;
 
 public class Battle_area {
     public static void main(String[] args) {

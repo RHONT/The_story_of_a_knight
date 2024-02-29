@@ -4,8 +4,8 @@ import com.rhontproject.acts.actsaction.FightArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static com.rhontproject.fabrica.UnitFabric.createZombie;
-import static com.rhontproject.stateMethods.SystemUtility.printFromFile;
+import static com.rhontproject.fabrics.UnitFabric.createZombie;
+import static com.rhontproject.service.SystemUtility.printFromFile;
 
 @Component
 public class Act_2 extends Act {

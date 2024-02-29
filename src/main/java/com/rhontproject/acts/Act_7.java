@@ -4,7 +4,7 @@
 //import static com.rhontproject.fabrica.ActsFabric.halt;
 //import static com.rhontproject.fabrica.ActsFabric.levelUp;
 //import static com.rhontproject.fabrica.UnitFabric.createKnightDark;
-//import static com.rhontproject.stateMethods.SystemUtility.*;
+//import static com.rhontproject.service.SystemUtility.*;
 //
 //public class Act_7 extends Act {
 //    @Override

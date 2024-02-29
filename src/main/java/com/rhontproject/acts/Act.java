@@ -1,12 +1,11 @@
 package com.rhontproject.acts;
 
-import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.unit.Unit;
 import com.rhontproject.acts.actsaction.StateGame;
-import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-import static com.rhontproject.fabrica.UnitFabric.*;
+import static com.rhontproject.fabrics.UnitFabric.*;
 
 public abstract class Act {
     protected static final Scanner scanner=new Scanner(System.in);

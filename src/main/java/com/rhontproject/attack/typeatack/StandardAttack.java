@@ -1,15 +1,15 @@
 package com.rhontproject.attack.typeatack;
 
 import com.rhontproject.attack.Attack;
-import com.rhontproject.newarchitecture.state.NameStates;
-import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.unit.Statless.NameStates;
+import com.rhontproject.unit.Unit;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import static com.rhontproject.stateMethods.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.GlobalVariable.messageService;
 import static java.lang.System.*;
 
 @Component
@@ -26,7 +26,7 @@ public class StandardAttack implements Attack {
         this.attacking = attacking;
         this.victim = victim;
         this.attacking.getStateHolder().activate();
-        attackPower = this.attacking.attribute.curHealth[4];
+        attackPower = this.attacking.getWeapon().getPower();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {

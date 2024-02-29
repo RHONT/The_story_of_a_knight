@@ -6,7 +6,7 @@
 //
 //import static com.rhontproject.acts.actsaction.FightArea.fight;
 //import static com.rhontproject.fabrica.UnitFabric.createOutLowBridge;
-//import static com.rhontproject.stateMethods.SystemUtility.*;
+//import static com.rhontproject.service.SystemUtility.*;
 //import static java.lang.System.*;
 //
 //public class Act_6 extends Act {

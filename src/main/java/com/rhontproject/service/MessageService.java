@@ -1,7 +1,7 @@
 package com.rhontproject.service;
 
-import com.rhontproject.abstractUnitParent.Unit;
-import com.rhontproject.units.Knight_In_The_Dark;
+import com.rhontproject.unit.Unit;
+import com.rhontproject.fabrics.units.Knight_In_The_Dark;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -62,12 +62,6 @@ public class MessageService {
                 " Поножи: " + unit.attribute.defense[3]);
     }
 
-
-
-
-
-
-
     /**
      * Перед нанесением удара показывает текущие состояния для каждого юнита:
      *
@@ -121,7 +115,7 @@ public class MessageService {
             return converted;
         }
 
-        converted[5] = String.valueOf(unit.attribute.curHealth[4]);
+        converted[5] = String.valueOf(unit.getWeapon().getPower());
         for (int i = 0; i < 4; i++) {
             converted[i + 1] = String.format(
                     "%-3s/%-3s [%s]",

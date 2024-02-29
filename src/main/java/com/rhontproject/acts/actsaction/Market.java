@@ -1,12 +1,12 @@
 package com.rhontproject.acts.actsaction;
 
-import com.rhontproject.abstractUnitParent.Unit;
+import com.rhontproject.unit.Unit;
 import com.rhontproject.acts.Act;
 import com.rhontproject.enums.MarketEnum;
 
 import java.util.Scanner;
 
-import static com.rhontproject.stateMethods.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.GlobalVariable.messageService;
 import static java.lang.System.*;
 
 public final class Market extends Act {
