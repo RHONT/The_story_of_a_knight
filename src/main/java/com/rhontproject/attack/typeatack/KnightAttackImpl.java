@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 import java.util.Scanner;
 
+import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 import static java.lang.System.*;
 
 @Component
 @Scope("prototype")
 public class KnightAttackImpl implements Attack {
-    @Autowired
-    MessageService messageService;
+
     private Unit attacking;
     private Unit victim;
     int attackPower;
@@ -100,6 +100,7 @@ public class KnightAttackImpl implements Attack {
     private void getTheShield() {
         attacking.inventory[0] += 2;
         attacking.inventory[1] -= 2;
+
         messageService.add(attacking.name + " достали щит!");
     }
 

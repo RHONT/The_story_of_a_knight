@@ -11,11 +11,10 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 import static com.rhontproject.acts.actsaction.PrinterBattleArea.printStandartBattleArea;
+import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 import static java.lang.System.*;
 @Component
 public final class FightArea {
-    @Autowired
-    MessageService messageService;
 
     public void fight(Unit hero, Unit... enemy) {
         int round = 0;

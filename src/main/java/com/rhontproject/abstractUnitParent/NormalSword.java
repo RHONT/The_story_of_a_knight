@@ -31,17 +31,17 @@ public class NormalSword extends Weapon {
         int damage;
         if (isIncludeInRange()) {
             damage = hitTheEnemy();
-            info= "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
+            info = master.name + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                     " Противник смог отразить " + (Math.max(power - damage, 0)) + " урона";
         } else {
             if (isIncludeInRangeLastTry()) {
                 indexTargetBody = missiles_attack(indexTargetBody);
                 power /= 2;
                 damage = hitTheEnemy();
-                info= master.name + "промазал, но чудом попал по " + parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
-                        "Вы нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
+                info = master.name + "промазал, но чудом попал по " + parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
+                        master.name + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                         " Противник смог отразить " + (power - damage) + " урона";
-            } else info= master.name + " промахнулся!";
+            } else info = master.name + " промахнулся!";
         }
     }
 

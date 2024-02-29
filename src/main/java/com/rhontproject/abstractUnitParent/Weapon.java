@@ -4,14 +4,13 @@ import com.rhontproject.MessageService;
 import com.rhontproject.newarchitecture.state.NameStates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import static com.rhontproject.stateMethods.GlobalVariable.messageService;
 
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
 @Component
 public abstract class Weapon {
-    @Autowired
-    MessageService messageService;
     protected Unit master;
     protected Unit victim;
     protected int power;
