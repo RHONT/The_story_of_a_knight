@@ -1,4 +1,4 @@
-package com.rhontproject.enums;
+package com.rhontproject.service.events;
 
 public enum MarketEnum {
     SHIELD(1, 200),

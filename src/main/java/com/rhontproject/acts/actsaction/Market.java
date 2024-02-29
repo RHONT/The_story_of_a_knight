@@ -2,7 +2,7 @@ package com.rhontproject.acts.actsaction;
 
 import com.rhontproject.unit.Unit;
 import com.rhontproject.acts.Act;
-import com.rhontproject.enums.MarketEnum;
+import com.rhontproject.service.events.MarketEnum;
 
 import java.util.Scanner;
 
