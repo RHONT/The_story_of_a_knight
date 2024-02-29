@@ -1,7 +1,7 @@
 package com.rhontproject.fabrica;
 
 import com.rhontproject.abstractUnitParent.Unit;
-import com.rhontproject.unit.*;
+import com.rhontproject.units.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Random;

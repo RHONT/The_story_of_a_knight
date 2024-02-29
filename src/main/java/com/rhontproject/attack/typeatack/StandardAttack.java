@@ -14,7 +14,7 @@ import static java.lang.System.*;
 
 @Component
 @Scope("prototype")
-public class KnightAttackImpl implements Attack {
+public class StandardAttack implements Attack {
 
     private Unit attacking;
     private Unit victim;

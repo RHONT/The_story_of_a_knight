@@ -1,4 +1,4 @@
-package com.rhontproject.unit;
+package com.rhontproject.units;
 
 import com.rhontproject.abstractUnitParent.BaseAttribute;
 import com.rhontproject.attack.Attack;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public
 class Knight_In_The_Dark extends Unit {
 
-    public Knight_In_The_Dark(@Qualifier("knightAttackImpl") Attack attack,
+    public Knight_In_The_Dark(@Qualifier("standardAttack") Attack attack,
                 @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional
                 , StateHolder stateHolder, BaseAttribute baseAttribute) {
         super(stateHolder, baseAttribute, attack, unitBaseFunctional);

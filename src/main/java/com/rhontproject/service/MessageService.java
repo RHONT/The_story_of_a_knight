@@ -1,7 +1,7 @@
 package com.rhontproject.service;
 
 import com.rhontproject.abstractUnitParent.Unit;
-import com.rhontproject.unit.Knight_In_The_Dark;
+import com.rhontproject.units.Knight_In_The_Dark;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

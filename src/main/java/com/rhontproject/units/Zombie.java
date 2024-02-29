@@ -1,5 +1,4 @@
-package com.rhontproject.unit;
-
+package com.rhontproject.units;
 
 import com.rhontproject.abstractUnitParent.BaseAttribute;
 import com.rhontproject.abstractUnitParent.Weapon;
@@ -10,23 +9,30 @@ import com.rhontproject.abstractUnitParent.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.Random;
+import javax.annotation.PostConstruct;
 
-
-@Component("Knight")
-public class Knight extends Unit {
-    public Knight(@Qualifier("knightAttackImpl") Attack attack,
-                  @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional,
-                  StateHolder stateHolder, BaseAttribute baseAttribute) {
+@Component("Zombie")
+@Scope("prototype")
+public class Zombie extends Unit {
+    public Zombie(@Qualifier("standardAttack") Attack attack,
+                  @Qualifier("unitStandardBaseImpl") UnitBaseFunctional unitBaseFunctional
+                  , StateHolder stateHolder, BaseAttribute baseAttribute) {
         super(stateHolder, baseAttribute, attack, unitBaseFunctional);
-        this.name="Сэр Томас";
-        this.isHero=true;
+        this.name = "Внезапный мертвец";
+        this.isHero = false;
+    }
+
+    @PostConstruct
+    private void init() {
+        this.isHero=false;
     }
 
     @Override
     public void setUnit(Unit unit) {
+
     }
 
     @Autowired
@@ -38,7 +44,8 @@ public class Knight extends Unit {
 
     @Autowired
     @Override
-    public void setHealth(@Value("${knight}") int[] health) {
+    public void setHealth(@Value("${zombie}") int[] health) {
         this.attribute.setCurHealth(health);
     }
 }
+

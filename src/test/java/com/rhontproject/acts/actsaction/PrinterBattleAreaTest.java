@@ -25,12 +25,8 @@ class PrinterBattleAreaTest {
         Formatter formatter = new Formatter(sb);
         Unit zombie = createZombie();
         int g=100;
-
         formatter.format("%"+g+"s%10s%10s", zombie.name,zombie.attribute.curHealth[0]+"/"+zombie.attribute.baseHealth[0],zombie.attribute.defense[0]);
         System.out.println(sb);
-//        formatter.format("%-10s\n", "stack");
-
-
     }
 
     @Test

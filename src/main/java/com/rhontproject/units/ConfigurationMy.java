@@ -1,4 +1,4 @@
-package com.rhontproject.unit;
+package com.rhontproject.units;
 
 import com.rhontproject.abstractUnitParent.NormalSword;
 import com.rhontproject.abstractUnitParent.Weapon;
