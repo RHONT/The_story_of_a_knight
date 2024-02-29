@@ -1,7 +1,7 @@
 package com.rhontproject.fabrics.units;
 
 import com.rhontproject.attack.weapons.NormalSword;
-import com.rhontproject.attack.weapons.Weapon;
+import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.Statless.NameStates;
 import com.rhontproject.unit.Statless.StateHolder;
 import org.springframework.context.annotation.*;
@@ -12,6 +12,12 @@ public class ConfigurationMy {
     @Scope("prototype")
     public StateHolder getState(){
         return new StateHolder();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Weapon getClub(){
+        return new NormalSword(11);
     }
 
     @Bean

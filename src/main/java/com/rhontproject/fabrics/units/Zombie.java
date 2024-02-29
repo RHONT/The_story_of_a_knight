@@ -1,8 +1,8 @@
 package com.rhontproject.fabrics.units;
 
 import com.rhontproject.unit.base.BaseAttribute;
-import com.rhontproject.attack.weapons.Weapon;
-import com.rhontproject.attack.Attack;
+import com.rhontproject.attack.Weapon;
+import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +14,17 @@ import org.springframework.stereotype.Component;
 @Component("Zombie")
 @Scope("prototype")
 public class Zombie extends Unit {
-    public Zombie(@Qualifier("standardAttack") Attack attack,
+    public Zombie(@Qualifier("standardDuelScenarioImpl") DuelScenario duelScenario,
                   StateHolder stateHolder,
                   BaseAttribute baseAttribute) {
-        super(stateHolder, baseAttribute, attack);
+        super(stateHolder, baseAttribute, duelScenario);
         this.name = "Внезапный мертвец";
         this.isHero = false;
     }
 
     @Autowired
     @Override
-    public void setWeapon(@Qualifier("getKnightFireWeapon") Weapon weapon) {
+    public void setWeapon(@Qualifier("getClub") Weapon weapon) {
         super.setWeapon(weapon);
         this.getWeapon().setMaster(this);
     }

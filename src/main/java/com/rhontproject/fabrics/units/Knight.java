@@ -2,8 +2,8 @@ package com.rhontproject.fabrics.units;
 
 
 import com.rhontproject.unit.base.BaseAttribute;
-import com.rhontproject.attack.weapons.Weapon;
-import com.rhontproject.attack.Attack;
+import com.rhontproject.attack.Weapon;
+import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 
 @Component("Knight")
 public class Knight extends Unit {
-    public Knight(@Qualifier("standardAttack") Attack attack,
+    public Knight(@Qualifier("standardDuelScenarioImpl") DuelScenario duelScenario,
                   StateHolder stateHolder, BaseAttribute baseAttribute) {
-        super(stateHolder, baseAttribute, attack);
+        super(stateHolder, baseAttribute, duelScenario);
         this.name="Сэр Томас";
         this.isHero=true;
     }

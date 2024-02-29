@@ -1,7 +1,7 @@
 package com.rhontproject.unit;
 
-import com.rhontproject.attack.Attack;
-import com.rhontproject.attack.weapons.Weapon;
+import com.rhontproject.attack.DuelScenario;
+import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.base.BaseAttribute;
 import com.rhontproject.unit.base.Inventorys;
@@ -31,12 +31,12 @@ public abstract class Unit {
     public final BaseAttribute attribute;
     private Weapon weapon;
     private Inventorys inventorys;
-    private Attack attack;
+    private DuelScenario duelScenario;
 
-    public Unit(StateHolder stateHolder, BaseAttribute attribute, Attack attack) {
+    public Unit(StateHolder stateHolder, BaseAttribute attribute, DuelScenario duelScenario) {
         this.stateHolder = stateHolder;
         this.attribute = attribute;
-        this.attack = attack;
+        this.duelScenario = duelScenario;
         stateHolder.setUnit(this);
     }
 
@@ -44,7 +44,7 @@ public abstract class Unit {
      * метод, который реализуют интерфейсы из каталога TypesOfAttack
      */
     public void attack(Unit victim) {
-        attack.attacking(this, victim);
+        duelScenario.attacking(this, victim);
     }
 
     public StateHolder getStateHolder() {

@@ -1,6 +1,6 @@
 package com.rhontproject.attack.typeatack;
 
-import com.rhontproject.attack.Attack;
+import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.NameStates;
 import com.rhontproject.unit.Unit;
 import org.springframework.context.annotation.Scope;
@@ -14,7 +14,7 @@ import static java.lang.System.*;
 
 @Component
 @Scope("prototype")
-public class StandardAttack implements Attack {
+public class StandardDuelScenarioImpl implements DuelScenario {
 
     private Unit attacking;
     private Unit victim;

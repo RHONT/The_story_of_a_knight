@@ -1,7 +1,7 @@
 package com.rhontproject.fabrics.units;
 
 import com.rhontproject.unit.base.BaseAttribute;
-import com.rhontproject.attack.Attack;
+import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ public
 class Knight_In_The_Dark extends Unit {
 
     public Knight_In_The_Dark(
-            @Qualifier("standardAttack") Attack attack,
+            @Qualifier("standardDuelScenarioImpl") DuelScenario duelScenario,
             StateHolder stateHolder,
             BaseAttribute baseAttribute) {
-        super(stateHolder, baseAttribute, attack);
+        super(stateHolder, baseAttribute, duelScenario);
         this.name = "Скелет во тьме";
     }
 

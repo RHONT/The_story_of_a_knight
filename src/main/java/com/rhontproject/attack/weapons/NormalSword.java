@@ -1,5 +1,6 @@
 package com.rhontproject.attack.weapons;
 
+import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.Statless.NameStates;
 import java.util.Random;
@@ -8,7 +9,6 @@ public class NormalSword extends Weapon {
     int damageMultiplier;
     int indexTargetBody;
     int chanceToHitSelectedPartBody;
-
 
     public NormalSword(int power) {
         super(power);
