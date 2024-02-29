@@ -37,6 +37,7 @@ public final class PrinterBattleArea {
                 formatter.format("\n");
             }
         }
+        sb.append("\n").append(heroAttribute(listUnit.get(0)));
         return sb.toString();
     }
 
@@ -81,5 +82,14 @@ public final class PrinterBattleArea {
         String header = "*".repeat(5) + "ROUND " + round + "*".repeat(94) + "\n";
         sb.append(header);
         return sb;
+    }
+
+    private static String heroAttribute(Unit hero) {
+        return "Атакуй! 1 - голова "
+                + (hero.chance_to_attack - 10)
+                + "% | 2 -тело " + (hero.chance_to_attack)
+                + "% | 3 - руки " + (hero.chance_to_attack - 20)
+                + "% | 4 - ноги " + (hero.chance_to_attack - 20)
+                + "% | Символ  s = (щит)  m = (коктейль Молотова)  p=(Зелье исцеления)";
     }
 }

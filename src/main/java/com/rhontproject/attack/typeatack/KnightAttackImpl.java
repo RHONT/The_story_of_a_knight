@@ -30,7 +30,6 @@ public class KnightAttackImpl implements Attack {
         this.victim = victim;
         this.attacking.getStateHolder().activate();
         attackPower = this.attacking.attribute.curHealth[4];
-        out.println(battleOption());
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -82,14 +81,7 @@ public class KnightAttackImpl implements Attack {
         }
     }
 
-    private String battleOption() {
-        return "Атакуй! 1 - голова "
-                + (attacking.chance_to_attack - 10)
-                + "% | 2 -тело " + (attacking.chance_to_attack)
-                + "% | 3 - руки " + (attacking.chance_to_attack - 20)
-                + "% | 4 - ноги " + (attacking.chance_to_attack - 20)
-                + "% | Символ  s = (щит)  m = (коктейль Молотова)  p=(Зелье исцеления)";
-    }
+
 
     private void activeVortex() {
         attacking.vortex = true;
@@ -101,7 +93,7 @@ public class KnightAttackImpl implements Attack {
         attacking.inventory[0] += 2;
         attacking.inventory[1] -= 2;
 
-        messageService.add(attacking.name + " достали щит!");
+        messageService.add(attacking.name + " достал щит!");
     }
 
     private void drinkPotion(int powerPotion) {
@@ -109,7 +101,7 @@ public class KnightAttackImpl implements Attack {
             attacking.attribute.curHealth[i] += powerPotion;
         }
         attacking.inventory[3] -= 1;
-        messageService.add(attacking.name + " исцелились на " + powerPotion + " очков");
+        messageService.add(attacking.name + " исцелился на " + powerPotion + " очков");
     }
 }
 
