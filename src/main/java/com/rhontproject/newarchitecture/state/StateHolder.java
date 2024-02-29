@@ -20,8 +20,6 @@ public class StateHolder {
 
     public void activate(){
         stateActionList.forEach(e->e.action(unit));
-        System.out.println(unit.info_state);
-        unit.info_state="";
     }
 
     public void activeSelectState(NameStates nameStates){

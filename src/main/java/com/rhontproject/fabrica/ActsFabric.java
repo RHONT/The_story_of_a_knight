@@ -4,9 +4,11 @@ import com.rhontproject.acts.*;
 import com.rhontproject.acts.actsaction.Halt;
 import com.rhontproject.acts.actsaction.LevelUp;
 import com.rhontproject.acts.actsaction.Market;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public final class ActsFabric {
+    static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     private final static Halt halt = new Halt();
     private final static LevelUp levelUp = new LevelUp();
     private final static Market market = new Market();
@@ -15,15 +17,18 @@ public final class ActsFabric {
     }
 
     public static void act_1() {
-        new Act_1().run();
+        Act act = (Act) context.getBean("act_1");
+        act.run();
     }
 
     public static void act_2() {
-        new Act_2().run();
+        Act act = (Act) context.getBean("act_2");
+        act.run();
     }
 
     public static void act_3() {
-        new Act_3().run();
+        Act act = (Act) context.getBean("act_3");
+        act.run();
     }
 
 //    public static void act_4() {

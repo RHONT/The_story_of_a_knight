@@ -1,7 +1,10 @@
 package com.rhontproject.acts;
 
+import org.springframework.stereotype.Component;
+
 import static com.rhontproject.stateMethods.SystemUtility.printFromFile;
 
+@Component
 public final class Act_1 extends Act {
     @Override
     public void run() {

@@ -24,8 +24,6 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
     public boolean isHero;
     public boolean vortex = false;
     public String name;
-    public String info_fight = "";
-    public String info_state = "";
     public int chance_to_attack = 80;
     public int[] inventory = {0, 2, 1, 1};
     public int money = new Random().nextInt(150) + 75;
@@ -49,18 +47,7 @@ public abstract class Unit implements UnitBaseFunctional, Printable {
         stateHolder.setUnit(this);
     }
 
-    /**
-     * Мапа с нумерацией частей тела,
-     * вспомогательный метод
-     */
-    public static String Parts_of_body(int a) {
-        Map<Integer, String> parts_of_body = new TreeMap<>();
-        parts_of_body.put(1, "голове");
-        parts_of_body.put(2, "телу");
-        parts_of_body.put(3, "рукам");
-        parts_of_body.put(4, "ногам");
-        return parts_of_body.get(a);
-    }
+
 
     /**
      * метод, который реализуют интерфейсы из каталога TypesOfAttack

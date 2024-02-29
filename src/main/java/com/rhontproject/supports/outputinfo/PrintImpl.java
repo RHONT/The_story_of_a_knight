@@ -27,7 +27,7 @@ public class PrintImpl implements Printable{
                 " Тело: " + unit.attribute.curHealth[1] + "/" + unit.attribute.baseHealth[1] + " [" + unit.attribute.defense[1] + "]" +
                 " Руки: " + unit.attribute.curHealth[2] + "/" + unit.attribute.baseHealth[2] + " [" + unit.attribute.defense[2] + "]" +
                 " Ноги: " + unit.attribute.curHealth[3] + "/" + unit.attribute.baseHealth[3] + " [" + unit.attribute.defense[3] + "]" +
-                " Сила оружия: " + unit.attribute.curHealth[4]);
+                " Сила оружия: " + unit.getWeapon().getPower());
         for (int i = 0; i < info_str.length(); i++) {
             spec_char += "-";
         }
@@ -43,8 +43,6 @@ public class PrintImpl implements Printable{
      */
     @Override
     public void printInfoFight() {
-        out.println(unit.info_fight);
-        unit.info_fight = "";
     }
     @Override
     public void printInventory() {

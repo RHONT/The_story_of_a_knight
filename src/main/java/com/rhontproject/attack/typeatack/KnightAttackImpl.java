@@ -1,9 +1,11 @@
 package com.rhontproject.attack.typeatack;
 
+import com.rhontproject.MessageService;
 import com.rhontproject.attack.Attack;
 import com.rhontproject.newarchitecture.state.NameStates;
 import com.rhontproject.unit.*;
 import com.rhontproject.abstractUnitParent.Unit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,8 @@ import static java.lang.System.*;
 @Component
 @Scope("prototype")
 public class KnightAttackImpl implements Attack {
+    @Autowired
+    MessageService messageService;
     private Unit attacking;
     private Unit victim;
     int attackPower;
@@ -89,14 +93,14 @@ public class KnightAttackImpl implements Attack {
 
     private void activeVortex() {
         attacking.vortex = true;
-        attacking.info_fight = "Вы разрываете врагов мощным порывом ветра! "
-                + "Урон каждому составил по 40 единиц!";
+        messageService.add(attacking.name + " разрываете врагов мощным порывом ветра! "
+                + "Урон каждому составил по 40 единиц!");
     }
 
     private void getTheShield() {
         attacking.inventory[0] += 2;
         attacking.inventory[1] -= 2;
-        attacking.info_fight = "Вы достали щит!";
+        messageService.add(attacking.name + " достали щит!");
     }
 
     private void drinkPotion(int powerPotion) {
@@ -104,7 +108,7 @@ public class KnightAttackImpl implements Attack {
             attacking.attribute.curHealth[i] += powerPotion;
         }
         attacking.inventory[3] -= 1;
-        attacking.info_fight = "Вы исцелились на " + powerPotion + " очков";
+        messageService.add(attacking.name + " исцелились на " + powerPotion + " очков");
     }
 }
 

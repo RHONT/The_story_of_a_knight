@@ -2,6 +2,7 @@ package com.rhontproject.acts;
 
 import com.rhontproject.abstractUnitParent.Unit;
 import com.rhontproject.acts.actsaction.StateGame;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 

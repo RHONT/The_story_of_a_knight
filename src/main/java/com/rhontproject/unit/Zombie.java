@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component("Zombie")
 @Scope("prototype")
 public class Zombie extends Unit {
@@ -21,6 +23,11 @@ public class Zombie extends Unit {
                   @Qualifier("printImpl") Printable printable, StateHolder stateHolder, BaseAttribute baseAttribute) {
         super(stateHolder, baseAttribute, attack, unitBaseFunctional, printable);
         this.name = "Внезапный мертвец";
+        this.isHero = false;
+    }
+
+    @PostConstruct
+    private void init() {
         this.isHero=false;
     }
 

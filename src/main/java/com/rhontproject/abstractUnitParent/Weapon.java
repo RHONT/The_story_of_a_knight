@@ -1,17 +1,23 @@
 package com.rhontproject.abstractUnitParent;
 
+import com.rhontproject.MessageService;
 import com.rhontproject.newarchitecture.state.NameStates;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
-
+@Component
 public abstract class Weapon {
+    @Autowired
+    MessageService messageService;
     protected Unit master;
     protected Unit victim;
     protected int power;
     private NameStates positiveState;
     private NameStates attackState;
+    protected String info;
 
 
 
@@ -30,27 +36,30 @@ public abstract class Weapon {
         this.attackState = attackState;
     }
 
-    private void applyNegativeEffect(Unit enemy){
+    private void applyNegativeEffect(Unit enemy) {
         enemy.getStateHolder().activeSelectState(attackState);
     }
 
-    private void applyPositiveEffect(Unit self){
+    private void applyPositiveEffect(Unit self) {
         self.getStateHolder().setUnit(self);
     }
-    public void attackVictim(int partBody,Unit enemy){
-        if (attackState!=null) {
+
+    public void attackVictim(int partBody, Unit enemy) {
+        if (attackState != null) {
             applyNegativeEffect(enemy);
         }
-        if (positiveState!=null) {
+        if (positiveState != null) {
             applyPositiveEffect(master);
         }
-        attackPartBody(partBody,enemy);
+        attackPartBody(partBody, enemy);
+        messageService.add(this.info);
+        info="";
     }
 
-    abstract protected void attackPartBody(int partBody,Unit enemy);
+    abstract protected void attackPartBody(int partBody, Unit enemy);
 
-    private void upPower(int value){
-        power+=value;
+    private void upPower(int value) {
+        power += value;
     }
 
     public void setMaster(Unit master) {
@@ -101,5 +110,11 @@ public abstract class Weapon {
         return tempSelectedPartBody;
     }
 
+    public int getPower() {
+        return power;
+    }
 
+    public String getInfo() {
+        return info;
+    }
 }
