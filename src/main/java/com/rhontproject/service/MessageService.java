@@ -2,6 +2,7 @@ package com.rhontproject.service;
 
 import com.rhontproject.unit.Unit;
 import com.rhontproject.fabrics.units.Knight_In_The_Dark;
+import com.rhontproject.unit.base.InventoryEnum;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.Formatter;
 import java.util.List;
 
+import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 import static java.lang.System.out;
 
 @Component
@@ -91,7 +93,7 @@ public class MessageService {
                 formatter.format("\n");
             }
         }
-        sb.append("\n").append(heroAttribute(listUnit.get(0)));
+        sb.append("\n").append(heroAttribute());
         return sb.toString();
     }
 
@@ -138,12 +140,33 @@ public class MessageService {
         return sb;
     }
 
-    private String heroAttribute(Unit hero) {
+    private String heroAttribute() {
+        StringBuilder sb =new StringBuilder();
+        sb.append(chancesToAttack());
+        sb.append("\n");
+        sb.append(inventory());
+
+        return sb.toString();
+    }
+
+    private String chancesToAttack(){
         return "Атакуй! 1 - голова "
-                + (hero.chance_to_attack - 10)
-                + "% | 2 -тело " + (hero.chance_to_attack)
-                + "% | 3 - руки " + (hero.chance_to_attack - 20)
-                + "% | 4 - ноги " + (hero.chance_to_attack - 20)
-                + "% | Символ  s = (щит)  m = (коктейль Молотова)  p=(Зелье исцеления)";
+                + (knight.chance_to_attack - 10)
+                + "% | 2 -тело " + (knight.chance_to_attack)
+                + "% | 3 - руки " + (knight.chance_to_attack - 20)
+                + "% | 4 - ноги " + (knight.chance_to_attack - 20);
+    }
+
+    private String inventory(){
+        StringBuilder sb =new StringBuilder();
+        for (var element: InventoryEnum.values()) {
+            if (knight.getInventorySet().contains(element)) {
+                sb.append(element.getName());
+                sb.append(" - ");
+                sb.append(knight.getInventorySet().get(element));
+                sb.append("  ");
+            }
+        }
+        return sb.toString();
     }
 }

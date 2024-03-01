@@ -4,7 +4,7 @@ import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.base.BaseAttribute;
-import com.rhontproject.unit.base.Inventorys;
+import com.rhontproject.unit.base.Inventory;
 
 import java.util.*;
 
@@ -30,12 +30,13 @@ public abstract class Unit {
     public int money = new Random().nextInt(150) + 75;
     public final BaseAttribute attribute;
     private Weapon weapon;
-    private Inventorys inventorys;
+    private final Inventory inventorySet;
     private DuelScenario duelScenario;
 
-    public Unit(StateHolder stateHolder, BaseAttribute attribute, DuelScenario duelScenario) {
+    public Unit(StateHolder stateHolder, BaseAttribute attribute, Inventory inventorySet, DuelScenario duelScenario) {
         this.stateHolder = stateHolder;
         this.attribute = attribute;
+        this.inventorySet = inventorySet;
         this.duelScenario = duelScenario;
         stateHolder.setUnit(this);
     }
@@ -97,5 +98,9 @@ public abstract class Unit {
     }
     protected void setHealth(int[] health) {
         this.attribute.setCurHealth(health);
+    }
+
+    public Inventory getInventorySet() {
+        return inventorySet;
     }
 }

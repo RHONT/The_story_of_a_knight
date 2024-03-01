@@ -5,6 +5,7 @@ import com.rhontproject.attack.Weapon;
 import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.Unit;
+import com.rhontproject.unit.base.Inventory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,8 +17,8 @@ import org.springframework.stereotype.Component;
 public class Zombie extends Unit {
     public Zombie(@Qualifier("standardDuelScenarioImpl") DuelScenario duelScenario,
                   StateHolder stateHolder,
-                  BaseAttribute baseAttribute) {
-        super(stateHolder, baseAttribute, duelScenario);
+                  BaseAttribute baseAttribute, Inventory inventorySet) {
+        super(stateHolder, baseAttribute, inventorySet, duelScenario);
         this.name = "Внезапный мертвец";
         this.isHero = false;
     }
