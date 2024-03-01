@@ -4,7 +4,7 @@
 //
 //import java.util.Arrays;
 //
-//import static com.rhontproject.acts.actsaction.FightArea.fight;
+//import static com.rhontproject.service.events.FightArea.fight;
 //import static com.rhontproject.fabrica.UnitFabric.createOutLowBridge;
 //import static com.rhontproject.service.SystemUtility.*;
 //import static java.lang.System.*;

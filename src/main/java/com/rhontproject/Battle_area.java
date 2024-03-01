@@ -10,10 +10,10 @@ public class Battle_area {
         halt();
         levelUp();
         market();
+//
+//        act_3();
 
-        act_3();
-
-//        act_4();
+        act_4();
 //
 //        act_5();
 //        halt();

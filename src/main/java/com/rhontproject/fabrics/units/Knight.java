@@ -19,6 +19,7 @@ public class Knight extends Unit {
         super(stateHolder, baseAttribute, duelScenario);
         this.name="Сэр Томас";
         this.isHero=true;
+
     }
 
     @Autowired
@@ -32,5 +33,6 @@ public class Knight extends Unit {
     @Override
     public void setHealth(@Value("${knight}") int[] health) {
         this.attribute.setCurHealth(health);
+        this.attribute.setDefense(30,30,30,30);
     }
 }

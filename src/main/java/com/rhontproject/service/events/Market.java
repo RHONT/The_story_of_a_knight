@@ -1,22 +1,18 @@
-package com.rhontproject.acts.actsaction;
+package com.rhontproject.service.events;
 
+import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.unit.Unit;
-import com.rhontproject.acts.Act;
-import com.rhontproject.service.events.MarketEnum;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-import static com.rhontproject.fabrics.GlobalVariable.messageService;
-import static java.lang.System.*;
+import static java.lang.System.in;
+import static java.lang.System.out;
+@Component
+public class Market {
 
-public final class Market extends Act {
-    @Override
-    public void run() {
-        messageService.printInventory(knight);
-        market_place(knight, stateGame);
-    }
 
-    private void market_place(Unit knight, StateGame stateGame) {
+    public void market_place(Unit knight, StateGame stateGame) {
         out.println("Вас встречает трактирщик. На его прилавке скучают вещи, вы внимательно смотрите на них.");
         out.println(MarketEnum.SHIELD.getItemNumber() + " Щит | Цена: " + MarketEnum.SHIELD.getCost());
         out.println(MarketEnum.POTION_OF_HEALTH.getItemNumber() + " Зелье здоровья | Цена: " + MarketEnum.POTION_OF_HEALTH.getCost());

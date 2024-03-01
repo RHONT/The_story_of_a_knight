@@ -1,4 +1,4 @@
-package com.rhontproject.acts.actsaction;
+package com.rhontproject.service.events;
 
 import com.rhontproject.unit.Unit;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static com.rhontproject.fabrics.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static java.lang.System.*;
 @Component
 public final class FightArea {

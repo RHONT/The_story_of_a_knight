@@ -1,19 +1,18 @@
 package com.rhontproject.fabrics;
 
 import com.rhontproject.acts.*;
-import com.rhontproject.acts.actsaction.Halt;
-import com.rhontproject.acts.actsaction.LevelUp;
-import com.rhontproject.acts.actsaction.Market;
+import com.rhontproject.service.EventKnightService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public final class ActsFabric {
     static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-    private final static Halt halt = new Halt();
-    private final static LevelUp levelUp = new LevelUp();
-    private final static Market market = new Market();
 
-    private ActsFabric() {
+private static EventKnightService eventKnightService;
+
+    public ActsFabric(EventKnightService eventKnightService) {
+        ActsFabric.eventKnightService = eventKnightService;
     }
 
     public static void act_1() {
@@ -31,9 +30,10 @@ public final class ActsFabric {
         act.run();
     }
 
-//    public static void act_4() {
-//        new Act_4().run();
-//    }
+    public static void act_4() {
+        Act act4 = (Act) context.getBean("act_4");
+        act4.run();
+    }
 //
 //    public static void act_5() {
 //        new Act_5().run();
@@ -51,14 +51,14 @@ public final class ActsFabric {
 //    }
 
     public static void halt() {
-        halt.run();
+        eventKnightService.halt();
     }
 
     public static void levelUp() {
-        levelUp.run();
+        eventKnightService.levelUp();
     }
 
     public static void market() {
-        market.run();
+        eventKnightService.market();
     }
 }

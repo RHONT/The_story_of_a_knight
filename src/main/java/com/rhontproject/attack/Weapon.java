@@ -3,7 +3,7 @@ package com.rhontproject.attack;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.Statless.NameStates;
 import org.springframework.stereotype.Component;
-import static com.rhontproject.fabrics.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 
 import java.util.Map;
 import java.util.Random;
@@ -56,7 +56,7 @@ public abstract class Weapon {
 
     abstract protected void attackPartBody(int partBody, Unit enemy);
 
-    private void upPower(int value) {
+    public void upPower(int value) {
         power += value;
     }
 

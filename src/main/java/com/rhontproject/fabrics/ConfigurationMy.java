@@ -1,4 +1,4 @@
-package com.rhontproject.fabrics.units;
+package com.rhontproject.fabrics;
 
 import com.rhontproject.attack.weapons.NormalSword;
 import com.rhontproject.attack.Weapon;

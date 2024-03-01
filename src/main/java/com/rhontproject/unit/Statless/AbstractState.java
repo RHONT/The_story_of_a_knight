@@ -1,7 +1,7 @@
 package com.rhontproject.unit.Statless;
 
 import com.rhontproject.service.MessageService;
-import com.rhontproject.fabrics.GlobalVariable;
+import com.rhontproject.fabrics.global.GlobalVariable;
 import org.springframework.stereotype.Component;
 
 @Component

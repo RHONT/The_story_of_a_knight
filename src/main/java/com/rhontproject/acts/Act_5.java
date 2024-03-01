@@ -1,6 +1,6 @@
 //package com.rhontproject.acts;
 //
-//import static com.rhontproject.acts.actsaction.FightArea.fight;
+//import static com.rhontproject.service.events.FightArea.fight;
 //import static com.rhontproject.fabrica.UnitFabric.*;
 //import static com.rhontproject.service.SystemUtility.printFromFile;
 //

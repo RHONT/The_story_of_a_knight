@@ -3,12 +3,14 @@ package com.rhontproject.attack.weapons;
 import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.Statless.NameStates;
+
 import java.util.Random;
 
 public class NormalSword extends Weapon {
     int damageMultiplier;
     int indexTargetBody;
     int chanceToHitSelectedPartBody;
+    int currentPower;
 
     public NormalSword(int power) {
         super(power);
@@ -20,6 +22,7 @@ public class NormalSword extends Weapon {
 
     @Override
     protected void attackPartBody(int partBody, Unit enemy) {
+        currentPower = power;
         indexTargetBody = partBody;
         damageMultiplier = getDamageMultiplier();
         victim = enemy;
@@ -30,15 +33,15 @@ public class NormalSword extends Weapon {
         if (isIncludeInRange()) {
             damage = hitTheEnemy();
             info = master.name + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
-                    " Противник смог отразить " + (Math.max(power - damage, 0)) + " урона";
+                    " Противник смог отразить " + (Math.max(currentPower - damage, 0)) + " урона";
         } else {
             if (isIncludeInRangeLastTry()) {
                 indexTargetBody = missiles_attack(indexTargetBody);
-                power /= 2;
+                currentPower /= 2;
                 damage = hitTheEnemy();
-                info = master.name + "промазал, но чудом попал по " + parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
+                info = master.name + " промазал, но чудом попал по " + parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
                         master.name + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
-                        " Противник смог отразить " + (power - damage) + " урона";
+                        " Противник смог отразить " + (currentPower - damage) + " урона";
             } else info = master.name + " промахнулся!";
         }
     }
@@ -56,7 +59,7 @@ public class NormalSword extends Weapon {
     }
 
     private int calcEffectiveDamage() {
-        return (int) (Math.round((power * damageMultiplier) * multiplierIncludingArmor()));
+        return (int) (Math.round((currentPower * damageMultiplier) * multiplierIncludingArmor()));
     }
 
     private void crushBody(int effectiveDamage) {
@@ -68,7 +71,7 @@ public class NormalSword extends Weapon {
     }
 
     private void crushArmor() {
-        victim.attribute.defense[indexTargetBody - 1] -= (int) Math.round(victim.attribute.defense[indexTargetBody - 1] > 0 ? power * 0.33 : 0);
+        victim.attribute.defense[indexTargetBody - 1] -= (int) Math.round(victim.attribute.defense[indexTargetBody - 1] > 0 ? currentPower * 0.33 : 0);
     }
 
     private void stabilizeArmorValue() {

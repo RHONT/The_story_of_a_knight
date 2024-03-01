@@ -1,5 +1,8 @@
-package com.rhontproject.acts.actsaction;
+package com.rhontproject.fabrics.global;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public final class StateGame {
     public boolean market_exit = false;                 // 0 - do in market, 1 - not do in market
     public boolean halt_param = false;                // Переключатель для привала(замыкает while)

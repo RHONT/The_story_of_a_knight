@@ -1,16 +1,18 @@
-//package com.rhontproject.acts;
-//
-//import static com.rhontproject.acts.actsaction.FightArea.fight;
-//import static com.rhontproject.fabrica.UnitFabric.createOutLowBig;
-//import static com.rhontproject.fabrica.UnitFabric.createOutLowSmall;
-//import static com.rhontproject.service.SystemUtility.printFromFile;
-//
-//public class Act_4 extends Act {
-//    @Override
-//    public void run() {
-//        printFromFile("out_law_story.txt");
-//        System.out.println("Нажмиет Enter для продолжения");
-//        scanner.nextLine();
-//        fight(knight, createOutLowSmall(), createOutLowBig());
-//    }
-//}
+package com.rhontproject.acts;
+
+
+import org.springframework.stereotype.Component;
+
+import static com.rhontproject.fabrics.UnitFabric.createZombie;
+import static com.rhontproject.service.SystemUtility.printFromFile;
+@Component
+public class Act_4 extends Act {
+    @Override
+    public void run() {
+        printFromFile("out_law_story.txt");
+        System.out.println("Нажмиет Enter для продолжения");
+        scanner.nextLine();
+//        fightArea.fight(knight, createOutLowSmall(), createOutLowBig());
+        eventKnightService.fightArea(createZombie(), createZombie());
+    }
+}

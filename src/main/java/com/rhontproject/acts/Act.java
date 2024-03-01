@@ -1,15 +1,21 @@
 package com.rhontproject.acts;
 
-import com.rhontproject.unit.Unit;
-import com.rhontproject.acts.actsaction.StateGame;
+import com.rhontproject.service.events.FightArea;
+import com.rhontproject.service.EventKnightService;
+import com.rhontproject.fabrics.global.StateGame;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-import static com.rhontproject.fabrics.UnitFabric.*;
-
+@Component
 public abstract class Act {
+    @Autowired
+    protected EventKnightService eventKnightService;
+
+    @Autowired
+    protected StateGame stateGame;
+
     protected static final Scanner scanner=new Scanner(System.in);
-    protected static final Unit knight= createKnight();
-    public static final StateGame stateGame = new StateGame();
     public abstract void run();
 }

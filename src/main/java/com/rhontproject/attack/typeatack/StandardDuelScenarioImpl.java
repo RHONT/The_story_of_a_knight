@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 import java.util.Scanner;
 
-import static com.rhontproject.fabrics.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static java.lang.System.*;
 
 @Component

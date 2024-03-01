@@ -9,7 +9,7 @@ import java.util.List;
 
 import static com.rhontproject.fabrics.UnitFabric.createKnight;
 import static com.rhontproject.fabrics.UnitFabric.createZombie;
-import static com.rhontproject.fabrics.GlobalVariable.messageService;
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 
 class PrinterBattleAreaTest {
 
