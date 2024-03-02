@@ -8,7 +8,7 @@ import java.util.EnumMap;
 @Component
 @Scope("prototype")
 public class Inventory {
-   private EnumMap<InventoryEnum,Integer> inventory=new EnumMap<>(InventoryEnum.class);
+   private final EnumMap<InventoryEnum,Integer> inventory=new EnumMap<>(InventoryEnum.class);
 
    public void add(InventoryEnum inventoryEnum,Integer amount){
       if (!inventory.containsKey(inventoryEnum)) {
@@ -28,6 +28,10 @@ public class Inventory {
 
    public Integer get(InventoryEnum inventoryEnum){
       return inventory.get(inventoryEnum);
+   }
+
+   public void clearInventory(){
+      inventory.clear();
    }
 
 

@@ -8,6 +8,7 @@ import static com.rhontproject.fabrics.UnitFabric.createKnightDark;
 import static com.rhontproject.service.SystemUtility.*;
 @Component
 public class Act_7 extends Act {
+
     @Override
     public void run() {
         printFromFile("[3].txt");
