@@ -2,6 +2,7 @@ package com.rhontproject.service.events;
 
 import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.unit.Unit;
+import com.rhontproject.unit.base.InventoryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,11 +50,11 @@ public class Halt {
         String buf_str = scan_halt.nextLine();
         switch (buf_str) {
             case "1":
-                if (unit.inventory[3] > 0) {
-                    for (int i = 0; i < unit.inventory.length; i++) {
+                if (unit.getInventorySet().get(InventoryEnum.POTION) > 0) {
+                    for (int i = 0; i < 4; i++) {
                         unit.attribute.curHealth[i] += 70;
                     }
-                    unit.inventory[3] -= 1;
+                    unit.getInventorySet().use(InventoryEnum.POTION);
                     out.println("Вы выпили зелье! Теперь ваше здовровье");
                     unit.stabilizeHealth();
                     messageService.printHealthDefense(unit);

@@ -26,7 +26,7 @@ public abstract class Unit {
     public boolean vortex = false;
     public String name;
     public int chance_to_attack = 80;
-    public int[] inventory = {0, 2, 1, 1};
+//    public int[] inventory = {0, 2, 1, 1};
     public int money = new Random().nextInt(150) + 75;
     private final DefenseWall defenseWall;
     private final StateHolder stateHolder;
