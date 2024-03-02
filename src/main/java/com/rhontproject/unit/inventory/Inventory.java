@@ -1,4 +1,4 @@
-package com.rhontproject.unit.base;
+package com.rhontproject.unit.inventory;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

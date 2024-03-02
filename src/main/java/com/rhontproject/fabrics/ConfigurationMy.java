@@ -1,7 +1,7 @@
 package com.rhontproject.fabrics;
 
-import com.rhontproject.attack.weapons.NormalSword;
-import com.rhontproject.attack.Weapon;
+import com.rhontproject.unit.attack.weapons.NormalSword;
+import com.rhontproject.unit.attack.weapons.Weapon;
 import com.rhontproject.unit.Statless.NameStates;
 import com.rhontproject.unit.Statless.StateHolder;
 import org.springframework.context.annotation.*;
@@ -24,6 +24,12 @@ public class ConfigurationMy {
     @Scope("prototype")
     public Weapon getBearPows(){
         return new NormalSword(90);
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Weapon getDarkSword(){
+        return new NormalSword(18,NameStates.POSION);
     }
 
     @Bean

@@ -1,6 +1,5 @@
-package com.rhontproject.attack.weapons;
+package com.rhontproject.unit.attack.weapons;
 
-import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.Statless.NameStates;
 

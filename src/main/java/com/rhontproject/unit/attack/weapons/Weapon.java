@@ -1,4 +1,4 @@
-package com.rhontproject.attack;
+package com.rhontproject.unit.attack.weapons;
 
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.Statless.NameStates;
@@ -13,41 +13,27 @@ public abstract class Weapon {
     protected Unit master;
     protected Unit victim;
     protected int power;
-    private NameStates positiveState;
-    private NameStates attackState;
+    private NameStates negativeState;
     protected String info;
 
 
 
-    public Weapon(int power, NameStates positiveState, NameStates attackState) {
+    public Weapon(int power,  NameStates negativeState) {
         this.power = power;
-        this.positiveState = positiveState;
-        this.attackState = attackState;
+        this.negativeState = negativeState;
     }
 
     public Weapon(int power) {
         this.power = power;
     }
 
-    public Weapon(int power, NameStates attackState) {
-        this.power = power;
-        this.attackState = attackState;
-    }
-
     private void applyNegativeEffect(Unit enemy) {
-        enemy.getStateHolder().activeSelectState(attackState);
-    }
-//todo почему не activeSelectState?
-    private void applyPositiveEffect(Unit self) {
-        self.getStateHolder().setUnit(self);
+        enemy.getStateHolder().activeSelectState(negativeState);
     }
 
     public void attackVictim(int partBody, Unit enemy) {
-        if (attackState != null) {
+        if (negativeState != null) {
             applyNegativeEffect(enemy);
-        }
-        if (positiveState != null) {
-            applyPositiveEffect(master);
         }
         attackPartBody(partBody, enemy);
         messageService.add(this.info);

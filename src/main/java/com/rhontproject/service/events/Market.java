@@ -3,14 +3,13 @@ package com.rhontproject.service.events;
 import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.service.MessageService;
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.base.InventoryEnum;
+import com.rhontproject.unit.inventory.InventoryEnum;
 import com.rhontproject.unit.defense.HardShield;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static java.lang.System.in;
 import static java.lang.System.out;
 @Component

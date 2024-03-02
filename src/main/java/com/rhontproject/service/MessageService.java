@@ -2,7 +2,7 @@ package com.rhontproject.service;
 
 import com.rhontproject.unit.Unit;
 import com.rhontproject.fabrics.units.Knight_In_The_Dark;
-import com.rhontproject.unit.base.InventoryEnum;
+import com.rhontproject.unit.inventory.InventoryEnum;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

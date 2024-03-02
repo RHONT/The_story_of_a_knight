@@ -5,6 +5,8 @@ import com.rhontproject.unit.Statless.AbstractState;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
+
 @Component
 @Scope("prototype")
 public class Regenerate extends AbstractState {

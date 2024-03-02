@@ -1,11 +1,11 @@
 package com.rhontproject.fabrics.units;
 
-import com.rhontproject.attack.Weapon;
+import com.rhontproject.unit.attack.weapons.Weapon;
 import com.rhontproject.unit.base.BaseAttribute;
-import com.rhontproject.attack.DuelScenario;
+import com.rhontproject.unit.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.base.Inventory;
+import com.rhontproject.unit.inventory.Inventory;
 import com.rhontproject.unit.defense.DefenseWall;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,7 +29,7 @@ class Knight_In_The_Dark extends Unit {
 
     @Autowired
     @Override
-    public void setWeapon(@Qualifier("getClub") Weapon weapon) {
+    public void setWeapon(@Qualifier("getDarkSword") Weapon weapon) {
         super.setWeapon(weapon);
         this.getWeapon().setMaster(this);
     }

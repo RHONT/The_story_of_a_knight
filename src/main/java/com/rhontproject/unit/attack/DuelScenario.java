@@ -1,4 +1,4 @@
-package com.rhontproject.attack;
+package com.rhontproject.unit.attack;
 
 import com.rhontproject.unit.Unit;
 

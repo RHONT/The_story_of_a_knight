@@ -1,10 +1,10 @@
 package com.rhontproject.unit;
 
-import com.rhontproject.attack.DuelScenario;
-import com.rhontproject.attack.Weapon;
+import com.rhontproject.unit.attack.DuelScenario;
+import com.rhontproject.unit.attack.weapons.Weapon;
 import com.rhontproject.unit.Statless.StateHolder;
-import com.rhontproject.unit.base.BaseAttribute;
-import com.rhontproject.unit.base.Inventory;
+import com.rhontproject.unit.base.AbstractBaseAttribute;
+import com.rhontproject.unit.inventory.Inventory;
 import com.rhontproject.unit.defense.DefenseWall;
 
 import java.util.*;
@@ -23,21 +23,21 @@ import java.util.*;
  */
 public abstract class Unit {
     public boolean isHero;
-    public boolean vortex = false;
     public String name;
+    public boolean vortex = false;
     public int chance_to_attack = 80;
-//    public int[] inventory = {0, 2, 1, 1};
     public int money = new Random().nextInt(150) + 75;
+
     private final DefenseWall defenseWall;
     private final StateHolder stateHolder;
-    public final BaseAttribute attribute;
+    public final AbstractBaseAttribute attribute;
     private Weapon weapon;
     private final Inventory inventorySet;
     private DuelScenario duelScenario;
 
     public Unit(DefenseWall defenseWall,
                 StateHolder stateHolder,
-                BaseAttribute attribute,
+                AbstractBaseAttribute attribute,
                 Inventory inventorySet,
                 DuelScenario duelScenario) {
         this.defenseWall = defenseWall;
@@ -73,11 +73,7 @@ public abstract class Unit {
      */
 
     public void stabilizeHealth() {
-        for (int i = 0; i < 4; i++) {
-            if (this.attribute.baseHealth[i] < this.attribute.curHealth[i]) {
-                this.attribute.curHealth[i] = this.attribute.baseHealth[i];
-            }
-        }
+        attribute.stabilizeHealth();
     }
 
     /**
@@ -85,24 +81,9 @@ public abstract class Unit {
      */
 
     public boolean isAlife() {
-        boolean life = false;
-        for (int checkPartOfBody : this.attribute.curHealth) {
-            if (checkPartOfBody <= 0) {
-                life = false;
-                break;
-            } else life = true;
-        }
-        return life;
+        return attribute.isAlife();
     }
 
-    /**
-     * Воскрешение юнита
-     * Чтобы была возможность использовать его вновь, не создавая еще один экземпляр
-     */
-    public void reborn() {
-        this.attribute.curHealth = Arrays.copyOfRange(this.attribute.baseHealth, 0, 5);
-        this.chance_to_attack = 80;
-    }
     protected void setHealth(int[] health) {
         this.attribute.setCurHealth(health);
     }
@@ -113,5 +94,9 @@ public abstract class Unit {
 
     public DefenseWall getDefenseWall() {
         return defenseWall;
+    }
+
+    public AbstractBaseAttribute getAttribute() {
+        return attribute;
     }
 }

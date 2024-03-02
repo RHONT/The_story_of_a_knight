@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
+
 @Component
 @Scope("prototype")
 public class Posion extends AbstractState {
@@ -15,7 +17,7 @@ public class Posion extends AbstractState {
     }
     @Override
     public void activate() {
-        count += 2;
+        count += 10;
     }
 
     @Override
@@ -27,7 +29,7 @@ public class Posion extends AbstractState {
     public void action(Unit unit) {
         if (count > 0) {
             count--;
-            Arrays.stream(unit.attribute.curHealth).forEach(e->e=e-10);
+            unit.attribute.curHealth=Arrays.stream(unit.attribute.curHealth).map(e->e-4).toArray();
             messageService.add(unit.name + " " + message);
         }
     }

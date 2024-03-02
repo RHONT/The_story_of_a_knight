@@ -2,12 +2,12 @@ package com.rhontproject.fabrics.units;
 
 
 import com.rhontproject.unit.base.BaseAttribute;
-import com.rhontproject.attack.Weapon;
-import com.rhontproject.attack.DuelScenario;
+import com.rhontproject.unit.attack.weapons.Weapon;
+import com.rhontproject.unit.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.base.Inventory;
-import com.rhontproject.unit.base.InventoryEnum;
+import com.rhontproject.unit.inventory.Inventory;
+import com.rhontproject.unit.inventory.InventoryEnum;
 import com.rhontproject.unit.defense.DefenseWall;
 import com.rhontproject.unit.defense.HardShield;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +35,8 @@ public class Knight extends Unit {
     @Autowired
     @Override
     public void setHealth(@Value("${knight}") int[] health) {
-        this.attribute.setCurHealth(health);
-        this.attribute.setDefense(30,30,30,30);
+        this.getAttribute().setCurHealth(health);
+        this.getAttribute().setDefense(30,30,30,30);
         this.getInventorySet().add(InventoryEnum.POTION,2);
         this.getInventorySet().add(InventoryEnum.MOLOTOV,5);
         this.getDefenseWall().add(new HardShield(),3);

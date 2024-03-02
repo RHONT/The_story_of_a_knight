@@ -1,4 +1,4 @@
-package com.rhontproject.unit.base;
+package com.rhontproject.unit.inventory;
 
 public enum InventoryEnum {
     POTION("Зелье"),MOLOTOV("Молотов");

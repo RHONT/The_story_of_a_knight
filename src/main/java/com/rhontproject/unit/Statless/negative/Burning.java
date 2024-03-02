@@ -5,6 +5,8 @@ import com.rhontproject.unit.Unit;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
+
 @Component
 @Scope("prototype")
 public class Burning extends AbstractState {
@@ -24,7 +26,6 @@ public class Burning extends AbstractState {
     @Override
     public void action(Unit unit) {
         if (count > 0) {
-
             count--;
             for (int i = 0; i <= 3; i++) {
                 unit.attribute.curHealth[i] -= 10;

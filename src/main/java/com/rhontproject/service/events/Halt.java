@@ -2,7 +2,7 @@ package com.rhontproject.service.events;
 
 import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.base.InventoryEnum;
+import com.rhontproject.unit.inventory.InventoryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

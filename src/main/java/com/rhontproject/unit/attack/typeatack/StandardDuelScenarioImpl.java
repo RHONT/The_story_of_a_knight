@@ -1,10 +1,9 @@
-package com.rhontproject.attack.typeatack;
+package com.rhontproject.unit.attack.typeatack;
 
-import com.rhontproject.attack.DuelScenario;
+import com.rhontproject.unit.attack.DuelScenario;
 import com.rhontproject.unit.Statless.NameStates;
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.base.InventoryEnum;
-import com.rhontproject.unit.defense.HardShield;
+import com.rhontproject.unit.inventory.InventoryEnum;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -44,7 +43,8 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     return;
                 case ("s"):
                     if (attacking.getDefenseWall().loadShield()) {
-                        return;
+                        out.println(attacking.name + " подготовил щит");
+                        break;
                     } else {
                         out.println("У вас нет щитов");
                     }
@@ -53,6 +53,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     if (this.attacking.getInventorySet().get(InventoryEnum.MOLOTOV) > 0) {
                         this.attacking.getInventorySet().use(InventoryEnum.MOLOTOV);
                         this.victim.getStateHolder().activeSelectState(NameStates.BURN);
+                        out.println(victim.name + " горит!");
                         return;
                     } else {
                         out.println("У вас нет Молотова");
@@ -62,7 +63,8 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     if (this.attacking.getInventorySet().get(InventoryEnum.POTION) > 0) {
                         this.attacking.getInventorySet().use(InventoryEnum.POTION);
                         drinkPotion(70);
-                        return;
+                        out.println(attacking.name + " выпил зелье");
+                        break;
                     } else {
                         out.println("У вас нет зелья!");
                     }
