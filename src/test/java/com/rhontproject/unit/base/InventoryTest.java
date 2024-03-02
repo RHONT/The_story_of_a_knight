@@ -14,12 +14,12 @@ class InventoryTest {
     void use() {
         Inventory inventory=new Inventory();
         inventory.add(InventoryEnum.SHIELD,10);
-        assertEquals(9,inventory.use(InventoryEnum.SHIELD));
+        assertEquals(true,inventory.use(InventoryEnum.SHIELD));
 
         inventory.add(InventoryEnum.POTION,0);
-        assertEquals(-1,inventory.use(InventoryEnum.POTION));
+        assertEquals(false,inventory.use(InventoryEnum.POTION));
 
         inventory.add(InventoryEnum.MOLOTOV,1);
-        assertEquals(0,inventory.use(InventoryEnum.MOLOTOV));
+        assertEquals(true,inventory.use(InventoryEnum.MOLOTOV));
     }
 }
