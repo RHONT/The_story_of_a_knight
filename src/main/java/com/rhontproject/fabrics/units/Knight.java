@@ -41,6 +41,5 @@ public class Knight extends Unit {
         this.getInventorySet().add(InventoryEnum.POTION,2);
         this.getInventorySet().add(InventoryEnum.MOLOTOV,5);
         this.getDefenseWall().add(new HardShield(),3);
-        this.getDefenseWall().loadShield();
     }
 }

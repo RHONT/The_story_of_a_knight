@@ -19,6 +19,8 @@ public class Inventory {
    }
 
    public boolean use(InventoryEnum inventoryEnum){
+
+
       Integer result = inventory.computeIfPresent(inventoryEnum, (k, v) -> v > 0 ? v - 1 : -1);
       if (result<0) {
          System.out.println("У вас нет " + inventoryEnum.getName());

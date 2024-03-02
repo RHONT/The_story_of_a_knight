@@ -42,8 +42,6 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     activeVortex();
                     return;
                 case ("s"):
-//                    if (this.attacking.inventory[1] >= 2) {
-//                        getTheShield();
                     if (attacking.getDefenseWall().loadShield()) {
                         return;
                     } else {
