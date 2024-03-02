@@ -37,7 +37,7 @@ public abstract class Weapon {
     private void applyNegativeEffect(Unit enemy) {
         enemy.getStateHolder().activeSelectState(attackState);
     }
-
+//todo почему не activeSelectState?
     private void applyPositiveEffect(Unit self) {
         self.getStateHolder().setUnit(self);
     }

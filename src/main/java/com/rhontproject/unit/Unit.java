@@ -5,6 +5,7 @@ import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.base.BaseAttribute;
 import com.rhontproject.unit.base.Inventory;
+import com.rhontproject.unit.defense.DefenseWall;
 
 import java.util.*;
 
@@ -21,19 +22,25 @@ import java.util.*;
  * money - каждый юнит несет в себе золото, отдает при смерти<br>
  */
 public abstract class Unit {
-    private final StateHolder stateHolder;
     public boolean isHero;
     public boolean vortex = false;
     public String name;
     public int chance_to_attack = 80;
     public int[] inventory = {0, 2, 1, 1};
     public int money = new Random().nextInt(150) + 75;
+    private final DefenseWall defenseWall;
+    private final StateHolder stateHolder;
     public final BaseAttribute attribute;
     private Weapon weapon;
     private final Inventory inventorySet;
     private DuelScenario duelScenario;
 
-    public Unit(StateHolder stateHolder, BaseAttribute attribute, Inventory inventorySet, DuelScenario duelScenario) {
+    public Unit(DefenseWall defenseWall,
+                StateHolder stateHolder,
+                BaseAttribute attribute,
+                Inventory inventorySet,
+                DuelScenario duelScenario) {
+        this.defenseWall = defenseWall;
         this.stateHolder = stateHolder;
         this.attribute = attribute;
         this.inventorySet = inventorySet;
@@ -102,5 +109,9 @@ public abstract class Unit {
 
     public Inventory getInventorySet() {
         return inventorySet;
+    }
+
+    public DefenseWall getDefenseWall() {
+        return defenseWall;
     }
 }

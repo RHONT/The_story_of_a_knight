@@ -22,7 +22,7 @@ public class NormalSword extends Weapon {
 
     @Override
     protected void attackPartBody(int partBody, Unit enemy) {
-        currentPower = power;
+        currentPower = enemy.getDefenseWall().respond(power);
         indexTargetBody = partBody;
         damageMultiplier = getDamageMultiplier();
         victim = enemy;
@@ -31,6 +31,7 @@ public class NormalSword extends Weapon {
 
         int damage;
         if (isIncludeInRange()) {
+
             damage = hitTheEnemy();
             info = master.name + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                     " Противник смог отразить " + (Math.max(currentPower - damage, 0)) + " урона";
@@ -51,14 +52,16 @@ public class NormalSword extends Weapon {
     }
 
     private int hitTheEnemy() {
+
         int effectiveDamage = calcEffectiveDamage();
         crushBody(effectiveDamage);
-        crushArmor();
+        crushArmor(effectiveDamage);
         stabilizeArmorValue();
         return effectiveDamage;
     }
 
     private int calcEffectiveDamage() {
+
         return (int) (Math.round((currentPower * damageMultiplier) * multiplierIncludingArmor()));
     }
 
@@ -70,8 +73,9 @@ public class NormalSword extends Weapon {
         return victim.attribute.defense[indexTargetBody - 1] > 0 ? 0.25 : 1;
     }
 
-    private void crushArmor() {
-        victim.attribute.defense[indexTargetBody - 1] -= (int) Math.round(victim.attribute.defense[indexTargetBody - 1] > 0 ? currentPower * 0.33 : 0);
+    private void crushArmor(int effectiveDamage) {
+        victim.attribute.defense[indexTargetBody - 1] -=
+                (int) Math.round(victim.attribute.defense[indexTargetBody - 1] > 0 ? effectiveDamage * 0.33 : 0);
     }
 
     private void stabilizeArmorValue() {

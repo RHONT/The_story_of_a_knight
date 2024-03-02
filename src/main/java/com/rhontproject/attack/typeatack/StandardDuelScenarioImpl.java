@@ -3,6 +3,7 @@ package com.rhontproject.attack.typeatack;
 import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.NameStates;
 import com.rhontproject.unit.Unit;
+import com.rhontproject.unit.defense.HardShield;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -32,17 +33,18 @@ public class StandardDuelScenarioImpl implements DuelScenario {
         while (true) {
             String inputConsole;
             if (!attacking.isHero) {
-                 inputConsole=String.valueOf((new Random().nextInt(3)+1));
+                inputConsole = String.valueOf((new Random().nextInt(3) + 1));
             } else {
-                 inputConsole = scanner.nextLine().toLowerCase();
+                inputConsole = scanner.nextLine().toLowerCase();
             }
             switch (inputConsole) {
                 case ("w"):
                     activeVortex();
                     return;
                 case ("s"):
-                    if (this.attacking.inventory[1] >= 2) {
-                        getTheShield();
+//                    if (this.attacking.inventory[1] >= 2) {
+//                        getTheShield();
+                    if (attacking.getDefenseWall().loadShield()) {
                         return;
                     } else {
                         out.println("У вас нет щитов");
@@ -68,7 +70,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                 case ("2"):
                 case ("3"):
                 case ("4"):
-                    attacking.getWeapon().attackVictim(Integer.parseInt(inputConsole),victim);
+                    attacking.getWeapon().attackVictim(Integer.parseInt(inputConsole), victim);
                     return;
                 default:
                     out.println("Введено неправильное значение.\n" +
@@ -77,7 +79,6 @@ public class StandardDuelScenarioImpl implements DuelScenario {
             }
         }
     }
-
 
 
     private void activeVortex() {

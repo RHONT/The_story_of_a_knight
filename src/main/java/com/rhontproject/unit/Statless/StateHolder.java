@@ -23,10 +23,16 @@ public class StateHolder {
 
     public void activeSelectState(NameStates nameStates){
         if (listNameState==null) {
-            listNameState=stateActionList.stream().map(e->e.getClass().getSimpleName()).collect(Collectors.toList());
+            listNameState=stateActionList.stream().
+                    map(e->e.getClass().getSimpleName()).
+                    collect(Collectors.toList());
         }
         if (listNameState.contains(nameStates.getNameClass())) {
-            stateActionList.stream().filter(e->e.getClass().getSimpleName().equals(nameStates.getNameClass())).findFirst().get().activate();
+            stateActionList.stream().
+                    filter(e->e.getClass().getSimpleName().equals(nameStates.getNameClass())).
+                    findFirst().
+                    get().
+                    activate();
         }
 
     }

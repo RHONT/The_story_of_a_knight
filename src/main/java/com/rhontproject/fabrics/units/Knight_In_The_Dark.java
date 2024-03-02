@@ -5,6 +5,7 @@ import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.base.Inventory;
+import com.rhontproject.unit.defense.DefenseWall;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,8 +20,8 @@ class Knight_In_The_Dark extends Unit {
     public Knight_In_The_Dark(
             @Qualifier("standardDuelScenarioImpl") DuelScenario duelScenario,
             StateHolder stateHolder,
-            BaseAttribute baseAttribute, Inventory inventorySet) {
-        super(stateHolder, baseAttribute, inventorySet, duelScenario);
+            BaseAttribute baseAttribute, Inventory inventorySet, DefenseWall defenseWall) {
+        super(defenseWall, stateHolder, baseAttribute, inventorySet, duelScenario);
         this.name = "Скелет во тьме";
     }
 
