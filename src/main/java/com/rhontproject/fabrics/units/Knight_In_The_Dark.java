@@ -1,5 +1,6 @@
 package com.rhontproject.fabrics.units;
 
+import com.rhontproject.attack.Weapon;
 import com.rhontproject.unit.base.BaseAttribute;
 import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.StateHolder;
@@ -24,6 +25,13 @@ class Knight_In_The_Dark extends Unit {
         super(defenseWall, stateHolder, baseAttribute, inventorySet, duelScenario);
         this.name = "Скелет во тьме";
         this.isHero = false;
+    }
+
+    @Autowired
+    @Override
+    public void setWeapon(@Qualifier("getClub") Weapon weapon) {
+        super.setWeapon(weapon);
+        this.getWeapon().setMaster(this);
     }
 
     @Autowired
