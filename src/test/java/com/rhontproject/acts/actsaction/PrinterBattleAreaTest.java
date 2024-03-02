@@ -61,7 +61,7 @@ class PrinterBattleAreaTest {
     private String[] converter(Unit unit) {
         String[] converted=new String[6];
         converted[0]=unit.name;
-        converted[5]=String.valueOf(unit.attribute.curHealth[4]);
+        converted[5]=String.valueOf(unit.getWeapon().getPower());
         for (int i = 0; i <4 ; i++) {
             converted[i+1]=String.format(
                     "%-3s/%-3s [%s]",
