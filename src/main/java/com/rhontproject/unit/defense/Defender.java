@@ -6,4 +6,8 @@ public abstract class Defender {
 
     abstract protected void active();
     abstract protected int reflectDamage(int innerDamage);
+
+    public int getCurrentCharges() {
+        return currentCharges;
+    }
 }

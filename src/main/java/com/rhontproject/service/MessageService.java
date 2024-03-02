@@ -49,10 +49,10 @@ public class MessageService {
     public void printInventory(Unit unit) {
         String sb = "\n" +
                 "Золота у вас: " + unit.money + "\n" +
-                "Прочность щита в руке: " + unit.inventory[0] + "\n" +
-                "Количество щитов: " + unit.inventory[1] + "\n" +
-                "Коктейля молотова: " + unit.inventory[2] + "\n" +
-                "Целебного зелья: " + unit.inventory[3] + "\n";
+                "Прочность щита в руке: " + unit.getDefenseWall().getDurability() + "\n" +
+                "Количество щитов: " + unit.getDefenseWall().getAmountShield() + "\n" +
+                "Коктейля молотова: " + unit.getInventorySet().get(InventoryEnum.MOLOTOV) + "\n" +
+                "Целебного зелья: " + unit.getInventorySet().get(InventoryEnum.POTION) + "\n";
         out.println(sb);
     }
 
@@ -167,6 +167,10 @@ public class MessageService {
                 sb.append("  ");
             }
         }
+        sb.append("Щит - (").
+                append(knight.getDefenseWall().getDurability()).
+                append(") ").
+                append(knight.getDefenseWall().getAmountShield());
         return sb.toString();
     }
 }

@@ -8,28 +8,27 @@ import org.springframework.stereotype.Component;
 public class DefenseWall {
 
     private int amountShield;
-    private Defender typeShield=null;
+    private Defender typeShield = null;
 
-    public void add(Defender defender,int amountShield){
-        if (typeShield!=null && defender.getClass()==typeShield.getClass()) {
-            this.amountShield+=amountShield;
+    public void add(Defender defender, int amountShield) {
+        if (typeShield != null && defender.getClass() == typeShield.getClass()) {
+            this.amountShield += amountShield;
         } else {
-            typeShield=defender;
-            this.amountShield=amountShield;
+            typeShield = defender;
+            this.amountShield = amountShield;
         }
     }
 
-    public int respond(int innerDamage){
-        if (typeShield==null || typeShield.currentCharges ==0) {
+    public int respond(int innerDamage) {
+        if (typeShield == null || typeShield.currentCharges == 0) {
             return innerDamage;
-        }
-        else {
+        } else {
             return typeShield.reflectDamage(innerDamage);
         }
     }
 
-    public boolean loadShield(){
-        if (amountShield==0) {
+    public boolean loadShield() {
+        if (amountShield == 0) {
             return false;
         } else {
             amountShield--;
@@ -38,4 +37,11 @@ public class DefenseWall {
         }
     }
 
+    public int getAmountShield() {
+        return amountShield;
+    }
+
+    public int getDurability() {
+        return typeShield.getCurrentCharges();
+    }
 }

@@ -27,7 +27,7 @@ public class Knight extends Unit {
 
     @Autowired
     @Override
-    public void setWeapon(@Qualifier("getKnightFireWeapon") Weapon weapon) {
+    public void setWeapon(@Qualifier("getKnightWeapon") Weapon weapon) {
         super.setWeapon(weapon);
         this.getWeapon().setMaster(this);
     }
@@ -37,7 +37,6 @@ public class Knight extends Unit {
     public void setHealth(@Value("${knight}") int[] health) {
         this.attribute.setCurHealth(health);
         this.attribute.setDefense(30,30,30,30);
-        this.getInventorySet().add(InventoryEnum.SHIELD,3);
         this.getInventorySet().add(InventoryEnum.POTION,2);
         this.getInventorySet().add(InventoryEnum.MOLOTOV,5);
         this.getDefenseWall().add(new HardShield(),3);

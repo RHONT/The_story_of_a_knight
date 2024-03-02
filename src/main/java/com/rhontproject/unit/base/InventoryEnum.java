@@ -1,7 +1,7 @@
 package com.rhontproject.unit.base;
 
 public enum InventoryEnum {
-    SHIELD("Щит"),POTION("Зелье"),MOLOTOV("Молотов");
+    POTION("Зелье"),MOLOTOV("Молотов");
     private final String name;
 
     InventoryEnum(String name) {

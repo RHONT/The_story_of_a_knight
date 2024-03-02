@@ -3,6 +3,7 @@ package com.rhontproject.attack.typeatack;
 import com.rhontproject.attack.DuelScenario;
 import com.rhontproject.unit.Statless.NameStates;
 import com.rhontproject.unit.Unit;
+import com.rhontproject.unit.base.InventoryEnum;
 import com.rhontproject.unit.defense.HardShield;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -49,7 +50,8 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     }
                     break;
                 case ("m"):
-                    if (this.attacking.inventory[2] > 0) {
+                    if (this.attacking.getInventorySet().get(InventoryEnum.MOLOTOV) > 0) {
+                        this.attacking.getInventorySet().use(InventoryEnum.MOLOTOV);
                         this.victim.getStateHolder().activeSelectState(NameStates.BURN);
                         return;
                     } else {
@@ -57,7 +59,8 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     }
                     break;
                 case ("p"):
-                    if (this.attacking.inventory[3] > 0) {
+                    if (this.attacking.getInventorySet().get(InventoryEnum.POTION) > 0) {
+                        this.attacking.getInventorySet().use(InventoryEnum.POTION);
                         drinkPotion(70);
                         return;
                     } else {
