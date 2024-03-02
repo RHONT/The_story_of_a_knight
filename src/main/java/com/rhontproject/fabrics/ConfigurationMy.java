@@ -22,6 +22,12 @@ public class ConfigurationMy {
 
     @Bean
     @Scope("prototype")
+    public Weapon getBearPows(){
+        return new NormalSword(90);
+    }
+
+    @Bean
+    @Scope("prototype")
     public Weapon getKnightWeapon(){
         return new NormalSword(45);
     }

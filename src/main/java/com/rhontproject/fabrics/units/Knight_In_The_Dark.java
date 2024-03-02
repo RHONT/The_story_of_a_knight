@@ -23,6 +23,7 @@ class Knight_In_The_Dark extends Unit {
             BaseAttribute baseAttribute, Inventory inventorySet, DefenseWall defenseWall) {
         super(defenseWall, stateHolder, baseAttribute, inventorySet, duelScenario);
         this.name = "Скелет во тьме";
+        this.isHero = false;
     }
 
     @Autowired

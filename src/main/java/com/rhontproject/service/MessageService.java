@@ -149,7 +149,7 @@ public class MessageService {
         return sb.toString();
     }
 
-    private String chancesToAttack(){
+    public String chancesToAttack(){
         return "Атакуй! 1 - голова "
                 + (knight.chance_to_attack - 10)
                 + "% | 2 -тело " + (knight.chance_to_attack)
@@ -157,7 +157,7 @@ public class MessageService {
                 + "% | 4 - ноги " + (knight.chance_to_attack - 20);
     }
 
-    private String inventory(){
+    public String inventory(){
         StringBuilder sb =new StringBuilder();
         for (var element: InventoryEnum.values()) {
             if (knight.getInventorySet().contains(element)) {

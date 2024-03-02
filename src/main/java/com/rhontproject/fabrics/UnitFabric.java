@@ -1,7 +1,6 @@
 package com.rhontproject.fabrics;
 
-import com.rhontproject.fabrics.units.Knight;
-import com.rhontproject.fabrics.units.Zombie;
+import com.rhontproject.fabrics.units.*;
 import com.rhontproject.unit.Unit;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,25 +23,25 @@ public final class UnitFabric {
         return zombie;
     }
 
-//    public static Unit createOutLowBig(){
-//        return context.getBean("OutLowBig", OutLowBig.class);
-//    }
-//
-//    public static Unit createOutLowSmall(){
-//        return context.getBean("OutLowSmall", OutLowSmall.class);
-//    }
-//
-//    public static Unit createBear(){
-//        return context.getBean("Bear", Bear.class);
-//    }
-//
-//    public static Unit createOutLowBridge(){
-//        return context.getBean("OutLowBridge", OutLawBridge.class);
-//    }
-//
-//    public static Unit createKnightDark(){
-//        return context.getBean("Knight_In_The_Dark", Knight_In_The_Dark.class);
-//    }
+    public static Unit createOutLowBig(){
+        return context.getBean("OutLowBig", OutLowBig.class);
+    }
+
+    public static Unit createOutLowSmall(){
+        return context.getBean("OutLowSmall", OutLowSmall.class);
+    }
+
+    public static Unit createBear(){
+        return context.getBean("Bear", Bear.class);
+    }
+
+    public static Unit createOutLowBridge(){
+        return context.getBean("OutLowBridge", OutLawBridge.class);
+    }
+
+    public static Unit createKnightDark(){
+        return context.getBean("Knight_In_The_Dark", Knight_In_The_Dark.class);
+    }
 
     private static int random(int maxValue){
         return new Random().nextInt(maxValue);

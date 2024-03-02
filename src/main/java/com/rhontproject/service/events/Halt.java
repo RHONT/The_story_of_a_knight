@@ -66,11 +66,9 @@ public class Halt {
                 }
 
             case "2":
-                if (unit.inventory[0] == 0) {
+                if (unit.getDefenseWall().getDurability() == 0) {
 
-                    if (unit.inventory[1] >= 2) {
-                        unit.inventory[0] += 2;
-                        unit.inventory[1] -= 2;
+                    if (unit.getDefenseWall().loadShield()) {
                         out.println("Вы приготовили щит к следующему бою");
                         break;
                     } else {
@@ -78,7 +76,7 @@ public class Halt {
                         break;
                     }
                 } else {
-                    out.println("Ваш щит уже приготовлен, его прочность: " + unit.inventory[0]);
+                    out.println("Ваш щит уже приготовлен, его прочность: " + unit.getDefenseWall().getDurability());
                     break;
                 }
 

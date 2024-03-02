@@ -1,18 +1,26 @@
 package com.rhontproject.service.events;
 
 import com.rhontproject.fabrics.global.StateGame;
+import com.rhontproject.service.MessageService;
 import com.rhontproject.unit.Unit;
+import com.rhontproject.unit.base.InventoryEnum;
+import com.rhontproject.unit.defense.HardShield;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static java.lang.System.in;
 import static java.lang.System.out;
 @Component
 public class Market {
+    @Autowired
+    private MessageService messageService;
 
 
     public void market_place(Unit knight, StateGame stateGame) {
+        messageService.printInventory(knight);
         out.println("Вас встречает трактирщик. На его прилавке скучают вещи, вы внимательно смотрите на них.");
         out.println(MarketEnum.SHIELD.getItemNumber() + " Щит | Цена: " + MarketEnum.SHIELD.getCost());
         out.println(MarketEnum.POTION_OF_HEALTH.getItemNumber() + " Зелье здоровья | Цена: " + MarketEnum.POTION_OF_HEALTH.getCost());
@@ -27,7 +35,7 @@ public class Market {
                 case ("1"):
                     if (MarketEnum.SHIELD.getCost() <= knight.money) {
                         knight.money -= MarketEnum.SHIELD.getCost();
-                        knight.inventory[1] += 2;
+                        knight.getDefenseWall().add(new HardShield(),1);
                         out.println("Вы купили щит!");
                         break;
                     } else {
@@ -37,7 +45,7 @@ public class Market {
                 case ("2"):
                     if (MarketEnum.POTION_OF_HEALTH.getCost() <= knight.money) {
                         knight.money -= MarketEnum.POTION_OF_HEALTH.getCost();
-                        knight.inventory[3] += 1;
+                        knight.getInventorySet().add(InventoryEnum.POTION,1);
                         out.println("Вы купили зелье!");
                         break;
                     } else {
@@ -48,7 +56,7 @@ public class Market {
                 case ("3"):
                     if (MarketEnum.MOLOTOV.getCost() <= knight.money) {
                         knight.money -= MarketEnum.MOLOTOV.getCost();
-                        knight.inventory[2] += 1;
+                        knight.getInventorySet().add(InventoryEnum.MOLOTOV,1);
                         out.println("Вы купили молотов");
                         break;
                     } else {

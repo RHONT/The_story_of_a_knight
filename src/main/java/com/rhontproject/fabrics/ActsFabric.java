@@ -31,24 +31,28 @@ private static EventKnightService eventKnightService;
     }
 
     public static void act_4() {
-        Act act4 = (Act) context.getBean("act_4");
-        act4.run();
+        Act act = (Act) context.getBean("act_4");
+        act.run();
     }
-//
-//    public static void act_5() {
-//        new Act_5().run();
-//    }
-//    public static void act_6() {
-//        new Act_6().run();
-//    }
-//
-//    public static void act_7() {
-//        new Act_7().run();
-//    }
-//
-//    public static void act_8() {
-//        new Act_8().run();
-//    }
+
+    public static void act_5() {
+        Act act = (Act) context.getBean("act_5");
+        act.run();
+    }
+    public static void act_6() {
+        Act act = (Act) context.getBean("act_6");
+        act.run();
+    }
+
+    public static void act_7() {
+        Act act = (Act) context.getBean("act_7");
+        act.run();
+    }
+
+    public static void act_8() {
+        Act act = (Act) context.getBean("act_8");
+        act.run();
+    }
 
     public static void halt() {
         eventKnightService.halt();

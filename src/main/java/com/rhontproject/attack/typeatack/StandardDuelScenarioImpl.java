@@ -88,18 +88,10 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                 + "Урон каждому составил по 40 единиц!");
     }
 
-    private void getTheShield() {
-        attacking.inventory[0] += 2;
-        attacking.inventory[1] -= 2;
-
-        messageService.add(attacking.name + " достал щит!");
-    }
-
     private void drinkPotion(int powerPotion) {
         for (int i = 0; i < 4; i++) {
             attacking.attribute.curHealth[i] += powerPotion;
         }
-        attacking.inventory[3] -= 1;
         messageService.add(attacking.name + " исцелился на " + powerPotion + " очков");
     }
 }
