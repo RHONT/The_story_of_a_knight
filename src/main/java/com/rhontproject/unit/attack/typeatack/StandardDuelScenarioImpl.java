@@ -18,14 +18,12 @@ import static java.lang.System.*;
 public class StandardDuelScenarioImpl implements DuelScenario {
 
     private Unit attacking;
-    private Unit victim;
     int attackPower;
 
     @Override
     public void attacking(Unit attacking, Unit victim) {
 
         this.attacking = attacking;
-        this.victim = victim;
         this.attacking.getStateHolder().activate();
         attackPower = this.attacking.getWeapon().getPower();
         Scanner scanner = new Scanner(System.in);
@@ -52,7 +50,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                 case ("m"):
                     if (this.attacking.getInventorySet().get(InventoryEnum.MOLOTOV) > 0) {
                         this.attacking.getInventorySet().use(InventoryEnum.MOLOTOV);
-                        this.victim.getStateHolder().activeSelectState(NameStates.BURN);
+                        victim.getStateHolder().activeSelectState(NameStates.BURN);
                         out.println(victim.name + " горит!");
                         return;
                     } else {
@@ -62,7 +60,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                 case ("p"):
                     if (this.attacking.getInventorySet().get(InventoryEnum.POTION) > 0) {
                         this.attacking.getInventorySet().use(InventoryEnum.POTION);
-                        drinkPotion(70);
+                        drinkPotion();
                         out.println(attacking.name + " выпил зелье");
                         break;
                     } else {
@@ -90,11 +88,11 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                 + "Урон каждому составил по 40 единиц!");
     }
 
-    private void drinkPotion(int powerPotion) {
+    private void drinkPotion() {
         for (int i = 0; i < 4; i++) {
-            attacking.attribute.curHealth[i] += powerPotion;
+            attacking.attribute.curHealth[i] += 70;
         }
-        messageService.add(attacking.name + " исцелился на " + powerPotion + " очков");
+        messageService.add(attacking.name + " исцелился на " + 70 + " очков");
     }
 }
 
