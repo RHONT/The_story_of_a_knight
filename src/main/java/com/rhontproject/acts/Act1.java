@@ -10,7 +10,6 @@ public final class Act1 extends Act {
     @Override
     public void run() {
         printFromFile("[1].txt");
-
         scanner.nextLine();
     }
 }

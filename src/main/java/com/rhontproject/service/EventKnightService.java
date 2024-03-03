@@ -13,15 +13,15 @@ import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 public class EventKnightService {
     private final LevelUp levelUp;
     private final Halt halt;
-    private final Market market;
     private final FightArea fightArea;
+    private final Market market;
 
 
     public EventKnightService(LevelUp levelUp, Halt halt, Market market, FightArea fightArea) {
         this.levelUp = levelUp;
         this.halt = halt;
-        this.market = market;
         this.fightArea = fightArea;
+        this.market = market;
     }
 
     public void levelUp() {
@@ -33,12 +33,10 @@ public class EventKnightService {
     }
 
     public void market() {
-        market.marketPlace(knight);
+        market.run();
     }
 
     public void fightArea(Unit... enemy) {
         fightArea.fight(knight, enemy);
     }
-
-
 }
