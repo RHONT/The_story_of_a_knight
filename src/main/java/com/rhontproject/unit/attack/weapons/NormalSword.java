@@ -24,7 +24,7 @@ public class NormalSword extends Weapon {
         damageMultiplier = getDamageMultiplier();
         victim = enemy;
         chanceToHitSelectedPartBody =
-                master.chanceAttack + calculateChanceAttack(indexTargetBody);
+                master.getChanceAttack() + calculateChanceAttack(indexTargetBody);
 
         int damage;
         if (isIncludeInRange()) {

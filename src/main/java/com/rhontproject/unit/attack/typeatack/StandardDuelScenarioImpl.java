@@ -30,7 +30,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
 
         while (true) {
             String inputConsole;
-            if (!attacking.isHero) {
+            if (!attacking.isHero()) {
                 inputConsole = String.valueOf((new Random().nextInt(3) + 1));
             } else {
                 inputConsole = scanner.nextLine().toLowerCase();

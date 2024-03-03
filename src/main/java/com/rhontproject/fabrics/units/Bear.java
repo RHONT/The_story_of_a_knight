@@ -30,7 +30,6 @@ class Bear extends Unit {
                 BaseAttribute baseAttribute, Inventory inventorySet, DefenseWall defenseWall) {
         super(defenseWall, stateHolder, baseAttribute, inventorySet, duelScenario);
         this.name = "Зомбо-Медведь";
-        this.isHero = false;
     }
 
     @Autowired

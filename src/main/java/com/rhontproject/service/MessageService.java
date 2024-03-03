@@ -148,10 +148,10 @@ public class MessageService {
 
     public String chancesToAttack(){
         return "Атакуй! 1 - голова "
-                + (knight.chanceAttack - 10)
-                + "% | 2 -тело " + (knight.chanceAttack)
-                + "% | 3 - руки " + (knight.chanceAttack - 20)
-                + "% | 4 - ноги " + (knight.chanceAttack - 20);
+                + (knight.getChanceAttack() - 10)
+                + "% | 2 -тело " + (knight.getChanceAttack())
+                + "% | 3 - руки " + (knight.getChanceAttack() - 20)
+                + "% | 4 - ноги " + (knight.getChanceAttack() - 20);
     }
 
     public String inventory(){

@@ -22,7 +22,7 @@ public class Knight extends Unit {
                   StateHolder stateHolder, BaseAttribute baseAttribute, Inventory inventorySet, DefenseWall defenseWall) {
         super(defenseWall, stateHolder, baseAttribute, inventorySet, duelScenario);
         this.name="Сэр Томас";
-        this.isHero=true;
+        this.iAmHero();
     }
 
     @Autowired

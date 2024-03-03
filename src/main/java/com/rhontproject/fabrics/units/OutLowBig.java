@@ -23,7 +23,6 @@ public class OutLowBig extends Unit {
                      BaseAttribute baseAttribute, Inventory inventorySet, DefenseWall defenseWall) {
         super(defenseWall, stateHolder, baseAttribute, inventorySet, duelScenario);
         this.name = "Здоровяк";
-        this.isHero = false;
     }
 
     @Autowired

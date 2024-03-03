@@ -22,11 +22,11 @@ import java.util.*;
  * money - каждый юнит несет в себе золото, отдает при смерти<br>
  */
 public abstract class Unit {
-    public boolean isHero;
+    private boolean isHero=false;
     protected String name;
     public boolean vortex = false;
-    public int chanceAttack = 80;
-    private Random random=new Random();
+    private int chanceAttack = 80;
+    protected final Random random=new Random();
     private int money = random.nextInt(150) + 75;
 
     private final DefenseWall defenseWall;
@@ -34,7 +34,7 @@ public abstract class Unit {
     public final AbstractBaseAttribute attribute;
     private Weapon weapon;
     private final Inventory inventorySet;
-    private DuelScenario duelScenario;
+    private final DuelScenario duelScenario;
 
     protected Unit(DefenseWall defenseWall,
                 StateHolder stateHolder,
@@ -109,7 +109,7 @@ public abstract class Unit {
         this.money = money;
     }
 
-    public void upMoney(int money){
+    public void plusMoney(int money){
         this.money+=money;
     }
 
@@ -119,5 +119,23 @@ public abstract class Unit {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isHero() {
+        return isHero;
+    }
+    protected void iAmHero(){
+        isHero=true;
+    }
+
+    public void plusChanceAttack(int value){
+        chanceAttack+=value;
+    }
+    public void minusChanceAttack(int value){
+        chanceAttack-=value;
+    }
+
+    public int getChanceAttack() {
+        return chanceAttack;
     }
 }

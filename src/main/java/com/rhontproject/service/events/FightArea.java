@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
@@ -52,7 +51,7 @@ public final class FightArea {
         for (int i = 1; i < party.size(); i++) {
             if (!party.get(i).isAlife()) {
                 messageService.add("Враг пал, вы собрали с трупа: " + party.get(i).getMoney() + " золотых");
-                hero.upMoney(party.get(i).getMoney());
+                hero.plusMoney(party.get(i).getMoney());
                 party.remove(i);
                 i--;
             }

@@ -56,7 +56,7 @@ class PrinterBattleArenaTest {
 
     private String[] converter(Unit unit) {
         String[] converted = new String[6];
-        converted[0] = unit.name;
+        converted[0] = unit.getName();
         converted[5] = String.valueOf(unit.getWeapon().getPower());
         for (int i = 0; i < 4; i++) {
             converted[i + 1] = String.format(
