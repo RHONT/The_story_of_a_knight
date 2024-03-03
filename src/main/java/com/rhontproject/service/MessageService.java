@@ -44,7 +44,7 @@ public class MessageService {
     }
 
     public void printInventory(Unit unit) {
-        String sb = "\n" +
+        String sb =
                 "Золота у вас: " + unit.getMoney() + "\n" +
                 "Прочность щита в руке: " + unit.getDefenseWall().getDurability() + "\n" +
                 "Количество щитов: " + unit.getDefenseWall().getAmountShield() + "\n" +

@@ -40,7 +40,7 @@ public class Market {
 
     private void printMenu(){
         for (MarketObject element:listGoods) {
-            System.out.printf("%d - %s - %s золотых\n",element.getArticular(),element.getName(),element.getCost());
+            System.out.printf("%d - %s - %s золотых%n",element.getArticular(),element.getName(),element.getCost());
         }
     }
 
