@@ -27,10 +27,10 @@ public class Market {
         out.println("0 Выход из трактира");
 
         while (!StateGame.isMarketExit()) {
-            String for_market_scanner;
-            Scanner scan_market = new Scanner(in);
-            for_market_scanner = scan_market.nextLine();
-            switch (for_market_scanner) {
+            String marketStr;
+            Scanner scanMarket = new Scanner(in);
+            marketStr = scanMarket.nextLine();
+            switch (marketStr) {
                 case ("1"):
                     if (MarketEnum.SHIELD.getCost() <= knight.money) {
                         knight.money -= MarketEnum.SHIELD.getCost();

@@ -29,21 +29,18 @@ public class MessageService {
     }
 
     public void printHealthDefense(Unit unit) {
-        String info_str;
-        String spec_char = "";
+        String info;
+        StringBuilder delimiter = new StringBuilder();
 
-        info_str = ("Голова: " + unit.attribute.curHealth[0] + "/" + unit.attribute.baseHealth[0] + " [" + unit.attribute.defense[0] + "]" +
+        info = ("Голова: " + unit.attribute.curHealth[0] + "/" + unit.attribute.baseHealth[0] + " [" + unit.attribute.defense[0] + "]" +
                 " Тело: " + unit.attribute.curHealth[1] + "/" + unit.attribute.baseHealth[1] + " [" + unit.attribute.defense[1] + "]" +
                 " Руки: " + unit.attribute.curHealth[2] + "/" + unit.attribute.baseHealth[2] + " [" + unit.attribute.defense[2] + "]" +
                 " Ноги: " + unit.attribute.curHealth[3] + "/" + unit.attribute.baseHealth[3] + " [" + unit.attribute.defense[3] + "]" +
                 " Сила оружия: " + unit.getWeapon().getPower());
-        for (int i = 0; i < info_str.length(); i++) {
-            spec_char += "-";
-        }
-
-        out.println(spec_char);
+        delimiter.append("-".repeat(info.length()));
+        out.println(delimiter);
         out.println(unit.name);
-        out.println(info_str);
+        out.println(info);
     }
 
     public void printInventory(Unit unit) {
