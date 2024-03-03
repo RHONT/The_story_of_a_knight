@@ -2,7 +2,6 @@ package com.rhontproject.service.events;
 
 import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.unit.Unit;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -16,7 +15,7 @@ public class LevelUp {
     /**
      * Повышения уровня юнита
      */
-    public void level_up(Unit unit) {
+    public void levelUp(Unit unit) {
         out.println();
         out.println("Сэр Томас отдышался. Оглядел поле боя и решил задуматься, точнее некоторые мысли " +
                 "\nназойливые как комары заставляли его это сделать. Не в силах сражаться с самим собой он впустил к себе одну из них." +
@@ -24,7 +23,7 @@ public class LevelUp {
                 "\n2 - А ведь не так быстро двигался враг, был момент даже когда мне показалось, что время замедлилось." +
                 "\n3 - Я несколько иначе ощущал свой меч, словно он стал моим продолжением");
         while (!StateGame.isLevelUp()) {
-            switch_for_level_up(unit);
+            switchLevelUp(unit);
         }
         StateGame.setLevelUp(false);
         out.println();
@@ -34,10 +33,10 @@ public class LevelUp {
      * Вспомогательный метод для реализации метода level_up
      */
 
-    private void switch_for_level_up(Unit unit) {
-        Scanner scan_level_up = new Scanner(in);
-        String buf_str = scan_level_up.nextLine();
-        switch (buf_str) {
+    private void switchLevelUp(Unit unit) {
+        Scanner scanLevelUp = new Scanner(in);
+        String tempStr = scanLevelUp.nextLine();
+        switch (tempStr) {
             case "1":
                 for (int i = 0; i < 4; i++) {
                     unit.attribute.curHealth[i] += 10;

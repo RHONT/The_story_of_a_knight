@@ -83,28 +83,14 @@ public class Halt {
                 while (!StateGame.isCraftIntoHalt()) {
                     out.println("Что будем чинить? 1-2-3-4? Прочность элемента повышаеться на 30");
                     Scanner str_craft = new Scanner(in);
-                    String buf_str_for_craft = str_craft.nextLine();
-                    switch (buf_str_for_craft) {
-                        case "1": {
-                            unit.attribute.defense[0] += 30;
-                            StateGame.setCraftIntoHalt(true);
-                            out.println("Доспех починен! Что выберете еще?");
-                            break;
-                        }
-                        case "2": {
-                            unit.attribute.defense[1] += 30;
-                            StateGame.setCraftIntoHalt(true);
-                            out.println("Доспех починен! Что выберете еще?");
-                            break;
-                        }
-                        case "3": {
-                            unit.attribute.defense[2] += 30;
-                            StateGame.setCraftIntoHalt(true);
-                            out.println("Доспех починен! Что выберете еще?");
-                            break;
-                        }
+                    String strCraftArmor = str_craft.nextLine();
+                    switch (strCraftArmor) {
+                        case "1":
+                        case "2":
+                        case "3":
                         case "4": {
-                            unit.attribute.defense[3] += 30;
+                            int curIndexArmor=Integer.parseInt(strCraftArmor)-1;
+                            unit.attribute.defense[curIndexArmor] += 30;
                             StateGame.setCraftIntoHalt(true);
                             out.println("Доспех починен! Что выберете еще?");
                             break;

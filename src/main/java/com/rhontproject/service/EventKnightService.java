@@ -1,6 +1,5 @@
 package com.rhontproject.service;
 
-import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.service.events.FightArea;
 import com.rhontproject.service.events.Halt;
 import com.rhontproject.service.events.LevelUp;
@@ -26,7 +25,7 @@ public class EventKnightService {
     }
 
     public void levelUp() {
-        levelUp.level_up(knight);
+        levelUp.levelUp(knight);
     }
 
     public void halt() {
