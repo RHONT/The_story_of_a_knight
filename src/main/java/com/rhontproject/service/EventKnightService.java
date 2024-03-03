@@ -8,40 +8,33 @@ import com.rhontproject.service.events.Market;
 import com.rhontproject.unit.Unit;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 
 @Component
 public class EventKnightService {
-
-
-    private final Unit unit = knight;
     private final LevelUp levelUp;
     private final Halt halt;
     private final Market market;
-    private final StateGame stateGame;
     private final FightArea fightArea;
 
 
-    public EventKnightService(LevelUp levelUp, Halt halt, Market market, StateGame stateGame, FightArea fightArea) {
+    public EventKnightService(LevelUp levelUp, Halt halt, Market market, FightArea fightArea) {
         this.levelUp = levelUp;
         this.halt = halt;
         this.market = market;
-        this.stateGame = stateGame;
         this.fightArea = fightArea;
     }
 
     public void levelUp() {
-        levelUp.level_up(unit);
+        levelUp.level_up(knight);
     }
 
     public void halt() {
-        halt.halt(unit);
+        halt.halt(knight);
     }
 
     public void market() {
-        market.market_place(unit, stateGame);
+        market.marketPlace(knight);
     }
 
     public void fightArea(Unit... enemy) {

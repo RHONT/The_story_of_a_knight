@@ -6,21 +6,25 @@ import java.util.*;
 
 import static java.lang.System.*;
 
-public class SystemUtility {
+public final class SystemUtility {
+    private SystemUtility() {
+    }
     public static void printFromFile(String str) {
         try (InputStream inputStream = SystemUtility.class.getResourceAsStream("/stories/" + str);
         ) {
             if (inputStream != null) {
-                try (Scanner scan_for_read = new Scanner(inputStream,"Windows-1251");
+                try (Scanner scanForPrintInConsole = new Scanner(inputStream,"Windows-1251");
                 ) {
-                    while (scan_for_read.hasNext()) {
-                        out.println(scan_for_read.nextLine());
+                    while (scanForPrintInConsole.hasNext()) {
+                        out.println(scanForPrintInConsole.nextLine());
                     }
+                    out.println("\nНажмите Enter для продолжения");
                 }
             } else {
                 out.println("Часть истории не найдена");
             }
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            out.println(e.getMessage());
         }
     }
 }

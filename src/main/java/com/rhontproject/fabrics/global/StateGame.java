@@ -4,9 +4,51 @@ import org.springframework.stereotype.Component;
 
 @Component
 public final class StateGame {
-    public static boolean market_exit = false;                 // 0 - do in market, 1 - not do in market
-    public static boolean halt_param = false;                // Переключатель для привала(замыкает while)
-    public static boolean halt_craft = false;                // переключатель для крафта брони.
-    public static boolean level_up_param = false;
-    public static boolean isRob = false;// Переключатель повышения уровня(замыкает while)
+    private StateGame() {
+    }
+    private static boolean marketExit = false;
+    private static boolean halt = false;
+    private static boolean craftIntoHalt = false;
+    private static boolean levelUp = false;
+    private static boolean isRob = false;//
+
+    public static synchronized boolean isMarketExit() {
+        return marketExit;
+    }
+
+    public static synchronized void setMarketExit(boolean marketExit) {
+        StateGame.marketExit = marketExit;
+    }
+
+    public static synchronized boolean isHalt() {
+        return halt;
+    }
+
+    public static synchronized void setHalt(boolean halt) {
+        StateGame.halt = halt;
+    }
+
+    public static synchronized boolean isCraftIntoHalt() {
+        return craftIntoHalt;
+    }
+
+    public static synchronized void setCraftIntoHalt(boolean craftIntoHalt) {
+        StateGame.craftIntoHalt = craftIntoHalt;
+    }
+
+    public static synchronized boolean isLevelUp() {
+        return levelUp;
+    }
+
+    public static synchronized void setLevelUp(boolean levelUp) {
+        StateGame.levelUp = levelUp;
+    }
+
+    public static synchronized boolean isIsRob() {
+        return isRob;
+    }
+
+    public static synchronized void setIsRob(boolean isRob) {
+        StateGame.isRob = isRob;
+    }
 }

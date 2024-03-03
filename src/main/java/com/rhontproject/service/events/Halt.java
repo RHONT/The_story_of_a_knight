@@ -14,12 +14,9 @@ import static java.lang.System.out;
 
 @Component
 public class Halt {
-    @Autowired
-    private StateGame stateGame;
     /**
      * метод реализующий привал/отдых, когда персонаж подготавливаеться к следующему вызову
      */
-
     public void halt(Unit unit) {
         out.println();
         out.println("После битвы вы решили устроить короткий привал");
@@ -31,15 +28,14 @@ public class Halt {
                 "2 - Приготовить щит\n" +
                 "3 - Отремонтировать на выбор один элемент брони\n" +
                 "0 - Продолжить путешествие\n");
-        while (!stateGame.halt_param) {
+        while (!StateGame.isHalt()) {
             switch_for_halt(unit);
         }
-       stateGame.halt_param = false;
-        stateGame.halt_craft = false;
+        StateGame.setHalt(false);
+        StateGame.setCraftIntoHalt(false);
         out.println("Вы продолжили путешествие.");
         out.println();
     }
-
 
 
     /**
@@ -81,35 +77,35 @@ public class Halt {
                 }
 
             case "3":
-                if (stateGame.halt_craft)
+                if (StateGame.isCraftIntoHalt())
                     out.println("На привале можно починить лишь один элемент брони. Вы уже этим воспользовались");
                 LABEL_1:
-                while (!stateGame.halt_craft) {
+                while (!StateGame.isCraftIntoHalt()) {
                     out.println("Что будем чинить? 1-2-3-4? Прочность элемента повышаеться на 30");
                     Scanner str_craft = new Scanner(in);
                     String buf_str_for_craft = str_craft.nextLine();
                     switch (buf_str_for_craft) {
                         case "1": {
                             unit.attribute.defense[0] += 30;
-                            stateGame.halt_craft = true;
+                            StateGame.setCraftIntoHalt(true);
                             out.println("Доспех починен! Что выберете еще?");
                             break;
                         }
                         case "2": {
                             unit.attribute.defense[1] += 30;
-                            stateGame.halt_craft = true;
+                            StateGame.setCraftIntoHalt(true);
                             out.println("Доспех починен! Что выберете еще?");
                             break;
                         }
                         case "3": {
                             unit.attribute.defense[2] += 30;
-                            stateGame.halt_craft = true;
+                            StateGame.setCraftIntoHalt(true);
                             out.println("Доспех починен! Что выберете еще?");
                             break;
                         }
                         case "4": {
                             unit.attribute.defense[3] += 30;
-                            stateGame.halt_craft = true;
+                            StateGame.setCraftIntoHalt(true);
                             out.println("Доспех починен! Что выберете еще?");
                             break;
                         }
@@ -124,7 +120,7 @@ public class Halt {
                 break;
 
             case "0": {
-                stateGame.halt_param = true;
+                StateGame.setHalt(true);
                 break;
             }
 

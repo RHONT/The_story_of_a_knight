@@ -8,7 +8,7 @@ import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 import static com.rhontproject.service.SystemUtility.*;
 import static java.lang.System.*;
 @Component
-public class Act_6 extends Act {
+public class Act6 extends Act {
     private final String payOff ="Сэр Томас ощутил жжение в области своего достоинства. " +
             "вполне может быть, это было и верное решени...\nВаша уверенность упала(-7) и теперь ваша базовая" +
             "меткость составляет: ";

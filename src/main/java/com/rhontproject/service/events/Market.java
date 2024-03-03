@@ -18,7 +18,7 @@ public class Market {
     private MessageService messageService;
 
 
-    public void market_place(Unit knight, StateGame stateGame) {
+    public void marketPlace(Unit knight) {
         messageService.printInventory(knight);
         out.println("Вас встречает трактирщик. На его прилавке скучают вещи, вы внимательно смотрите на них.");
         out.println(MarketEnum.SHIELD.getItemNumber() + " Щит | Цена: " + MarketEnum.SHIELD.getCost());
@@ -26,7 +26,7 @@ public class Market {
         out.println(MarketEnum.MOLOTOV.getItemNumber() + " Коктейль молотова | Цена: " + MarketEnum.MOLOTOV.getCost());
         out.println("0 Выход из трактира");
 
-        while (!stateGame.market_exit) {
+        while (!StateGame.isMarketExit()) {
             String for_market_scanner;
             Scanner scan_market = new Scanner(in);
             for_market_scanner = scan_market.nextLine();
@@ -64,7 +64,7 @@ public class Market {
                     }
 
                 case ("0"): {
-                    stateGame.market_exit = true;
+                    StateGame.setMarketExit(true);
                     break;
                 }
 
@@ -72,6 +72,6 @@ public class Market {
                     out.println("Значение введено неправильно");
             }
         }
-        stateGame.market_exit = false;
+        StateGame.setMarketExit(false);
     }
 }

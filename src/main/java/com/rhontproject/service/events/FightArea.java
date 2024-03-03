@@ -31,7 +31,7 @@ public final class FightArea {
 
         }
         hero.stabilizeHealth();
-
+        System.out.println("Нажмите Enter для продолжения");
     }
 
     private void isVortexActive(Unit hero, ArrayList<Unit> party) {

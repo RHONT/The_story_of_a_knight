@@ -13,9 +13,6 @@ import static java.lang.System.out;
 
 @Component
 public class LevelUp {
-    @Autowired
-    private StateGame stateGame;
-
     /**
      * Повышения уровня юнита
      */
@@ -26,10 +23,10 @@ public class LevelUp {
                 "\n1 - Как сильно бьеться мое сердце, словно удары молота о наковальню. Мое тело идеальный механизм!" +
                 "\n2 - А ведь не так быстро двигался враг, был момент даже когда мне показалось, что время замедлилось." +
                 "\n3 - Я несколько иначе ощущал свой меч, словно он стал моим продолжением");
-        while (!stateGame.level_up_param) {
+        while (!StateGame.isLevelUp()) {
             switch_for_level_up(unit);
         }
-        stateGame.level_up_param = false;
+        StateGame.setLevelUp(false);
         out.println();
     }
 
@@ -48,14 +45,14 @@ public class LevelUp {
                 }
                 out.println("Ваше здоровье увеличено на 10 едениц по каждому пунку.");
                 messageService.printHealthDefense(unit);
-                stateGame.level_up_param = true;
+                StateGame.setLevelUp(true);
                 break;
             case "2":
                 unit.chance_to_attack += 5;
                 out.println
                         ("Ваша базовая меткость увеличилась на 5 едениц, теперь она состовляет:" +
                                 unit.chance_to_attack);
-                stateGame.level_up_param = true;
+                StateGame.setLevelUp(true);
                 break;
             case "3":
                 unit.getWeapon().upPower(7);
@@ -63,7 +60,7 @@ public class LevelUp {
                         ("Ваш меч острее не стал, но мастерство увеличило наносимый урон:" +
                                 unit.getWeapon().getPower());
                 messageService.printHealthDefense(unit);
-                stateGame.level_up_param = true;
+                StateGame.setLevelUp(true);
                 break;
             default:
                 out.println("Сэр Томас немного отвлекся, но смог с легкостью сосредоточиться вновь.");

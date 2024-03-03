@@ -7,7 +7,7 @@ import static com.rhontproject.fabrics.ActsFabric.levelUp;
 import static com.rhontproject.fabrics.UnitFabric.createKnightDark;
 import static com.rhontproject.service.SystemUtility.*;
 @Component
-public class Act_7 extends Act {
+public class Act7 extends Act {
 
     @Override
     public void run() {
@@ -16,13 +16,11 @@ public class Act_7 extends Act {
         printFromFile("[4].txt");
         scanner.nextLine();
         eventKnightService.fightArea(createKnightDark());
-        System.out.println("Нажмиет Enter для продолжения");
 
         halt();
         levelUp();
 
         printFromFile("[5].txt");
-        System.out.println("Нажмиет Enter для продолжения");
         scanner.nextLine();
         eventKnightService.fightArea(createKnightDark(), createKnightDark());
     }
