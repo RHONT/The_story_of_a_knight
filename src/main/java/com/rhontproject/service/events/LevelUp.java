@@ -47,10 +47,10 @@ public class LevelUp {
                 StateGame.setLevelUp(true);
                 break;
             case "2":
-                unit.chance_to_attack += 5;
+                unit.chanceAttack += 5;
                 out.println
                         ("Ваша базовая меткость увеличилась на 5 едениц, теперь она состовляет:" +
-                                unit.chance_to_attack);
+                                unit.chanceAttack);
                 StateGame.setLevelUp(true);
                 break;
             case "3":

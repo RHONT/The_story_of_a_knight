@@ -2,7 +2,7 @@ package com.rhontproject.unit;
 
 import com.rhontproject.unit.attack.DuelScenario;
 import com.rhontproject.unit.attack.weapons.Weapon;
-import com.rhontproject.unit.Statless.StateHolder;
+import com.rhontproject.unit.statless.StateHolder;
 import com.rhontproject.unit.base.AbstractBaseAttribute;
 import com.rhontproject.unit.inventory.Inventory;
 import com.rhontproject.unit.defense.DefenseWall;
@@ -25,7 +25,7 @@ public abstract class Unit {
     public boolean isHero;
     public String name;
     public boolean vortex = false;
-    public int chance_to_attack = 80;
+    public int chanceAttack = 80;
     public int money = new Random().nextInt(150) + 75;
 
     private final DefenseWall defenseWall;

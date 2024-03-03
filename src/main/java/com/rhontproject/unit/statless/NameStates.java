@@ -1,12 +1,12 @@
-package com.rhontproject.unit.Statless;
+package com.rhontproject.unit.statless;
 
-import com.rhontproject.unit.Statless.negative.Burning;
-import com.rhontproject.unit.Statless.negative.Posion;
-import com.rhontproject.unit.Statless.positive.Regenerate;
+import com.rhontproject.unit.statless.negative.Burning;
+import com.rhontproject.unit.statless.negative.Poison;
+import com.rhontproject.unit.statless.positive.Regenerate;
 
 public enum NameStates {
     BURN(Burning.class.getSimpleName()),
-    POSION(Posion.class.getSimpleName()),
+    POISON(Poison.class.getSimpleName()),
     REGENERATE(Regenerate.class.getSimpleName());
 
     private final String nameClass;

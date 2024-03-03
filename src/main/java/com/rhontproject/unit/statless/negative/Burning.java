@@ -1,7 +1,7 @@
-package com.rhontproject.unit.Statless.positive;
+package com.rhontproject.unit.statless.negative;
 
+import com.rhontproject.unit.statless.AbstractState;
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.Statless.AbstractState;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -9,10 +9,13 @@ import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 
 @Component
 @Scope("prototype")
-public class Regenerate extends AbstractState {
-    {
-        message = " Восстановление!";
+public class Burning extends AbstractState {
+
+    @Override
+    protected void initMessage() {
+        message = " Горит!";
     }
+
     @Override
     public void activate() {
         count += 3;
@@ -28,12 +31,12 @@ public class Regenerate extends AbstractState {
         if (count > 0) {
             count--;
             for (int i = 0; i <= 3; i++) {
-                unit.attribute.curHealth[i] += 100;
+                unit.attribute.curHealth[i] -= 10;
             }
-            unit.stabilizeHealth();
             messageService.add(unit.name + " " + message);
         }
     }
+
 
     public int getCount() {
         return count;

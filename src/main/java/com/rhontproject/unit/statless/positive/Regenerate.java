@@ -1,23 +1,19 @@
-package com.rhontproject.unit.Statless.negative;
+package com.rhontproject.unit.statless.positive;
 
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.Statless.AbstractState;
+import com.rhontproject.unit.statless.AbstractState;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 
 import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 
 @Component
 @Scope("prototype")
-public class Posion extends AbstractState {
-    {
-        message=" Отравление!";
-    }
+public class Regenerate extends AbstractState {
+
     @Override
     public void activate() {
-        count += 10;
+        count += 3;
     }
 
     @Override
@@ -29,11 +25,13 @@ public class Posion extends AbstractState {
     public void action(Unit unit) {
         if (count > 0) {
             count--;
-            unit.attribute.curHealth=Arrays.stream(unit.attribute.curHealth).map(e->e-4).toArray();
+            for (int i = 0; i <= 3; i++) {
+                unit.attribute.curHealth[i] += 100;
+            }
+            unit.stabilizeHealth();
             messageService.add(unit.name + " " + message);
         }
     }
-
 
     public int getCount() {
         return count;
@@ -41,5 +39,10 @@ public class Posion extends AbstractState {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    @Override
+    protected void initMessage() {
+        message = " Восстановление!";
     }
 }

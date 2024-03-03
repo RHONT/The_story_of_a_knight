@@ -4,7 +4,7 @@ package com.rhontproject.fabrics.units;
 import com.rhontproject.unit.base.BaseAttribute;
 import com.rhontproject.unit.attack.weapons.Weapon;
 import com.rhontproject.unit.attack.DuelScenario;
-import com.rhontproject.unit.Statless.StateHolder;
+import com.rhontproject.unit.statless.StateHolder;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.inventory.Inventory;
 import com.rhontproject.unit.inventory.InventoryEnum;

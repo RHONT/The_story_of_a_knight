@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rhontproject.unit.Statless.NameStates.*;
+import static com.rhontproject.unit.statless.NameStates.*;
 
 class StateHolderTest {
 

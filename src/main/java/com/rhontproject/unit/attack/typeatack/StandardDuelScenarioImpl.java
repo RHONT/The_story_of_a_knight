@@ -1,7 +1,7 @@
 package com.rhontproject.unit.attack.typeatack;
 
 import com.rhontproject.unit.attack.DuelScenario;
-import com.rhontproject.unit.Statless.NameStates;
+import com.rhontproject.unit.statless.NameStates;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.inventory.InventoryEnum;
 import org.springframework.context.annotation.Scope;

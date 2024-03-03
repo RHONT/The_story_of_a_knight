@@ -1,7 +1,7 @@
 package com.rhontproject.unit.attack.weapons;
 
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.Statless.NameStates;
+import com.rhontproject.unit.statless.NameStates;
 import org.springframework.stereotype.Component;
 import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 

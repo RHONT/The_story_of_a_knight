@@ -1,21 +1,25 @@
-package com.rhontproject.unit.Statless.negative;
+package com.rhontproject.unit.statless.negative;
 
-import com.rhontproject.unit.Statless.AbstractState;
 import com.rhontproject.unit.Unit;
+import com.rhontproject.unit.statless.AbstractState;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 
 @Component
 @Scope("prototype")
-public class Burning extends AbstractState {
-    {
-        message=" Горение!";
+public class Poison extends AbstractState {
+
+    @Override
+    protected void initMessage() {
+        message=" Отравлен!";
     }
     @Override
     public void activate() {
-        count += 3;
+        count += 10;
     }
 
     @Override
@@ -27,13 +31,10 @@ public class Burning extends AbstractState {
     public void action(Unit unit) {
         if (count > 0) {
             count--;
-            for (int i = 0; i <= 3; i++) {
-                unit.attribute.curHealth[i] -= 10;
-            }
+            unit.attribute.curHealth=Arrays.stream(unit.attribute.curHealth).map(e->e-4).toArray();
             messageService.add(unit.name + " " + message);
         }
     }
-
 
 
     public int getCount() {

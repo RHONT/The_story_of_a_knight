@@ -8,30 +8,30 @@ import java.util.EnumMap;
 @Component
 @Scope("prototype")
 public class Inventory {
-   private final EnumMap<InventoryEnum,Integer> inventory=new EnumMap<>(InventoryEnum.class);
+   private final EnumMap<InventoryEnum,Integer> inventoryMap =new EnumMap<>(InventoryEnum.class);
 
    public void add(InventoryEnum inventoryEnum,Integer amount){
-      if (!inventory.containsKey(inventoryEnum)) {
-         inventory.put(inventoryEnum, amount);
+      if (!inventoryMap.containsKey(inventoryEnum)) {
+         inventoryMap.put(inventoryEnum, amount);
       } else {
-         inventory.put(inventoryEnum,inventory.get(inventoryEnum)+amount);
+         inventoryMap.put(inventoryEnum, inventoryMap.get(inventoryEnum)+amount);
       }
    }
 
    public void use(InventoryEnum inventoryEnum){
-      inventory.computeIfPresent(inventoryEnum, (k, v) -> v > 0 ? v - 1 : -1);
+      inventoryMap.computeIfPresent(inventoryEnum, (k, v) -> v > 0 ? v - 1 : -1);
    }
 
    public boolean contains(InventoryEnum inventoryEnum){
-      return inventory.containsKey(inventoryEnum);
+      return inventoryMap.containsKey(inventoryEnum);
    }
 
    public Integer get(InventoryEnum inventoryEnum){
-      return inventory.get(inventoryEnum);
+      return inventoryMap.get(inventoryEnum);
    }
 
    public void clearInventory(){
-      inventory.clear();
+      inventoryMap.clear();
    }
 
 

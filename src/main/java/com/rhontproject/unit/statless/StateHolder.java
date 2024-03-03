@@ -1,4 +1,4 @@
-package com.rhontproject.unit.Statless;
+package com.rhontproject.unit.statless;
 
 import com.rhontproject.unit.Unit;
 import org.springframework.beans.factory.annotation.Autowired;

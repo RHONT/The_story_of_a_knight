@@ -31,14 +31,14 @@ public class Act6 extends Act {
                 case ("2"):
                     if (knight.money > 400) {
                         knight.money -= 400;
-                        knight.chance_to_attack -= 7;
-                        out.println(payOff  + knight.chance_to_attack);
+                        knight.chanceAttack -= 7;
+                        out.println(payOff  + knight.chanceAttack);
 
                     } else {
-                        knight.chance_to_attack -= 15;
+                        knight.chanceAttack -= 15;
                         knight.money = 0;
                         knight.getInventorySet().clearInventory();
-                        out.println(moneyIsTaught  + knight.chance_to_attack);
+                        out.println(moneyIsTaught  + knight.chanceAttack);
                         return;
                     }
                 case ("1"):

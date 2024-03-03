@@ -1,9 +1,7 @@
 package com.rhontproject.unit.attack.weapons;
 
 import com.rhontproject.unit.Unit;
-import com.rhontproject.unit.Statless.NameStates;
-
-import java.util.Random;
+import com.rhontproject.unit.statless.NameStates;
 
 public class NormalSword extends Weapon {
     int damageMultiplier;
@@ -26,7 +24,7 @@ public class NormalSword extends Weapon {
         damageMultiplier = getDamageMultiplier();
         victim = enemy;
         chanceToHitSelectedPartBody =
-                master.chance_to_attack + calculateChanceAttack(indexTargetBody);
+                master.chanceAttack + calculateChanceAttack(indexTargetBody);
 
         int damage;
         if (isIncludeInRange()) {
