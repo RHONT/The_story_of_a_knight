@@ -1,6 +1,5 @@
 package com.rhontproject.fabrics.units;
 
-
 import com.rhontproject.unit.base.BaseAttribute;
 import com.rhontproject.unit.attack.weapons.Weapon;
 import com.rhontproject.unit.attack.DuelScenario;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 
 @Component("Knight")
 public class Knight extends Unit {
