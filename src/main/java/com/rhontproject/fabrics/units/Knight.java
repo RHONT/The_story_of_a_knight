@@ -34,7 +34,7 @@ public class Knight extends Unit {
 
     @Autowired
     @Override
-    public void setHealth(@Value("${knight}") int[] health) {
+    protected void setHealth(@Value("${knight}") int[] health) {
         this.getAttribute().setCurHealth(health);
         this.getAttribute().setDefense(30,30,30,30);
         this.getInventorySet().add(InventoryEnum.POTION,2);

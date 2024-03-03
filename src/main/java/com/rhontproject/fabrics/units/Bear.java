@@ -41,7 +41,7 @@ class Bear extends Unit {
 
     @Autowired
     @Override
-    public void setHealth(@Value("${bear}") int[] health) {
+    protected void setHealth(@Value("${bear}") int[] health) {
         this.attribute.setCurHealth(health);
     }
 }

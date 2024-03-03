@@ -6,6 +6,8 @@ import com.rhontproject.unit.statless.StateHolder;
 import com.rhontproject.unit.base.AbstractBaseAttribute;
 import com.rhontproject.unit.inventory.Inventory;
 import com.rhontproject.unit.defense.DefenseWall;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.*;
 
@@ -122,4 +124,5 @@ public abstract class Unit {
     public int getChanceAttack() {
         return chanceAttack;
     }
+    protected abstract void setHealth(int[] health);
 }

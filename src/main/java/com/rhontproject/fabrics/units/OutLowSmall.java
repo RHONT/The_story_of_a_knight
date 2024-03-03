@@ -32,7 +32,7 @@ public class OutLowSmall extends Unit {
 
     @Autowired
     @Override
-    public void setHealth(@Value("${outlowsmall}") int[] health) {
+    protected void setHealth(@Value("${outlowsmall}") int[] health) {
         this.attribute.setCurHealth(health);
     }
 }

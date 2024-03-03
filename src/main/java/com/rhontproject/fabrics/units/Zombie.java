@@ -32,7 +32,7 @@ public class Zombie extends Unit {
 
     @Autowired
     @Override
-    public void setHealth(@Value("${zombie}") int[] health) {
+    protected void setHealth(@Value("${zombie}") int[] health) {
         this.attribute.setCurHealth(health);
     }
 }
