@@ -19,6 +19,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
 
     private Unit attacking;
     int attackPower;
+    private Random random=new Random();
 
     @Override
     public void attacking(Unit attacking, Unit victim) {
@@ -31,7 +32,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
         while (true) {
             String inputConsole;
             if (!attacking.isHero()) {
-                inputConsole = String.valueOf((new Random().nextInt(3) + 1));
+                inputConsole = String.valueOf(random.nextInt(3) + 1);
             } else {
                 inputConsole = scanner.nextLine().toLowerCase();
             }

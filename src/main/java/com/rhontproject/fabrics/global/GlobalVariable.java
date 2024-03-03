@@ -5,8 +5,10 @@ import com.rhontproject.service.MessageService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
-public class GlobalVariable {
+public final class GlobalVariable {
+    private GlobalVariable() {
+    }
     static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-    public static MessageService messageService= (MessageService) context.getBean("messageService");
-    public static Knight knight=(Knight) context.getBean("Knight");
+    public static final MessageService messageService= (MessageService) context.getBean("messageService");
+    public static final Knight knight=(Knight) context.getBean("Knight");
 }

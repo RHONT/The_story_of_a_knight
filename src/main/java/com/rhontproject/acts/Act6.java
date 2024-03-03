@@ -9,12 +9,6 @@ import static com.rhontproject.service.SystemUtility.*;
 import static java.lang.System.*;
 @Component
 public class Act6 extends Act {
-    private final String payOff ="Сэр Томас ощутил жжение в области своего достоинства. " +
-            "вполне может быть, это было и верное решени...\nВаша уверенность упала(-7) и теперь ваша базовая" +
-            "меткость составляет: ";
-    private final String moneyIsTaught="У вас не нашлось нужной суммы. Жулики забрали все что у вас есть, включая ваш инвентарь" +
-            "\nТак жалко сэр Томас себя еще никогда не ощущал. \nВаша уверенность упала(-15) и теперь ваша базовая" +
-            "меткость составляет:  ";
 
     @Override
     public void run() {
@@ -32,13 +26,13 @@ public class Act6 extends Act {
                     if (knight.getMoney() > 400) {
                         knight.minusMoney(400);
                         knight.minusChanceAttack(7);
-                        out.println(payOff  + knight.getChanceAttack());
-
+                        out.println(payOff()  + knight.getChanceAttack());
+                        break;
                     } else {
                         knight.minusChanceAttack(15);
                         knight.setMoney(0);
                         knight.getInventorySet().clearInventory();
-                        out.println(moneyIsTaught  + knight.getChanceAttack());
+                        out.println(moneyIsTaught()  + knight.getChanceAttack());
                         return;
                     }
                 case ("1"):
@@ -48,5 +42,16 @@ public class Act6 extends Act {
                     out.println("Значение введено неправильно");
             }
         }
+    }
+
+    private String payOff(){
+        return "Сэр Томас ощутил жжение в области своего достоинства. " +
+                "вполне может быть, это было и верное решени...\nВаша уверенность упала(-7) и теперь ваша базовая" +
+                "меткость составляет: ";
+    }
+    private String moneyIsTaught(){
+        return "У вас не нашлось нужной суммы. Жулики забрали все что у вас есть, включая ваш инвентарь" +
+                "\nТак жалко сэр Томас себя еще никогда не ощущал. \nВаша уверенность упала(-15) и теперь ваша базовая" +
+                "меткость составляет:  ";
     }
 }

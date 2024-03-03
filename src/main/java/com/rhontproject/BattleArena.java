@@ -4,27 +4,27 @@ import static com.rhontproject.fabrics.ActsFabric.*;
 
 public class BattleArena {
     public static void main(String[] args) {
-        act_1();
+        act1();
 
-        act_2();
+        act2();
         halt();
         levelUp();
         market();
 
-        act_3();
+        act3();
 
-        act_4();
+        act4();
 
-        act_5();
+        act5();
         halt();
         levelUp();
 
-        act_6();
+        act6();
         halt();
         levelUp();
 
-        act_7();
-        act_8();
+        act7();
+        act8();
     }
 }
 

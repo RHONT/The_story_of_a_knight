@@ -7,49 +7,49 @@ import org.springframework.stereotype.Component;
 
 @Component
 public final class ActsFabric {
+
+    private ActsFabric() {
+    }
     static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-private static EventKnightService eventKnightService;
+    private static final EventKnightService eventKnightService=context.getBean("eventKnightService",EventKnightService.class);
 
-    public ActsFabric(EventKnightService eventKnightService) {
-        ActsFabric.eventKnightService = eventKnightService;
-    }
-
-    public static void act_1() {
+    public static void act1() {
         Act act = (Act) context.getBean("act1");
         act.run();
     }
 
-    public static void act_2() {
+    public static void act2() {
         Act act = (Act) context.getBean("act2");
         act.run();
     }
 
-    public static void act_3() {
+    public static void act3() {
         Act act = (Act) context.getBean("act3");
         act.run();
     }
 
-    public static void act_4() {
+    public static void act4() {
         Act act = (Act) context.getBean("act4");
         act.run();
     }
 
-    public static void act_5() {
+    public static void act5() {
         Act act = (Act) context.getBean("act5");
         act.run();
     }
-    public static void act_6() {
+
+    public static void act6() {
         Act act = (Act) context.getBean("act6");
         act.run();
     }
 
-    public static void act_7() {
+    public static void act7() {
         Act act = (Act) context.getBean("act7");
         act.run();
     }
 
-    public static void act_8() {
+    public static void act8() {
         Act act = (Act) context.getBean("act8");
         act.run();
     }

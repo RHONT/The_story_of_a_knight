@@ -24,7 +24,7 @@ public final class FightArea {
             hero.attack(party.get(1));
             isVortexActive(hero, party);
             IntStream.range(1, party.size()).forEach(e -> party.get(e).attack(hero));
-            сollectMoneyFromCorpses(hero, party);
+            getMoneyFromCorpses(hero, party);
             checkLifeHero(hero);
             messageService.outputConsole();
 
@@ -47,7 +47,7 @@ public final class FightArea {
         }
     }
 
-    private void сollectMoneyFromCorpses(Unit hero, ArrayList<Unit> party) {
+    private void getMoneyFromCorpses(Unit hero, ArrayList<Unit> party) {
         for (int i = 1; i < party.size(); i++) {
             if (!party.get(i).isAlive()) {
                 messageService.add("Враг пал, вы собрали с трупа: " + party.get(i).getMoney() + " золотых");

@@ -3,7 +3,6 @@ package com.rhontproject.service.events;
 import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.inventory.InventoryEnum;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -29,7 +28,7 @@ public class Halt {
                 "3 - Отремонтировать на выбор один элемент брони\n" +
                 "0 - Продолжить путешествие\n");
         while (!StateGame.isHalt()) {
-            switch_for_halt(unit);
+            switchHalt(unit);
         }
         StateGame.setHalt(false);
         StateGame.setCraftIntoHalt(false);
@@ -41,10 +40,10 @@ public class Halt {
     /**
      * вспомогательный метод реализующий функционал метода halt()
      */
-    private void switch_for_halt(Unit unit) {
-        Scanner scan_halt = new Scanner(in);
-        String buf_str = scan_halt.nextLine();
-        switch (buf_str) {
+    private void switchHalt(Unit unit) {
+        Scanner scanHalt = new Scanner(in);
+        String tempStr = scanHalt.nextLine();
+        switch (tempStr) {
             case "1":
                 if (unit.getInventorySet().get(InventoryEnum.POTION) > 0) {
                     for (int i = 0; i < 4; i++) {
@@ -82,8 +81,8 @@ public class Halt {
                 LABEL_1:
                 while (!StateGame.isCraftIntoHalt()) {
                     out.println("Что будем чинить? 1-2-3-4? Прочность элемента повышаеться на 30");
-                    Scanner str_craft = new Scanner(in);
-                    String strCraftArmor = str_craft.nextLine();
+                    Scanner strCraft = new Scanner(in);
+                    String strCraftArmor = strCraft.nextLine();
                     switch (strCraftArmor) {
                         case "1":
                         case "2":

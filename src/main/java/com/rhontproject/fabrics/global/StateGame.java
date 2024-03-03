@@ -10,7 +10,7 @@ public final class StateGame {
     private static boolean halt = false;
     private static boolean craftIntoHalt = false;
     private static boolean levelUp = false;
-    private static boolean isRob = false;//
+    private static boolean isRob = false;
 
     public static synchronized boolean isMarketExit() {
         return marketExit;

@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Random;
 
 public final class UnitFabric {
+    private static final Random random=new Random();
     static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     private UnitFabric() {
     }
@@ -19,7 +20,7 @@ public final class UnitFabric {
 
     public static Unit createZombie(){
         Zombie zombie = context.getBean("Zombie", Zombie.class);
-        zombie.attribute.setDefense(random(10), random(20), random(10), random(5));
+        zombie.attribute.setDefense(rnd(10), rnd(20), rnd(10), rnd(5));
         return zombie;
     }
 
@@ -43,8 +44,7 @@ public final class UnitFabric {
         return context.getBean("Knight_In_The_Dark", Knight_In_The_Dark.class);
     }
 
-    private static int random(int maxValue){
-        return new Random().nextInt(maxValue);
+    public static int rnd(int maxValue){
+        return random.nextInt(maxValue);
     }
-
 }
