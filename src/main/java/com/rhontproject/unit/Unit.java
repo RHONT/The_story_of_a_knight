@@ -9,18 +9,6 @@ import com.rhontproject.unit.defense.DefenseWall;
 
 import java.util.*;
 
-/**
- * vortex - супер способность волна ветра, бьет по всем врагам.<br>
- * name - имя персонажа <br>
- * info_str_fight - накопительная переменная для отчета о состоянии битвы для каждого юнита<br>
- * i_am_fire - Горит ли юнит?<br>
- * chance_to_attack - базовая характеристика шанса на успешное попадение<br>
- * chance_to_attack_in_fire - Шанс попасть по противнику если ты горишь<br>
- * param_humanoid - {голова:торс:руки:ноги; сила оружия}<br>
- * defense - броня для каждой части тела<br>
- * param_inventory - {Щит на готове, щит в инвентаре, коктейль Молотова,зелье здоровья}<br>
- * money - каждый юнит несет в себе золото, отдает при смерти<br>
- */
 public abstract class Unit {
     private boolean isHero=false;
     protected String name;
@@ -69,7 +57,7 @@ public abstract class Unit {
     }
 
     /**
-     * Когда выпиваеться зелье здоровья, то показатели выходят за пределы
+     * Когда выпивается зелье здоровья, то показатели выходят за пределы
      * После боя завышенные показатели должны приходить в норму
      */
 
@@ -78,15 +66,11 @@ public abstract class Unit {
     }
 
     /**
-     * Проверка на жизнеспособность юнита
+     * Проверка на жизнеспособность персонажа
      */
 
-    public boolean isAlife() {
+    public boolean isAlive() {
         return attribute.isAlife();
-    }
-
-    protected void setHealth(int[] health) {
-        this.attribute.setCurHealth(health);
     }
 
     public Inventory getInventorySet() {

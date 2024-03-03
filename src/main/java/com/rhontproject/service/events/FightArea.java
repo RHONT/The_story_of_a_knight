@@ -18,7 +18,7 @@ public final class FightArea {
         party.add(hero);
         party.addAll(List.of(enemy));
 
-        while (hero.isAlife() && (party.size() > 1)) {
+        while (hero.isAlive() && (party.size() > 1)) {
             round++;
             out.println(messageService.printStandartBattleArea(party, round));
             hero.attack(party.get(1));
@@ -41,7 +41,7 @@ public final class FightArea {
     }
 
     private void checkLifeHero(Unit hero) {
-        if (!hero.isAlife()) {
+        if (!hero.isAlive()) {
             messageService.add(hero.getName() + " погиб. Его натура не выдержала вызова судьбы.");
             exit(0);
         }
@@ -49,7 +49,7 @@ public final class FightArea {
 
     private void сollectMoneyFromCorpses(Unit hero, ArrayList<Unit> party) {
         for (int i = 1; i < party.size(); i++) {
-            if (!party.get(i).isAlife()) {
+            if (!party.get(i).isAlive()) {
                 messageService.add("Враг пал, вы собрали с трупа: " + party.get(i).getMoney() + " золотых");
                 hero.plusMoney(party.get(i).getMoney());
                 party.remove(i);
