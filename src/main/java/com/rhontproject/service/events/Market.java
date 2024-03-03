@@ -1,6 +1,5 @@
 package com.rhontproject.service.events;
 
-import com.rhontproject.fabrics.global.StateGame;
 import com.rhontproject.service.MessageService;
 import com.rhontproject.unit.Unit;
 import com.rhontproject.unit.inventory.InventoryEnum;
@@ -10,15 +9,20 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+import static com.rhontproject.fabrics.global.StateGame.*;
 import static java.lang.System.in;
 import static java.lang.System.out;
+
 @Component
 public class Market {
     @Autowired
     private MessageService messageService;
 
-
     public void marketPlace(Unit knight) {
+        final String buyShield = "1";
+        final String buyPotion = "2";
+        final String buyMolotov = "3";
+        final String exit = "0";
         messageService.printInventory(knight);
         out.println("Вас встречает трактирщик. На его прилавке скучают вещи, вы внимательно смотрите на них.");
         out.println(MarketEnum.SHIELD.getItemNumber() + " Щит | Цена: " + MarketEnum.SHIELD.getCost());
@@ -26,45 +30,42 @@ public class Market {
         out.println(MarketEnum.MOLOTOV.getItemNumber() + " Коктейль молотова | Цена: " + MarketEnum.MOLOTOV.getCost());
         out.println("0 Выход из трактира");
 
-        while (!StateGame.isMarketExit()) {
+        while (!isMarketExit()) {
             String marketStr;
             Scanner scanMarket = new Scanner(in);
             marketStr = scanMarket.nextLine();
             switch (marketStr) {
-                case ("1"):
+                case buyShield:
                     if (MarketEnum.SHIELD.getCost() <= knight.getMoney()) {
                         knight.minusMoney(MarketEnum.SHIELD.getCost());
-                        knight.getDefenseWall().add(new HardShield(),1);
+                        knight.getDefenseWall().add(new HardShield(), 1);
                         out.println("Вы купили щит!");
-                        break;
                     } else {
                         out.println("Невозможно купить щит. Вам не хватает " + (MarketEnum.SHIELD.getCost() - knight.getMoney()));
-                        break;
                     }
-                case ("2"):
+                    break;
+                case buyPotion:
                     if (MarketEnum.POTION_OF_HEALTH.getCost() <= knight.getMoney()) {
                         knight.minusMoney(MarketEnum.POTION_OF_HEALTH.getCost());
-                        knight.getInventorySet().add(InventoryEnum.POTION,1);
+                        knight.getInventorySet().add(InventoryEnum.POTION, 1);
                         out.println("Вы купили зелье!");
-                        break;
                     } else {
                         out.println("Невозможно купить зелье. Вам не хватает " + (MarketEnum.POTION_OF_HEALTH.getCost() - knight.getMoney()));
-                        break;
                     }
+                    break;
 
-                case ("3"):
+                case buyMolotov:
                     if (MarketEnum.MOLOTOV.getCost() <= knight.getMoney()) {
                         knight.minusMoney(MarketEnum.MOLOTOV.getCost());
-                        knight.getInventorySet().add(InventoryEnum.MOLOTOV,1);
+                        knight.getInventorySet().add(InventoryEnum.MOLOTOV, 1);
                         out.println("Вы купили молотов");
-                        break;
                     } else {
                         out.println("Невозможно купить коктейль молотова. Вам не хватает " + (MarketEnum.MOLOTOV.getCost() - knight.getMoney()));
-                        break;
                     }
+                    break;
 
-                case ("0"): {
-                    StateGame.setMarketExit(true);
+                case exit: {
+                    setMarketExit(true);
                     break;
                 }
 
@@ -72,6 +73,6 @@ public class Market {
                     out.println("Значение введено неправильно");
             }
         }
-        StateGame.setMarketExit(false);
+        setMarketExit(false);
     }
 }

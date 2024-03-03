@@ -9,7 +9,6 @@ public enum MarketEnum {
     private final int cost;
 
     MarketEnum(int itemNumber, int cost) {
-
         this.itemNumber = itemNumber;
         this.cost = cost;
     }
