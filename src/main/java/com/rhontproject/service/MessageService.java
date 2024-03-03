@@ -39,13 +39,13 @@ public class MessageService {
                 " Сила оружия: " + unit.getWeapon().getPower());
         delimiter.append("-".repeat(info.length()));
         out.println(delimiter);
-        out.println(unit.name);
+        out.println(unit.getName());
         out.println(info);
     }
 
     public void printInventory(Unit unit) {
         String sb = "\n" +
-                "Золота у вас: " + unit.money + "\n" +
+                "Золота у вас: " + unit.getMoney() + "\n" +
                 "Прочность щита в руке: " + unit.getDefenseWall().getDurability() + "\n" +
                 "Количество щитов: " + unit.getDefenseWall().getAmountShield() + "\n" +
                 "Коктейля молотова: " + unit.getInventorySet().get(InventoryEnum.MOLOTOV) + "\n" +
@@ -107,7 +107,7 @@ public class MessageService {
      */
     private static String[] converter(Unit unit) {
         String[] converted = new String[6];
-        converted[0] = unit.name;
+        converted[0] = unit.getName();
 
         if (unit.getClass()== Knight_In_The_Dark.class) {
             Arrays.fill(converted,1,converted.length,"");

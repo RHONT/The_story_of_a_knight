@@ -29,14 +29,14 @@ public class Act6 extends Act {
             String eventOnBridge = scanner.nextLine();
             switch (eventOnBridge) {
                 case ("2"):
-                    if (knight.money > 400) {
-                        knight.money -= 400;
+                    if (knight.getMoney() > 400) {
+                        knight.minusMoney(400);
                         knight.chanceAttack -= 7;
                         out.println(payOff  + knight.chanceAttack);
 
                     } else {
                         knight.chanceAttack -= 15;
-                        knight.money = 0;
+                        knight.setMoney(0);
                         knight.getInventorySet().clearInventory();
                         out.println(moneyIsTaught  + knight.chanceAttack);
                         return;

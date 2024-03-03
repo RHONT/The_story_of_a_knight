@@ -32,7 +32,7 @@ public class Poison extends AbstractState {
         if (count > 0) {
             count--;
             unit.attribute.curHealth=Arrays.stream(unit.attribute.curHealth).map(e->e-4).toArray();
-            messageService.add(unit.name + " " + message);
+            messageService.add(unit.getName() + " " + message);
         }
     }
 

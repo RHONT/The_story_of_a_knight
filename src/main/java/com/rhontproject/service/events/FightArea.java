@@ -43,7 +43,7 @@ public final class FightArea {
 
     private void checkLifeHero(Unit hero) {
         if (!hero.isAlife()) {
-            messageService.add(hero.name + " погиб. Его натура не выдержала вызова судьбы.");
+            messageService.add(hero.getName() + " погиб. Его натура не выдержала вызова судьбы.");
             exit(0);
         }
     }
@@ -51,9 +51,8 @@ public final class FightArea {
     private void сollectMoneyFromCorpses(Unit hero, ArrayList<Unit> party) {
         for (int i = 1; i < party.size(); i++) {
             if (!party.get(i).isAlife()) {
-                party.get(i).money = new Random().nextInt(90) + 100;
-                messageService.add("Враг пал, вы собрали с трупа: " + party.get(i).money + " золотых");
-                hero.money += party.get(i).money;
+                messageService.add("Враг пал, вы собрали с трупа: " + party.get(i).getMoney() + " золотых");
+                hero.upMoney(party.get(i).getMoney());
                 party.remove(i);
                 i--;
             }

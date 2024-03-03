@@ -41,7 +41,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     return;
                 case ("s"):
                     if (attacking.getDefenseWall().loadShield()) {
-                        out.println(attacking.name + " подготовил щит");
+                        out.println(attacking.getName() + " подготовил щит");
                         break;
                     } else {
                         out.println("У вас нет щитов");
@@ -51,7 +51,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     if (this.attacking.getInventorySet().get(InventoryEnum.MOLOTOV) > 0) {
                         this.attacking.getInventorySet().use(InventoryEnum.MOLOTOV);
                         victim.getStateHolder().activeSelectState(NameStates.BURN);
-                        out.println(victim.name + " горит!");
+                        out.println(victim.getName() + " горит!");
                         return;
                     } else {
                         out.println("У вас нет Молотова");
@@ -61,7 +61,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
                     if (this.attacking.getInventorySet().get(InventoryEnum.POTION) > 0) {
                         this.attacking.getInventorySet().use(InventoryEnum.POTION);
                         drinkPotion();
-                        out.println(attacking.name + " выпил зелье");
+                        out.println(attacking.getName() + " выпил зелье");
                         break;
                     } else {
                         out.println("У вас нет зелья!");
@@ -84,7 +84,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
 
     private void activeVortex() {
         attacking.vortex = true;
-        messageService.add(attacking.name + " разрываете врагов мощным порывом ветра! "
+        messageService.add(attacking.getName() + " разрываете врагов мощным порывом ветра! "
                 + "Урон каждому составил по 40 единиц!");
     }
 
@@ -92,7 +92,7 @@ public class StandardDuelScenarioImpl implements DuelScenario {
         for (int i = 0; i < 4; i++) {
             attacking.attribute.curHealth[i] += 70;
         }
-        messageService.add(attacking.name + " исцелился на " + 70 + " очков");
+        messageService.add(attacking.getName() + " исцелился на " + 70 + " очков");
     }
 }
 

@@ -29,7 +29,7 @@ public class Regenerate extends AbstractState {
                 unit.attribute.curHealth[i] += 100;
             }
             unit.stabilizeHealth();
-            messageService.add(unit.name + " " + message);
+            messageService.add(unit.getName() + " " + message);
         }
     }
 

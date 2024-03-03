@@ -23,10 +23,11 @@ import java.util.*;
  */
 public abstract class Unit {
     public boolean isHero;
-    public String name;
+    protected String name;
     public boolean vortex = false;
     public int chanceAttack = 80;
-    public int money = new Random().nextInt(150) + 75;
+    private Random random=new Random();
+    private int money = random.nextInt(150) + 75;
 
     private final DefenseWall defenseWall;
     private final StateHolder stateHolder;
@@ -35,7 +36,7 @@ public abstract class Unit {
     private final Inventory inventorySet;
     private DuelScenario duelScenario;
 
-    public Unit(DefenseWall defenseWall,
+    protected Unit(DefenseWall defenseWall,
                 StateHolder stateHolder,
                 AbstractBaseAttribute attribute,
                 Inventory inventorySet,
@@ -98,5 +99,25 @@ public abstract class Unit {
 
     public AbstractBaseAttribute getAttribute() {
         return attribute;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void upMoney(int money){
+        this.money+=money;
+    }
+
+    public void minusMoney(int money){
+        this.money-=money;
+    }
+
+    public String getName() {
+        return name;
     }
 }

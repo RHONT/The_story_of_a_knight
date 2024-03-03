@@ -33,7 +33,7 @@ public class Burning extends AbstractState {
             for (int i = 0; i <= 3; i++) {
                 unit.attribute.curHealth[i] -= 10;
             }
-            messageService.add(unit.name + " " + message);
+            messageService.add(unit.getName() + " " + message);
         }
     }
 

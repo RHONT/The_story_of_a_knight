@@ -32,34 +32,34 @@ public class Market {
             marketStr = scanMarket.nextLine();
             switch (marketStr) {
                 case ("1"):
-                    if (MarketEnum.SHIELD.getCost() <= knight.money) {
-                        knight.money -= MarketEnum.SHIELD.getCost();
+                    if (MarketEnum.SHIELD.getCost() <= knight.getMoney()) {
+                        knight.minusMoney(MarketEnum.SHIELD.getCost());
                         knight.getDefenseWall().add(new HardShield(),1);
                         out.println("Вы купили щит!");
                         break;
                     } else {
-                        out.println("Невозможно купить щит. Вам не хватает " + (MarketEnum.SHIELD.getCost() - knight.money));
+                        out.println("Невозможно купить щит. Вам не хватает " + (MarketEnum.SHIELD.getCost() - knight.getMoney()));
                         break;
                     }
                 case ("2"):
-                    if (MarketEnum.POTION_OF_HEALTH.getCost() <= knight.money) {
-                        knight.money -= MarketEnum.POTION_OF_HEALTH.getCost();
+                    if (MarketEnum.POTION_OF_HEALTH.getCost() <= knight.getMoney()) {
+                        knight.minusMoney(MarketEnum.POTION_OF_HEALTH.getCost());
                         knight.getInventorySet().add(InventoryEnum.POTION,1);
                         out.println("Вы купили зелье!");
                         break;
                     } else {
-                        out.println("Невозможно купить зелье. Вам не хватает " + (MarketEnum.POTION_OF_HEALTH.getCost() - knight.money));
+                        out.println("Невозможно купить зелье. Вам не хватает " + (MarketEnum.POTION_OF_HEALTH.getCost() - knight.getMoney()));
                         break;
                     }
 
                 case ("3"):
-                    if (MarketEnum.MOLOTOV.getCost() <= knight.money) {
-                        knight.money -= MarketEnum.MOLOTOV.getCost();
+                    if (MarketEnum.MOLOTOV.getCost() <= knight.getMoney()) {
+                        knight.minusMoney(MarketEnum.MOLOTOV.getCost());
                         knight.getInventorySet().add(InventoryEnum.MOLOTOV,1);
                         out.println("Вы купили молотов");
                         break;
                     } else {
-                        out.println("Невозможно купить коктейль молотова. Вам не хватает " + (MarketEnum.MOLOTOV.getCost() - knight.money));
+                        out.println("Невозможно купить коктейль молотова. Вам не хватает " + (MarketEnum.MOLOTOV.getCost() - knight.getMoney()));
                         break;
                     }
 
