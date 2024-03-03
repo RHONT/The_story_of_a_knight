@@ -83,7 +83,7 @@
                             </descriptorRefs>
                             <archive>
                                 <manifest>
-                                    <mainClass>com.rhontproject.Battle_area</mainClass>
+                                    <mainClass>com.rhontproject.BattleArena</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>

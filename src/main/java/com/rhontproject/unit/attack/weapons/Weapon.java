@@ -15,15 +15,16 @@ public abstract class Weapon {
     protected int power;
     private NameStates negativeState;
     protected String info;
+    protected final Random random=new Random();
 
 
 
-    public Weapon(int power,  NameStates negativeState) {
+    protected Weapon(int power,  NameStates negativeState) {
         this.power = power;
         this.negativeState = negativeState;
     }
 
-    public Weapon(int power) {
+    protected Weapon(int power) {
         this.power = power;
     }
 
@@ -40,7 +41,7 @@ public abstract class Weapon {
         info="";
     }
 
-    abstract protected void attackPartBody(int partBody, Unit enemy);
+    protected abstract void attackPartBody(int partBody, Unit enemy);
 
     public void upPower(int value) {
         power += value;
@@ -54,13 +55,13 @@ public abstract class Weapon {
      * Мапа с нумерацией частей тела,
      * вспомогательный метод
      */
-    protected String parts_of_body(int a) {
-        Map<Integer, String> parts_of_body = new TreeMap<>();
-        parts_of_body.put(1, "голове");
-        parts_of_body.put(2, "телу");
-        parts_of_body.put(3, "рукам");
-        parts_of_body.put(4, "ногам");
-        return parts_of_body.get(a);
+    protected String namePartOfBodyByDigit(int a) {
+        Map<Integer, String> partsOfBody = new TreeMap<>();
+        partsOfBody.put(1, "голове");
+        partsOfBody.put(2, "телу");
+        partsOfBody.put(3, "рукам");
+        partsOfBody.put(4, "ногам");
+        return partsOfBody.get(a);
     }
 
     /**
@@ -68,7 +69,7 @@ public abstract class Weapon {
      * @return по голове сложнее попасть(-10), по туловищу проще (0)
      * Итоговое значение будет вычитаться из общего шанса попасть.
      */
-    protected int calculate_chance_attack(int armorOrBodyIndex) {
+    protected int calculateChanceAttack(int armorOrBodyIndex) {
         switch (armorOrBodyIndex) {
             case 1: {
                 return -10;
@@ -86,10 +87,10 @@ public abstract class Weapon {
      * @param selectedPartBody на вход индекс части по которой приходиться удар
      * @return на выходе любое другое значение, лишь бы отличалось от входящего
      */
-    protected int missiles_attack(int selectedPartBody) {
+    protected int missilesAttack(int selectedPartBody) {
         int tempSelectedPartBody = selectedPartBody;
         while (tempSelectedPartBody == selectedPartBody) {
-            tempSelectedPartBody = new Random().nextInt(4) + 1;
+            tempSelectedPartBody = random.nextInt(4) + 1;
         }
         return tempSelectedPartBody;
     }

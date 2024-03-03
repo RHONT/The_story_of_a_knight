@@ -26,7 +26,7 @@ public class NormalSword extends Weapon {
         damageMultiplier = getDamageMultiplier();
         victim = enemy;
         chanceToHitSelectedPartBody =
-                master.chance_to_attack + calculate_chance_attack(indexTargetBody);
+                master.chance_to_attack + calculateChanceAttack(indexTargetBody);
 
         int damage;
         if (isIncludeInRange()) {
@@ -36,10 +36,10 @@ public class NormalSword extends Weapon {
                     " Противник смог отразить " + (Math.max(currentPower - damage, 0)) + " урона";
         } else {
             if (isIncludeInRangeLastTry()) {
-                indexTargetBody = missiles_attack(indexTargetBody);
+                indexTargetBody = missilesAttack(indexTargetBody);
                 currentPower /= 2;
                 damage = hitTheEnemy();
-                info = master.name + " промазал, но чудом попал по " + parts_of_body(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
+                info = master.name + " промазал, но чудом попал по " + namePartOfBodyByDigit(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
                         master.name + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
                         " Противник смог отразить " + (currentPower - damage) + " урона";
             } else info = master.name + " промахнулся!";
@@ -47,7 +47,7 @@ public class NormalSword extends Weapon {
     }
 
     private boolean isIncludeInRange() {
-        return new Random().nextInt(100) <= chanceToHitSelectedPartBody;
+        return random.nextInt(100) <= chanceToHitSelectedPartBody;
     }
 
     private int hitTheEnemy() {
@@ -82,11 +82,11 @@ public class NormalSword extends Weapon {
     }
 
     private boolean isIncludeInRangeLastTry() {
-        return new Random().nextInt(100) <= 50;
+        return random.nextInt(100) <= 50;
     }
 
     private int getDamageMultiplier() {
-        return new Random().nextInt(100) < 20 ? 2 : 1;
+        return random.nextInt(100) < 20 ? 2 : 1;
     }
 
 }
