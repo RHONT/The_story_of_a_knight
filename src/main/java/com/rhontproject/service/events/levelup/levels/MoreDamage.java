@@ -10,11 +10,10 @@ import static java.lang.System.out;
 public class MoreDamage extends AbstractLevelUp {
     @Override
     public void levelUp() {
-        for (int i = 0; i < 4; i++) {
-            knight.attribute.curHealth[i] += 10;
-            knight.attribute.baseHealth[i] += 10;
-        }
-        out.println("Ваше здоровье увеличено на 10 единиц по каждому пункту.");
+        knight.getWeapon().upPower(7);
+        out.println
+                ("Ваш меч острее не стал, но мастерство увеличило наносимый урон:" +
+                        knight.getWeapon().getPower());
         messageService.printHealthDefense(knight);
         setLevelUp(true);
     }
@@ -22,5 +21,6 @@ public class MoreDamage extends AbstractLevelUp {
     @Override
     protected void initComponent() {
         articular = 3;
+        messageInMenu="Я несколько иначе ощущал свой меч, словно он стал моим продолжением";
     }
 }

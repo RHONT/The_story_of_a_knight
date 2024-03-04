@@ -1,5 +1,9 @@
 package com.rhontproject.fabrics;
 
+import com.rhontproject.service.events.levelup.AbstractLevelUp;
+import com.rhontproject.service.events.levelup.levels.MoreChanceAttack;
+import com.rhontproject.service.events.levelup.levels.MoreDamage;
+import com.rhontproject.service.events.levelup.levels.MoreHealth;
 import com.rhontproject.service.events.marketgoods.goods.Exit;
 import com.rhontproject.service.events.marketgoods.MarketObject;
 import com.rhontproject.service.events.marketgoods.goods.Molotov;
@@ -60,6 +64,16 @@ public class ConfigurationMy {
         sets.add(new Molotov());
         sets.add(new Exit());
        return sets;
+    }
+
+    @Bean
+    @Scope("singleton")
+    public Set<AbstractLevelUp> levelUps(){
+        Set<AbstractLevelUp> sets=new LinkedHashSet<>();
+        sets.add(new MoreHealth());
+        sets.add(new MoreChanceAttack());
+        sets.add(new MoreDamage());
+        return sets;
     }
 
 

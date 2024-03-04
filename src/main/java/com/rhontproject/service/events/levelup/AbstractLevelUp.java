@@ -2,6 +2,7 @@ package com.rhontproject.service.events.levelup;
 
 public abstract class AbstractLevelUp {
     protected int articular;
+    protected String messageInMenu;
 
     protected AbstractLevelUp() {
        initComponent();
@@ -11,5 +12,9 @@ public abstract class AbstractLevelUp {
     protected abstract void initComponent();
     public int getArticular() {
         return articular;
+    }
+
+    public String getMessageInMenu() {
+        return messageInMenu;
     }
 }
