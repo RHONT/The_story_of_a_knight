@@ -12,6 +12,7 @@ import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static com.rhontproject.fabrics.global.StateGame.isMarketExit;
 import static com.rhontproject.fabrics.global.StateGame.setMarketExit;
 import static java.lang.System.in;
+import static java.lang.System.out;
 
 @Component
 public class Market {
@@ -37,7 +38,7 @@ public class Market {
     }
 
     private void printMenu(){
-
+        out.println("Вас встречает трактирщик. На его прилавке скучают вещи, вы внимательно смотрите на них.");
         for (MarketObject element:listGoods) {
             System.out.printf("%d - %s - %s золотых%n",element.getArticular(),element.getName(),element.getCost());
         }
