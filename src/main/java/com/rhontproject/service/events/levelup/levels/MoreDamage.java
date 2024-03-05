@@ -14,7 +14,7 @@ public class MoreDamage extends AbstractLevelUp {
         out.println
                 ("Ваш меч острее не стал, но мастерство увеличило наносимый урон:" +
                         knight.getWeapon().getPower());
-        messageService.printHealthDefense(knight);
+        messageService.printHealthDefense();
         setLevelUp(true);
     }
 

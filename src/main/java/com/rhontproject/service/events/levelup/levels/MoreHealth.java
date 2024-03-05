@@ -15,7 +15,7 @@ public class MoreHealth extends AbstractLevelUp {
             knight.attribute.baseHealth[i] += 10;
         }
         out.println("Ваше здоровье увеличено на 10 единиц по каждому пункту.");
-        messageService.printHealthDefense(knight);
+        messageService.printHealthDefense();
         setLevelUp(true);
     }
 

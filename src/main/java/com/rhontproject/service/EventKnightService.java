@@ -34,7 +34,7 @@ public class EventKnightService {
     }
 
     public void halt() {
-        halt.halt(knight);
+        halt.halt();
     }
 
     public void market() {

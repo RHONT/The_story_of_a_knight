@@ -24,7 +24,7 @@ public class Market {
         if (shelves==null) {
             shelves=putOnShelves();
         }
-        messageService.printInventory(knight);
+        messageService.printInventory();
         printMenu();
         Scanner scanMarket = new Scanner(in);
 

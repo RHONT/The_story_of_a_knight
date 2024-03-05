@@ -17,10 +17,10 @@ import static java.lang.System.out;
 @Component
 public class Halt {
 
-    public void halt(Unit unit) {
+    public void halt() {
         out.println("После битвы вы решили устроить короткий привал");
-        messageService.printHealthDefense(unit);
-        messageService.printInventory(unit);
+        messageService.printHealthDefense();
+        messageService.printInventory();
         out.println();
         out.println("Что будете делать?\n" +
                 "1 - Выпить зелье\n" +
@@ -89,7 +89,7 @@ public class Halt {
         knight.getInventorySet().use(InventoryEnum.POTION);
         out.println("Вы выпили зелье! Теперь ваше здоровье:");
         knight.stabilizeHealth();
-        messageService.printHealthDefense(knight);
+        messageService.printHealthDefense();
         out.println("Что еще хотите сделать?");
     }
 
