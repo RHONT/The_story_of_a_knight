@@ -6,6 +6,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Random;
 
+/**
+ * Достаем заготовленных персонажей и если нужно дополнительно их конфигурируем.
+ */
 public final class UnitFabric {
     private static final Random random=new Random();
     static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");

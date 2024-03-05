@@ -14,11 +14,17 @@ import java.util.List;
 import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 import static java.lang.System.out;
 
+/**
+ * Класс для управления событий в игре
+ */
 @Component
 @Scope("singleton")
 public class MessageService {
     private final List<String> messages=new ArrayList<>();
 
+    /**
+     * Выводим все накопившиеся сообщения и очищаем список.
+     */
     public void outputConsole(){
         messages.forEach(System.out::println);
         messages.clear();
@@ -28,31 +34,41 @@ public class MessageService {
         messages.add(string);
     }
 
-    public void printHealthDefense(Unit unit) {
+    /**
+     * Выводи в консоль в одну строку здоровье/броню/урон от оружия главного героя
+     * @param unit
+     */
+    public void printHealthDefense() {
         String info;
         StringBuilder delimiter = new StringBuilder();
 
-        info = ("Голова: " + unit.attribute.curHealth[0] + "/" + unit.attribute.baseHealth[0] + " [" + unit.attribute.defense[0] + "]" +
-                " Тело: " + unit.attribute.curHealth[1] + "/" + unit.attribute.baseHealth[1] + " [" + unit.attribute.defense[1] + "]" +
-                " Руки: " + unit.attribute.curHealth[2] + "/" + unit.attribute.baseHealth[2] + " [" + unit.attribute.defense[2] + "]" +
-                " Ноги: " + unit.attribute.curHealth[3] + "/" + unit.attribute.baseHealth[3] + " [" + unit.attribute.defense[3] + "]" +
-                " Сила оружия: " + unit.getWeapon().getPower());
+        info = ("Голова: " + knight.attribute.curHealth[0] + "/" + knight.attribute.baseHealth[0] + " [" + knight.attribute.defense[0] + "]" +
+                " Тело: " + knight.attribute.curHealth[1] + "/" + knight.attribute.baseHealth[1] + " [" + knight.attribute.defense[1] + "]" +
+                " Руки: " + knight.attribute.curHealth[2] + "/" + knight.attribute.baseHealth[2] + " [" + knight.attribute.defense[2] + "]" +
+                " Ноги: " + knight.attribute.curHealth[3] + "/" + knight.attribute.baseHealth[3] + " [" + knight.attribute.defense[3] + "]" +
+                " Сила оружия: " + knight.getWeapon().getPower());
         delimiter.append("-".repeat(info.length()));
         out.println(delimiter);
-        out.println(unit.getName());
+        out.println(knight.getName());
         out.println(info);
     }
 
-    public void printInventory(Unit unit) {
-        String sb =
-                "Золота у вас: " + unit.getMoney() + "\n" +
-                "Прочность щита в руке: " + unit.getDefenseWall().getDurability() + "\n" +
-                "Количество щитов: " + unit.getDefenseWall().getAmountShield() + "\n" +
-                "Коктейля молотова: " + unit.getInventorySet().get(InventoryEnum.MOLOTOV) + "\n" +
-                "Целебного зелья: " + unit.getInventorySet().get(InventoryEnum.POTION) + "\n";
-        out.println(sb);
+    /**
+     * Выводим построчно информацию об инвентаре главного героя.
+     */
+    public void printInventory() {
+        String infoInventory =
+                "Золота у вас: " + knight.getMoney() + "\n" +
+                "Прочность щита в руке: " + knight.getDefenseWall().getDurability() + "\n" +
+                "Количество щитов: " + knight.getDefenseWall().getAmountShield() + "\n" +
+                "Коктейля молотова: " + knight.getInventorySet().get(InventoryEnum.MOLOTOV) + "\n" +
+                "Целебного зелья: " + knight.getInventorySet().get(InventoryEnum.POTION) + "\n";
+        out.println(infoInventory);
     }
 
+    /**
+     * Выводим в одну строку состояние брони главного героя
+     */
     public void printDefense(Unit unit) {
         out.println("Состояние брони:\n" +
                 "Шлем: " + unit.attribute.defense[0] +
@@ -62,17 +78,16 @@ public class MessageService {
     }
 
     /**
-     * Перед нанесением удара показывает текущие состояния для каждого юнита:
+     * В начале боя текстовое отображение о каждом персонаже:<br>
+     *                Сэр Томас      Внезапный мертвец   Внезапный мертвец<br>
+     * Шлем:          80 /80  [30]   80 /80  [6]         80 /80  [7]<br>
+     * Нагрудник:     120/120 [30]   120/120 [6]         120/120 [16]<br>
+     * Нарукавник:    50 /50  [30]   50 /50  [4]         50 /50  [3]<br>
+     * Поножи:        50 /50  [30]   50 /50  [2]         50 /50  [4]<br>
+     * Сила орудия:   23             23                  23<br>
      *
-     *                Сэр Томас      Внезапный мертвец   Внезапный мертвец
-     * Шлем:          80 /80  [30]   80 /80  [6]         80 /80  [7]
-     * Нагрудник:     120/120 [30]   120/120 [6]         120/120 [16]
-     * Нарукавник:    50 /50  [30]   50 /50  [4]         50 /50  [3]
-     * Поножи:        50 /50  [30]   50 /50  [2]         50 /50  [4]
-     * Сила орудия:   23             23                  23
-     *
-     * @param listUnit
-     * @param round
+     * @param listUnit - все участники битвы
+     * @param round - раунд по счету (инкриминируется для каждого боя)
      * @return
      */
     public String printStandartBattleArea(List<Unit> listUnit, int round) {
@@ -95,15 +110,15 @@ public class MessageService {
     }
 
     /**
-     * Приводит объект unit в string[] формата:
-     * Внезапный мертвец
-     * 80 /80  [3]
-     * 120/120 [2]
-     * 50 /50  [1]
-     * 50 /50  [3]
+     * Приводит объект unit в string[] формата.
+     * Служебный метод для {@link MessageService#printStandartBattleArea(List, int)}<br>
+     * Внезапный мертвец <br>
+     * 80 /80  [3]<br>
+     * 120/120 [2]<br>
+     * 50 /50  [1]<br>
+     * 50 /50  [3]<br>
      * 23
      * @param unit
-     * @return
      */
     private static String[] converter(Unit unit) {
         String[] converted = new String[6];
@@ -127,8 +142,8 @@ public class MessageService {
 
     /**
      * Создаем готовый sb с подготовленной шапкой ***ROUND 5******
-     * @param round
-     * @return
+     * служебный метод для {@link MessageService#printStandartBattleArea(List, int)}
+     * @param round - какой раунд по счету.
      */
     private StringBuilder getTemplateSb(int round) {
         StringBuilder sb = new StringBuilder();
@@ -137,6 +152,12 @@ public class MessageService {
         return sb;
     }
 
+    /**
+     * Строка появляется после информации о состоянии каждого персонажа.
+     * Это подсказка. Вероятность удара по каждой части тела противника.
+     * И наличие предметов в инвентаре для главного героя
+     * Служебный метод для {@link MessageService#printStandartBattleArea(List, int)}
+     */
     private String heroAttribute() {
         StringBuilder sb =new StringBuilder();
         sb.append(chancesToAttack());
@@ -146,6 +167,10 @@ public class MessageService {
         return sb.toString();
     }
 
+    /**
+     * Строка с информации о вероятности попасть по выбранной части тела
+     * Служебный метод для {@link MessageService#heroAttribute()}
+     */
     public String chancesToAttack(){
         return "Атакуй! 1 - голова "
                 + (knight.getChanceAttack() - 10)
@@ -154,6 +179,10 @@ public class MessageService {
                 + "% | 4 - ноги " + (knight.getChanceAttack() - 20);
     }
 
+    /**
+     * Строка с информации об инвентаре главного героя
+     * Служебный метод для {@link MessageService#heroAttribute()}
+     */
     public String inventory(){
         StringBuilder sb =new StringBuilder();
         for (var element: InventoryEnum.values()) {

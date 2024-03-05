@@ -5,6 +5,9 @@ import com.rhontproject.service.EventKnightService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+/**
+ * Фабрика для удобства, чтобы в клиентском коде вызывать сразу нужный акт.
+ */
 @Component
 public final class ActsFabric {
 

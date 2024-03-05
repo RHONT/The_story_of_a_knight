@@ -6,6 +6,11 @@ import java.util.*;
 
 import static java.lang.System.*;
 
+/**
+ * Распечатывает в консоль историю.
+ * /stories/ - источник
+ * Открываю файлы как ресурс. Чтобы при упаковке в jar они были добавлены.
+ */
 public final class SystemUtility {
     private SystemUtility() {
     }

@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+/**
+ * Каждый акт - отдельный набор событий
+ * scanner - отвечает за переход к новому акту по нажатию на Enter
+ * eventKnightService - сервис с заготовленными сценариями по разным событиям. Битва/магазин/привал/повышение уровня
+ */
 @Component
 public abstract class Act {
     @Autowired

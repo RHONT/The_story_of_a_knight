@@ -19,42 +19,71 @@ import java.util.*;
 
 @org.springframework.context.annotation.Configuration
 public class ConfigurationMy {
+    /**
+     * Объект находиться в каждом персонаже. По нему идет сверка на наличие у персонажа отрицательных штрафов
+     * К примеру отравление/поджог. В начале каждого уровня персонаж получает урон, если в нем соответствующий state
+     * @return
+     */
     @Bean
     @Scope("prototype")
     public StateHolder getState(){
         return new StateHolder();
     }
 
+    /**
+     * Создаем оружие
+     * @return
+     */
     @Bean
     @Scope("prototype")
     public Weapon getClub(){
         return new NormalSword(11);
     }
 
+    /**
+     * Создаем оружие
+     * @return
+     */
     @Bean
     @Scope("prototype")
     public Weapon getBearPows(){
         return new NormalSword(90);
     }
 
+    /**
+     * Создаем оружие с отравлением
+     * @return
+     */
     @Bean
     @Scope("prototype")
     public Weapon getDarkSword(){
         return new NormalSword(18,NameStates.POISON);
     }
 
+    /**
+     * Создаем оружие
+     * @return
+     */
     @Bean
     @Scope("prototype")
     public Weapon getKnightWeapon(){
         return new NormalSword(45);
     }
 
+    /**
+     * Создаем оружие с поджогом
+     * @return
+     */
     @Bean
     @Scope("prototype")
     public Weapon getKnightFireWeapon(){
         return new NormalSword(45, NameStates.BURN);
     }
 
+    /**
+     * Добавляем в магазин предметы. LinkedHashSet нужен для запоминания порядка добавления.
+     * @return
+     */
     @Bean
     @Scope("singleton")
     public Set<MarketObject> marketObjets(){
@@ -66,6 +95,10 @@ public class ConfigurationMy {
        return sets;
     }
 
+    /**
+     * Добавляем варианты повышения уровня LinkedHashSet нужен для запоминания порядка добавления
+     * @return
+     */
     @Bean
     @Scope("singleton")
     public Set<AbstractLevelUp> levelUps(){

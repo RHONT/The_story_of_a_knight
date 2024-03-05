@@ -23,6 +23,10 @@ public class Knight extends Unit {
         this.iAmHero();
     }
 
+    /**
+     * Присваиваем персонажу объект с оружием
+     * @param weapon
+     */
     @Autowired
     @Override
     public void setWeapon(@Qualifier("getKnightWeapon") Weapon weapon) {
@@ -30,6 +34,13 @@ public class Knight extends Unit {
         this.getWeapon().setMaster(this);
     }
 
+    /**
+     * Из properties берем значения для здоровья.
+     * setDefense() - устанавливаем броню по умолчания
+     * getInventorySet().add - наполняем исходный инвентарь главного героя
+     * getDefenseWall().add - щит не входим в стандартный инвентарь, так как у него иная механика.
+     * @param health
+     */
     @Autowired
     @Override
     protected void setHealth(@Value("${knight}") int[] health) {

@@ -2,6 +2,10 @@ package com.rhontproject.fabrics.global;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Глобальные флаги необходимые для работы событий. /магазин/привал/крафт/повышения уровня/воровство
+ * isRob - событие для этого флага пока нет. Игра не доведена до логического финала.
+ */
 @Component
 public final class StateGame {
     private StateGame() {
