@@ -10,6 +10,9 @@ import static com.rhontproject.fabrics.global.StateGame.*;
 import static java.lang.System.in;
 import static java.lang.System.out;
 
+/**
+ * Механика привала после битвы.
+ */
 @Component
 public class LevelUp {
     @Autowired

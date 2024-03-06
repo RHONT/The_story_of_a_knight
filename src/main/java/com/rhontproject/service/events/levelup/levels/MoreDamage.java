@@ -7,6 +7,9 @@ import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static com.rhontproject.fabrics.global.StateGame.setLevelUp;
 import static java.lang.System.out;
 
+/**
+ * Увеличение урона
+ */
 public class MoreDamage extends AbstractLevelUp {
     @Override
     public void levelUp() {

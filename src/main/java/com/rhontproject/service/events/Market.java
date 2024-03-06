@@ -14,6 +14,9 @@ import static com.rhontproject.fabrics.global.StateGame.setMarketExit;
 import static java.lang.System.in;
 import static java.lang.System.out;
 
+/**
+ * Механика магазина
+ */
 @Component
 public class Market {
     @Autowired

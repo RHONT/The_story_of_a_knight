@@ -1,5 +1,8 @@
 package com.rhontproject.service.events.levelup;
 
+/**
+ * Заготовка для объектов повышения уровня
+ */
 public abstract class AbstractLevelUp {
     protected int articular;
     protected String messageInMenu;

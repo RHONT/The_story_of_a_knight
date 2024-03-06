@@ -9,6 +9,11 @@ import java.util.stream.IntStream;
 
 import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static java.lang.System.*;
+
+/**
+ * Сценарий проведения битвы, в один массив мы помещаем главного героя и противников.
+ * Прописываем логику взаимодействия между персонажами
+ */
 @Component
 public final class FightArea {
 
@@ -33,6 +38,11 @@ public final class FightArea {
         System.out.println("Нажмите Enter для продолжения");
     }
 
+    /**
+     * Флаг для магии АОЕ
+     * @param hero
+     * @param party
+     */
     private void isVortexActive(Unit hero, ArrayList<Unit> party) {
         if (hero.vortex) {
             vortexPower(party);
@@ -40,6 +50,11 @@ public final class FightArea {
         }
     }
 
+    /**
+     * Проверка на - жив ли персонаж. Мертвым считается тот, у кого хотя бы одна часть тела = 0
+     *
+     * @param hero
+     */
     private void checkLifeHero(Unit hero) {
         if (!hero.isAlive()) {
             messageService.add(hero.getName() + " погиб. Его натура не выдержала вызова судьбы.");
@@ -47,6 +62,11 @@ public final class FightArea {
         }
     }
 
+    /**
+     * Присваиваем персонажу деньги с павшего противника
+     * @param hero
+     * @param party
+     */
     private void getMoneyFromCorpses(Unit hero, ArrayList<Unit> party) {
         for (int i = 1; i < party.size(); i++) {
             if (!party.get(i).isAlive()) {
@@ -58,6 +78,10 @@ public final class FightArea {
         }
     }
 
+    /**
+     * Магия АОЕ
+     * @param party
+     */
     private void vortexPower(ArrayList<Unit> party) {
         IntStream.range(1, party.size()).forEach(
                 index -> {

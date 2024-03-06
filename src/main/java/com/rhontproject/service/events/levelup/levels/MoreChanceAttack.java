@@ -6,6 +6,9 @@ import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 import static com.rhontproject.fabrics.global.StateGame.setLevelUp;
 import static java.lang.System.out;
 
+/**
+ * Увеличения шанса на попадание
+ */
 public class MoreChanceAttack extends AbstractLevelUp {
     @Override
     public void levelUp() {

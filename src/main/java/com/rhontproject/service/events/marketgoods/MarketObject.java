@@ -1,5 +1,8 @@
 package com.rhontproject.service.events.marketgoods;
 
+/**
+ * Заготовка для объектов продажи
+ */
 public abstract class MarketObject {
     protected int articular;
     protected String name;
