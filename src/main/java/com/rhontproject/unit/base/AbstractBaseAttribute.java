@@ -3,7 +3,7 @@ package com.rhontproject.unit.base;
 import java.util.Arrays;
 
 
-public class AbstractBaseAttribute {
+public abstract class AbstractBaseAttribute {
     public int[] curHealth = {1, 1, 1, 1};
     public int[] defense = {0, 0, 0, 0};
     public int[] baseHealth;

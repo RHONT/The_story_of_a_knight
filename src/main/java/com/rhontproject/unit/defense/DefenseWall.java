@@ -3,6 +3,15 @@ package com.rhontproject.unit.defense;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/**
+ * Менеджер по управлению щитом
+ * respond(int innerDamage) - если есть еще прочность щита, вернет фактический урон после отражения.
+ * loadShield() - если в инвентаре (amountShield) есть щит, то идет активация кол-ва зарядов (у каждого типа щита свое кол-во)
+ * getAmountShield() - кол-во щитов в инвентаре
+ * getDurability() - текущая прочность активированного щита
+ * Defender.class - фактическая реализация типа щита
+ * amountShield - указание кол-ва щитов у персонажа
+ */
 @Component
 @Scope("prototype")
 public class DefenseWall {
