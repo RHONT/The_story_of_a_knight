@@ -30,16 +30,16 @@ public class NormalSword extends Weapon {
         if (isIncludeInRange()) {
 
             damage = hitTheEnemy();
-            info = master.getName() + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
-                    " Противник смог отразить " + (Math.max(currentPower - damage, 0)) + " урона";
+            info = master.getName() + " нанёс урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
+                    " " + enemy.getName() + " получил " + (Math.max(currentPower - damage, 0)) + " урона";
         } else {
             if (isIncludeInRangeLastTry()) {
                 indexTargetBody = missilesAttack(indexTargetBody);
                 currentPower /= 2;
                 damage = hitTheEnemy();
-                info = master.getName() + " промазал, но чудом попал по " + namePartOfBodyByDigit(indexTargetBody) + ". Урон ваш снижен вдвое" + "\n" +
-                        master.getName() + " нанесли урон: " + damage + (damageMultiplier == 2 ? " Критический удар!" : "") +
-                        " Противник смог отразить " + (currentPower - damage) + " урона";
+                info = master.getName() + " промазал, но чудом попал по " + namePartOfBodyByDigit(indexTargetBody) + ". Урон снижен вдвое" + "\n" +
+                        master.getName() + " нанёс урон: " + damage + " " + (damageMultiplier == 2 ? " Критический удар!" : "") +
+                        enemy.getName() + " смог отразить " + (currentPower - damage) + " урона";
             } else info = master.getName() + " промахнулся!";
         }
     }

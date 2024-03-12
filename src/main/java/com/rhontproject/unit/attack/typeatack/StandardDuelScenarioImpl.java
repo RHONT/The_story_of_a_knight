@@ -13,6 +13,9 @@ import java.util.Scanner;
 import static com.rhontproject.fabrics.global.GlobalVariable.messageService;
 import static java.lang.System.*;
 
+/**
+ * Стандартный сценарий. Единственный оставшийся switch case, который в будущем поборю.
+ */
 @Component
 @Scope("prototype")
 public class StandardDuelScenarioImpl implements DuelScenario {
@@ -82,13 +85,19 @@ public class StandardDuelScenarioImpl implements DuelScenario {
         }
     }
 
-
+    /**
+     * todo магия АОЕ пока не встроена в архитектуру, болтается отдельно.
+     */
     private void activeVortex() {
         attacking.vortex = true;
         messageService.add(attacking.getName() + " разрываете врагов мощным порывом ветра! "
                 + "Урон каждому составил по 40 единиц!");
     }
 
+    /**
+     * Механика восполнения здоровья. Пока болтается в стороне. Ждем доработки.
+     * todo реализовать механику иначе.
+     */
     private void drinkPotion() {
         for (int i = 0; i < 4; i++) {
             attacking.attribute.curHealth[i] += 70;
