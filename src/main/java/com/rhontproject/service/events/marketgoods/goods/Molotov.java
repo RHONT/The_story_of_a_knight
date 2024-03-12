@@ -6,6 +6,9 @@ import com.rhontproject.unit.inventory.InventoryEnum;
 import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 import static java.lang.System.out;
 
+/**
+ * Покупаем коктейл молотова
+ */
 public class Molotov extends MarketObject {
     @Override
     public void buy() {

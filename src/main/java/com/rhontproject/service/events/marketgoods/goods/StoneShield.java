@@ -6,6 +6,9 @@ import com.rhontproject.unit.defense.HardShield;
 import static com.rhontproject.fabrics.global.GlobalVariable.knight;
 import static java.lang.System.out;
 
+/**
+ * Покупаем щит StoneShield (блокирует 100% урона)
+ */
 public class StoneShield extends MarketObject {
 
     @Override

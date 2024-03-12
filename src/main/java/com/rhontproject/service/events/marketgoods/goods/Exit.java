@@ -4,7 +4,9 @@ import com.rhontproject.service.events.marketgoods.MarketObject;
 
 import static com.rhontproject.fabrics.global.StateGame.setMarketExit;
 
-
+/**
+ *
+ */
 public class Exit extends MarketObject {
 
     @Override
