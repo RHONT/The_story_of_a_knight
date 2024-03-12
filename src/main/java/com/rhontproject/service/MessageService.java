@@ -190,13 +190,20 @@ public class MessageService {
                 sb.append(element.getName());
                 sb.append(" - ");
                 sb.append(knight.getInventorySet().get(element));
+                sb.append(" [");
+                sb.append(element.getHotKey());
+                sb.append("]");
                 sb.append("  ");
             }
         }
         sb.append("Щит - (").
                 append(knight.getDefenseWall().getDurability()).
                 append(") ").
-                append(knight.getDefenseWall().getAmountShield());
+                append(knight.getDefenseWall().getAmountShield()).
+                append(" [").
+                append(knight.getDefenseWall().getHotkey()).
+                append("]");
+
         return sb.toString();
     }
 }

@@ -18,6 +18,11 @@ public class DefenseWall {
 
     private int amountShield;
     private Defender typeShield = null;
+    private final static String HOTKEY = "s";
+
+    public String getHotkey(){
+        return HOTKEY;
+    }
 
     public void add(Defender defender, int amountShield) {
         if (typeShield != null && defender.getClass() == typeShield.getClass()) {
@@ -53,4 +58,6 @@ public class DefenseWall {
     public int getDurability() {
         return typeShield.getCurrentCharges();
     }
+
+
 }
