@@ -34,4 +34,6 @@ P.S.<br>
 Запуск игры:
 1. В корне лежит jar с именем game (требуется jdk 11 или выше)
 2. Через docker  
-winpty docker run -it rg915i/game-rpg-knight
+  For windows CLI:  winpty docker run -it rg915i/game-rpg-knight:v1.1  
+Unix: docker run -it rg915i/game-rpg-knight:v1.1
+
